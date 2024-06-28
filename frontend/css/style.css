@@ -5,6 +5,7 @@ html {
 
 :root {
     --light-dark: #3B4144;
+    --light-dark-2: #919191;
     --light-dark-1: #2f3031;
     --dark: #3rgb(26, 27, 27);
     --bg-color: #FFFFFF;
@@ -86,6 +87,7 @@ figure a {
 figure a {
     color: var(--dark);
     font-weight: 500;
+    font-size: 1.7rem;
 }
 
 .header__nav--links a::after {
@@ -207,7 +209,7 @@ figure a {
     height: 100%;
     padding: 0 1.5rem;
     /* Intense dark center gradient */
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
 }
 
@@ -239,9 +241,7 @@ figure a {
     height: 100%;
     background-color: rgba(43, 43, 43, 0.79);
     z-index: 4000;
-    /* outline: 0px; */
     pointer-events: none;
-    /* Sit on top */
 }
 
 .overlay {
@@ -261,14 +261,12 @@ figure a {
     justify-content: center;
     z-index: 5000;
     align-items: center;
-    background: white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
 
     background-color: #fff;
-    padding: 1rem;
     border-radius: 18px;
 
     position: absolute;
@@ -339,8 +337,8 @@ figure a {
     display: flex;
     justify-content: space-between;
     font-size: 1.4rem;
-    font-weight: 300;
     padding: 0 1.9rem;
+    color: var(--light-dark-1);
 }
 
 .login-form input[type=text] {
@@ -392,7 +390,7 @@ figure a {
 }
 
 .login-auth-btn:hover {
-    background-color: var(--light-dark);
+    background-color: var(--light-dark-2);
 }
 
 .auth-text {
