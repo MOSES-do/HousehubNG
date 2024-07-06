@@ -13,23 +13,106 @@ burger.addEventListener("click", function (e) {
 
 
 
-const sign_up = document.querySelector(".sign_up");
-const log_in = document.querySelector(".log_in");
-const log_in_form = document.querySelector(".login-form");
-const container = document.querySelector(".container");
-const closeForm = document.querySelector(".close");
+const url = 'http://aceme.tech/api/v1';
 
-function toggleSignUpForm() {
-    log_in_form.classList.toggle("hidden");
-    container.classList.toggle("overlay");
+// fetch(url).then((res) => {
+//     return res.json();
+// }).then(data => console.log(data)).catch((err) => console.log(err))
+
+
+
+// LOGIN AND SIGN UP
+function decodeJWT(token) {
+    // Split the token into its parts
+    const parts = token.split('.');
+
+    // Check if the token has three parts (header, payload, signature)
+    if (parts.length !== 3) {
+        throw new Error('Invalid token');
+    }
+    const payload = parts[1];
+    const decodedPayload = atob(payload);
+    const payloadObject = JSON.parse(decodedPayload);
+    return payloadObject;
 }
-sign_up.addEventListener("click", toggleSignUpForm)
-log_in.addEventListener("click", toggleSignUpForm)
 
-function closePopup() {
-    log_in_form.classList.add("hidden");
-    container.classList.remove("overlay");
+async function handleLogin() {
+    //LOGIN FUNCTIONALITY
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-pwd').value;
+    try {
+        const response = await fetch(`${url}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        if (response.ok) {
+            const data = await response.json();
+
+            localStorage.setItem('token', data.token);
+
+            const tokenPayload = decodeJWT(data.token);
+            console.log(tokenPayload.sub)
+            localStorage.setItem('userEmail', tokenPayload.sub.email);
+
+            window.location.href = 'listings.html';
+        } else {
+            const errorData = await response.json();
+            alert('Login failed: ' + errorData.error)
+        }
+    } catch (error) {
+        console.error('Error:', error)
+    }
 }
 
-closeForm.addEventListener("click", closePopup);
+async function handleRegistration() {
+    //Sign up FUNCTIONALITY
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-pwd').value;
+    try {
+        const response = await fetch(`${url}/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        if (response.ok) {
+            alert("User registered successfully");
+        } else {
+            const errorData = await response.json();
+            alert('Registration failed: ' + errorData.error)
+        }
+    } catch (error) {
+        console.error('Error:', error)
+        console.log("Registration failed")
+    }
+}
+
+const submitBtn = document.querySelector('.login-btn');
+document.querySelector('.log_user').addEventListener('click', function (e) {
+    e.preventDefault();
+    //Matching strategy
+    if (e.target.classList.contains('user')) {
+        const btnValue = e.target.innerHTML;
+        const elText = btnValue.trim().toLowerCase()
+        console.log(elText)
+        if (elText === "log in") {
+            submitBtn.addEventListener('click',
+                handleLogin
+            )
+        }
+
+        if (elText === "sign up") {
+            submitBtn.addEventListener('click',
+                handleRegistration)
+        }
+    }
+});
+
+
+
+
 

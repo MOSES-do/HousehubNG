@@ -1,3 +1,10 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@500;700;900&family=Solway:wght@300;400;500;700;800&display=swap'); */
+/* 
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@500;700;900&family=Solway:wght@300;400;500;700;800&display=swap'); */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Georama:ital,wght@0,100..900;1,100..900&family=Metrophobic&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@300;400;500;600;700&family=Roboto:wght@500;700;900&family=Solway:wght@300;400;500;700;800&family=Varela+Round&display=swap');
+
 html {
     font-size: 62.5%;
     box-sizing: border-box;
@@ -5,17 +12,34 @@ html {
 
 :root {
     --light-dark: #3B4144;
-    --light-dark-2: #919191;
+    --light-dark-2: #807d7d2c;
     --light-dark-1: #2f3031;
     --dark: #3rgb(26, 27, 27);
     --bg-color: #FFFFFF;
-    --btn-line: #D72228;
+    --btn-line: rgb(215, 34, 40);
 }
 
 body {
-    font-family: Poppins, sans-serif;
+    /* font-family: "Solway", serif; */
+    /* font-family: "Roboto Mono", monospace;
+    font-optical-sizing: auto; */
+    /* font-family: "Georama", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 1000; */
+    /* font-family: "Metrophobic", sans-serif;
+    font-weight: 400;
+    font-style: normal; */
+    font-family: "Varela Round", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     background-color: var(--bg-color);
     line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* GENERAL */
@@ -29,24 +53,30 @@ body {
     box-sizing: inherit;
 }
 
-*:focus {
+/* *:focus {
     box-shadow: 0 0 0 0.8rem rgb(230, 126, 34, 0.5);
     border-radius: 5px;
-}
+} */
 
+/* ========== NAVBAR =========== */
 .btn {
     border: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-family: inherit;
-    font-weight: 300;
+    font-weight: 400;
     background-color: transparent;
     cursor: pointer;
 }
 
+.btn.log_in {
+    font-size: 1.5rem;
+}
+
 .btn.sign_up {
     background-color: var(--btn-line);
-    padding: 1rem;
-    border-radius: 50px;
+    padding: .8rem 2rem !important;
+    font-weight: 600 !important;
+    border-radius: 100px;
 }
 
 ul li a,
@@ -62,12 +92,38 @@ figure a {
     margin: 0 auto;
 }
 
+.bg-user {
+    position: absolute;
+    left: 95%;
+    transform: translate(-95%, -95%);
+    top: 87%;
+    display: none;
+}
+
+.bg-user::before {
+    content: "";
+    position: absolute;
+    background-color: #000;
+    height: 30px;
+    width: 30px;
+    padding: 1.7rem;
+    border-radius: 100px;
+    /* top left bottom right  */
+    inset: -4px 0 0 -5.5px;
+}
+
+.menu-user {
+    position: relative;
+}
+
+
 .header_nav {
     font-size: 1.55rem;
-    padding: 1rem 2rem;
+    padding: 0rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .row {
@@ -75,40 +131,88 @@ figure a {
 }
 
 .header__nav--links> :not(:last-child) {
-    margin-right: 4rem;
+    margin-right: 2rem;
 }
 
 .header__nav--links li {
     position: relative;
 }
 
+.figure.logo {
+    position: relative;
+}
 
-.header__nav--links li a,
-figure a {
+figure.logo a {
+    font-weight: 700;
+}
+
+figure.logo span:nth-child(1) {
+    font-size: 3rem;
+}
+
+.header__nav--links li a {
     color: var(--dark);
-    font-weight: 500;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 .header__nav--links a::after {
     content: '';
     width: 100%;
     border-radius: 10px;
-    height: 0.2rem;
+    height: 0.3rem;
     position: absolute;
     left: 0px;
-    bottom: -15px;
+    bottom: -9px;
     background-color: var(--btn-line);
     transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.5s ease-in-out;
+    transform-origin: bottom left;
+    transition: transform 1000ms ease-in-out;
+}
 
+a:visited,
+a:active,
+a:link {
+    color: #000;
 }
 
 .header__nav--links a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
     height: 2px;
+}
+
+@media (max-width: 942px) {
+    .header__nav--links {
+        display: none;
+    }
+
+    .log_user {
+        display: none;
+    }
+
+    .header_nav {
+        height: 40px;
+    }
+
+    .header_nav--hamburger {
+        display: block !important;
+        position: absolute;
+        left: 4%;
+        transform: translate(5%, 0%);
+        top: 0%;
+    }
+
+    .logo {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 50%;
+    }
+
+    .bg-user {
+        display: block;
+        cursor: pointer;
+    }
 }
 
 .log_user> :not(:first-child) {
@@ -119,7 +223,15 @@ figure a {
 }
 
 
-/* ======hamburger===== */
+.LgbsSe-Bz112c {
+    width: 26px;
+}
+
+.fb {
+    font-size: 25px;
+}
+
+/* ========== HAMBURGER BUTTON =========== */
 .header_nav--hamburger {
     display: none;
     position: fixed;
@@ -177,50 +289,35 @@ figure a {
     margin: -.4rem 0 0 1.9rem;
 }
 
-/* hero-section */
+/* ========== HERO SECTION =========== */
 .hero-section {
     width: 100%;
-    padding: 0 1.5rem;
-    height: 50rem;
+    /* padding: 0 1.5rem; */
+    height: 100rem;
     position: relative;
 }
 
-.hero-section figure {
-    height: 100%;
-}
+.hero-section .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-.hero-section figure img {
-    width: 100%;
-    height: 100%;
+    background-image: url(../assets/hero.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50%;
     object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    position: relative;
-}
-
-.hero-section figure::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0 1.5rem;
-    /* Intense dark center gradient */
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0) 100%);
-    pointer-events: none;
+    background-size: cover;
 }
 
 .hero-section .text {
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: #ffffff;
     font-size: 2.5rem;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 50px;
+    font-family: "Solway", serif;
 }
 
 .hero-section .text span {
@@ -228,19 +325,94 @@ figure a {
     line-height: 0;
 }
 
+/* ========== HERO SEARCH/INPUT BUTTON =========== */
+.search {
+    position: relative;
+    margin-top: 15px;
+}
 
-/* Overlay */
+.search input[type=text] {
+    width: 60rem;
+    margin: 0 auto;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    padding: 2rem;
+    outline: 0px;
+    border: none;
+    background-color: none;
+}
+
+.search .search-btn {
+    position: absolute;
+    font-size: 20px;
+    inset-inline: 170px;
+    top: 25%;
+    left: 90%;
+    z-index: 1;
+}
+
+.search input[type="text"] {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    font-family: inherit;
+    transition: box-shadow 0.3s ease;
+}
+
+.search input[type="text"]:focus {
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+/* .location:focus+.search-btn.btn-search::after {
+    background-color: #007bff;
+} */
+
+.search-btn .btn-search {
+    position: relative;
+    transform: rotate(-30deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    margin-left: 30px;
+    font-size: 3rem;
+    margin-top: 3px;
+}
+
+.search-btn .btn-search::after {
+    content: "";
+    position: absolute;
+    background-color: red;
+    width: 30px;
+    height: 30px;
+    top: -8px;
+    left: -25px;
+    padding: 22px;
+    display: inline-block;
+    border-radius: 100rem;
+    z-index: -1;
+    margin-top: -1.8px;
+}
+
+.btn-up:active {
+    margin-top: .5px;
+    transition: all 400ms ease-in-out;
+}
+
+/* ========== OVERLAY =========== */
 .overlay {
     display: block;
     position: fixed;
-    overflow: hidden;
+    overflow: hidden auto;
     inset: 0px;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(43, 43, 43, 0.79);
-    z-index: 4000;
+    background-color: rgba(43, 43, 43, 0.72);
+    z-index: 1840;
     pointer-events: none;
 }
 
@@ -248,7 +420,7 @@ figure a {
     transition: background-color 300ms cubic-bezier(0, 0, 0.14, 1) 0s;
 }
 
-/* login form */
+/* ========== C.T.A FORM =========== */
 .login-form.hidden {
     display: none;
 }
@@ -274,7 +446,8 @@ figure a {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 5000;
-    padding: 2rem;
+    padding: 1.5rem;
+    padding-top: 2rem;
     pointer-events: all;
 }
 
@@ -316,14 +489,19 @@ figure a {
 
 .login-form>:nth-child(1) {
     display: flex;
+    width: 100%;
     align-items: center;
-    gap: 3rem;
-    font-size: 2.3rem;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    text-align: center;
     font-weight: 600;
 }
 
-.login-form span {
-    font-weight: 300;
+.close {
+    width: 15px;
+    font-weight: 100;
+    cursor: pointer;
+    margin-right: 22px;
 }
 
 .login-form>:nth-child(2) {
@@ -339,6 +517,10 @@ figure a {
     font-size: 1.4rem;
     padding: 0 1.9rem;
     color: var(--light-dark-1);
+}
+
+.login-form .email>:nth-child(1) {
+    margin-left: -.5px;
 }
 
 .login-form input[type=text] {
@@ -366,27 +548,27 @@ figure a {
 }
 
 .login-btn {
-    background-color: #000;
+    background-color: var(--btn-line);
     padding: 1.2rem;
-    border-radius: 20px;
-    width: 90%;
+    border-radius: 10px;
+    width: 91%;
     color: #FFFFFF;
-
+    margin-top: 15px;
     display: flex;
     justify-content: center;
-
 }
+
 
 .login-auth-btn {
     padding: 1.2rem;
     border-radius: 20px;
     width: 90%;
-    border: 2px solid black;
+    border: 1.5px solid black;
 
     display: flex;
     align-items: center;
 
-    transition: all ease-in 300ms;
+    transition: all ease-in 100ms;
 }
 
 .login-auth-btn:hover {
@@ -396,16 +578,13 @@ figure a {
 .auth-text {
     width: 100%;
     text-align: center;
-    /* padding-left: 90px; */
+    font-weight: 600;
 }
 
 .login-auth-btn .icon {
-    width: 15px;
+    /* width: 15px; */
 }
 
-
-.close {
-    width: 15px;
-    font-weight: 100;
-    cursor: pointer;
+.login {
+    margin-left: 19px;
 }
