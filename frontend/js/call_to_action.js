@@ -7,6 +7,7 @@ const log_in_form = document.querySelector(".login-form");
 const container = document.querySelector(".container");
 const closeForm = document.querySelector(".close");
 const menu_user = document.querySelector(".bg-user");
+
 function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");
     container.classList.toggle("overlay");

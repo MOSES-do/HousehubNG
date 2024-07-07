@@ -14,6 +14,15 @@ burger.addEventListener("click", function (e) {
 
 
 const url = 'http://aceme.tech/api/v1';
+/**
+ * ======endpoints=========
+ * http://{url}/stats - GET
+ * http://{url}/status - GET
+ * http://{url}/registered_users - GET
+ * http://{url}/reg_users/user_id - GET
+ * http://{url}/register - POST
+ * http://{url}/login - POST
+ */
 
 // fetch(url).then((res) => {
 //     return res.json();
@@ -21,7 +30,7 @@ const url = 'http://aceme.tech/api/v1';
 
 
 
-// LOGIN AND SIGN UP
+/**======LOGIN AND SIGN UP========**/
 function decodeJWT(token) {
     // Split the token into its parts
     const parts = token.split('.');
@@ -67,6 +76,7 @@ async function handleLogin() {
     }
 }
 
+
 async function handleRegistration() {
     //Sign up FUNCTIONALITY
     const email = document.getElementById('login-email').value;
@@ -95,21 +105,15 @@ const submitBtn = document.querySelector('.login-btn');
 document.querySelector('.log_user').addEventListener('click', function (e) {
     e.preventDefault();
     //Matching strategy
-    if (e.target.classList.contains('user')) {
-        const btnValue = e.target.innerHTML;
-        const elText = btnValue.trim().toLowerCase()
-        console.log(elText)
-        if (elText === "log in") {
-            submitBtn.addEventListener('click',
-                handleLogin
-            )
-        }
-
-        if (elText === "sign up") {
-            submitBtn.addEventListener('click',
-                handleRegistration)
-        }
+    if (e.target.classList.contains('log_in')) {
+        submitBtn.removeEventListener('click', handleRegistration)
+        submitBtn.addEventListener('click', handleLogin)
     }
+    if (e.target.classList.contains('sign_up')) {
+        submitBtn.removeEventListener('click', handleLogin)
+        submitBtn.addEventListener('click', handleRegistration)
+    }
+
 });
 
 
