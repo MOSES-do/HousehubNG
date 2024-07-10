@@ -107,4 +107,9 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 });
 
+function handleGoogleLogin() {
+    window.location.href = `${url}/login/google`
+}
+document.querySelector('.g-auth').addEventListener('click', handleGoogleLogin);
+
 
