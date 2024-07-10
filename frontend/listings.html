@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/call_to_action.js" defer></script>
+    <script src="js/logout.js" defer></script>
     <title>House Hub NG</title>
 
 </head>
@@ -119,8 +120,8 @@
     window.onload = () => {
         const token = localStorage.getItem('token');
         const userEmail = localStorage.getItem('userEmail');
-        console.log(userEmail)
-        if (!token || !userEmail) {
+        // console.log(userEmail)
+        if (!token) {
             alert('You are not logged in. Redirecting to login page');
             window.location.href = 'index.html';
             return;

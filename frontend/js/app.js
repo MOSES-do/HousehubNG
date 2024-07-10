@@ -14,15 +14,6 @@ burger.addEventListener("click", function (e) {
 
 
 const url = 'http://aceme.tech/api/v1';
-/**
- * ======endpoints=========
- * http://{url}/stats - GET
- * http://{url}/status - GET
- * http://{url}/registered_users - GET
- * http://{url}/reg_users/user_id - GET
- * http://{url}/register - POST
- * http://{url}/login - POST
- */
 
 // fetch(url).then((res) => {
 //     return res.json();
@@ -30,7 +21,7 @@ const url = 'http://aceme.tech/api/v1';
 
 
 
-/**======SIGN UP, LOGUN AND LOGOUT========**/
+/**======SIGN UP, LOGIN========**/
 function decodeJWT(token) {
     // Split the token into its parts
     const parts = token.split('.');
@@ -116,34 +107,4 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 });
 
-
-
-async function handleLogout() {
-    const token = localStorage.getItem('token');
-
-    try {
-        const response = await fetch(`${url}/logout`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        if (response.ok) {
-            localStorage.removeItem('token');
-            alert('Logged out successfully!');
-            window.location.href = 'index.html';
-        } else {
-            const errorData = await response.json();
-            alert('Logout failed: ' + errorData.error);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Logout failed!');
-    }
-}
-
-
-document.querySelector('.log_out_user').addEventListener('click', handleLogout)
 
