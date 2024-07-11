@@ -13,7 +13,7 @@ burger.addEventListener("click", function (e) {
 
 
 
-const url = 'http://aceme.tech/api/v1';
+const url = 'https://aceme.tech/api/v1';
 
 // fetch(url).then((res) => {
 //     return res.json();
