@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- GOOGLE FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&amp;display=swap"
-        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;800;900&amp;display=swap">
@@ -14,19 +12,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="js/call_to_action.js" defer></script>
-    <script src="js/logout.js" defer></script>
-    <title>House Hub NG</title>
 
+    <title>House Hub NG</title>
 </head>
+
 
 <body>
     <main class="container">
         <div class="nav-container">
             <nav class="header_nav">
                 <figure class="logo">
-                    <a href="#"><span>H</span>ousehub<sup>NG</sup></a>
+                    <!-- <a href="#"><span>H</span>ousehub<sup>NG</sup></a> -->
+                    <a href="#">
+                        <span><img class="icon" src="assets/logo.png" alt="logo-icon"></span>
+                        <span><img class="icon-text" src="assets/icon-1.png" alt="logo-text"></span>
+                    </a>
                 </figure>
 
                 <div class="header_nav--hamburger">
@@ -117,18 +118,42 @@
     </main>
 </body>
 
+
 <script>
+    // using JWT Token for login authentication
     window.onload = () => {
         const token = localStorage.getItem('token');
-        const userEmail = localStorage.getItem('userEmail');
-        // console.log(userEmail)
+
+        fetchProtectedContent(token)
+
         if (!token) {
             alert('You are not logged in. Redirecting to login page');
             window.location.href = 'index.html';
             return;
         }
-
-        document.getElementById('welcome-user').innerText = `Welcome, ${userEmail}`;
+        async function fetchProtectedContent() {
+            try {
+                const response = await fetch(`${url}/current_user`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    document.getElementById('welcome-user').innerText = `Welcome, ${data.email}`;
+                    // fetch(`${url}/reg_users/${data.id}`).then((res) => {
+                    //     return res.json();
+                    // }).then(data => console.log(data)).catch((err) => console.log(err))
+                } else {
+                    alert('Failed to fetch protected content');
+                }
+            } catch (e) {
+                console.error('Error:', error);
+                alert('Failed to fetch protected content');
+            }
+        }
     }
 </script>
 

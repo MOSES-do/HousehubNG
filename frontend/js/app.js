@@ -36,37 +36,6 @@ function decodeJWT(token) {
     return payloadObject;
 }
 
-async function handleLogin() {
-    //LOGIN FUNCTIONALITY
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-pwd').value;
-    try {
-        const response = await fetch(`${url}/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, password })
-        });
-        if (response.ok) {
-            const data = await response.json();
-
-            localStorage.setItem('token', data.token);
-
-            const tokenPayload = decodeJWT(data.token);
-            console.log(tokenPayload.sub)
-            localStorage.setItem('userEmail', tokenPayload.sub.email);
-
-            window.location.href = 'listings.html';
-        } else {
-            const errorData = await response.json();
-            alert('Login failed: ' + errorData.error)
-        }
-    } catch (error) {
-        console.error('Error:', error)
-    }
-}
-
 
 async function handleRegistration() {
     //Sign up FUNCTIONALITY
@@ -92,6 +61,35 @@ async function handleRegistration() {
     }
 }
 
+async function handleLogin() {
+    //LOGIN FUNCTIONALITY
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-pwd').value;
+    try {
+        const response = await fetch(`${url}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        if (response.ok) {
+            const data = await response.json();
+
+            localStorage.setItem('token', data.token);
+
+            // const tokenPayload = decodeJWT(data.token);
+
+            window.location.href = 'listings.html';
+        } else {
+            const errorData = await response.json();
+            alert('Login failed: ' + errorData.error)
+        }
+    } catch (error) {
+        console.error('Error:', error)
+    }
+}
+
 const submitBtn = document.querySelector('.login-btn');
 document.querySelector('.log_user').addEventListener('click', function (e) {
     e.preventDefault();
@@ -106,9 +104,6 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
     }
 });
 
-// async function handleGoogleLogin() {
-// window.location.href = `${url}/login/google`
-// }
 
 document.querySelector('.g-auth').addEventListener('click', function () {
     fetch(`${url}/login/google`)
@@ -118,42 +113,38 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         });
 });
 
-window.onload = function () {
+window.onload = (() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    // console.log(code)
     if (code) {
         // Send the authorization code to the server
-        fetch(`${url}/token`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ code: code })
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.access_token) {
-                    console.log('JWT Token:', data.access_token);
-                    // Store the token in localStorage
-                    localStorage.setItem('jwtToken', data.access_token);
-                    // Redirect to your application's main page
+        const handleToken = async () => {
+            try {
+                const response = await fetch(`${url}/token`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code: code })
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    // console.log(data)
+                    localStorage.setItem('token', data.token);
+
                     window.location.href = 'listings.html';
                 } else {
+                    const errorData = await response.json();
+                    alert('Login failed: ' + errorData.error)
                     console.error('Error: Token not received');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching the token:', error);
-            });
+                };
+            } catch (error) {
+                console.error('Error:', error)
+            }
+        }
+        handleToken();
     }
-};
-// window.onload = function () {
-//     console.log('hiola')
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const token = urlParams.get('token');
-//     if (token) {
-//         console.log('JWT Token:', token);
-//         localStorage.setItem('jwtToken', token);
-//         // Handle the token (e.g., store it, use it for API requests, etc.)
-//     }
-// };
+})();
+
+

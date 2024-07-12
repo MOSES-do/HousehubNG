@@ -1,8 +1,8 @@
 'use strict'
 
+// using JWT for logout validation
 async function handleLogout() {
     const token = localStorage.getItem('token');
-
     try {
         const response = await fetch(`${url}/logout`, {
             method: 'POST',
@@ -27,3 +27,4 @@ async function handleLogout() {
     }
 }
 document.querySelector('.log_out_user').addEventListener('click', handleLogout)
+
