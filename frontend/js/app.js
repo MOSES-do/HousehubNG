@@ -137,7 +137,7 @@ window.onload = function () {
                     // Store the token in localStorage
                     localStorage.setItem('jwtToken', data.access_token);
                     // Redirect to your application's main page
-                    // window.location.href = 'your_app_main_page_url';
+                    window.location.href = 'listings.html';
                 } else {
                     console.error('Error: Token not received');
                 }
