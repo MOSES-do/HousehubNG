@@ -104,12 +104,56 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
         submitBtn.removeEventListener('click', handleLogin)
         submitBtn.addEventListener('click', handleRegistration)
     }
-
 });
 
-function handleGoogleLogin() {
-    window.location.href = `${url}/login/google`
-}
-document.querySelector('.g-auth').addEventListener('click', handleGoogleLogin);
+// async function handleGoogleLogin() {
+// window.location.href = `${url}/login/google`
+// }
 
+document.querySelector('.g-auth').addEventListener('click', function () {
+    fetch(`${url}/login/google`)
+        .then(response => response.json())
+        .then(data => {
+            window.location.href = data.authorization_url;
+        });
+});
 
+window.onload = function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    if (code) {
+        // Send the authorization code to the server
+        fetch(`${url}/token`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: code })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.access_token) {
+                    console.log('JWT Token:', data.access_token);
+                    // Store the token in localStorage
+                    localStorage.setItem('jwtToken', data.access_token);
+                    // Redirect to your application's main page
+                    // window.location.href = 'your_app_main_page_url';
+                } else {
+                    console.error('Error: Token not received');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching the token:', error);
+            });
+    }
+};
+// window.onload = function () {
+//     console.log('hiola')
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const token = urlParams.get('token');
+//     if (token) {
+//         console.log('JWT Token:', token);
+//         localStorage.setItem('jwtToken', token);
+//         // Handle the token (e.g., store it, use it for API requests, etc.)
+//     }
+// };
