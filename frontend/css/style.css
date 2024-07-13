@@ -613,7 +613,10 @@ a:link {
 }
 
 .left h3 {
+    display: grid;
     flex-basis: 35%;
     background-color: red;
-    align-self: right;
+    justify-items: left !important;
 }
+
+/* I don figure am out, you were right about the grid layout 😂 */
