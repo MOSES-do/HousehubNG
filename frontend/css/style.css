@@ -12,6 +12,7 @@ html {
     --dark: #3rgb(26, 27, 27);
     --bg-color: #FFFFFF;
     --btn-line: rgb(215, 34, 40);
+    --fade-text: #3B4144;
 }
 
 body {
@@ -113,11 +114,12 @@ figure a {
 
 
 .header_nav {
-    font-size: 1.55rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
+    padding: 0.8rem 0;
+    margin-bottom: 1rem;
 }
 
 .row {
@@ -130,6 +132,7 @@ figure a {
 
 .header__nav--links li {
     position: relative;
+    margin-top: 1.5rem;
 }
 
 .figure.logo {
@@ -159,20 +162,20 @@ figure a {
 
 .header__nav--links li a {
     color: var(--dark);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .header__nav--links a::after {
     content: '';
     width: 100%;
     border-radius: 10px;
-    height: 2.5px;
+    height: 0px;
     position: absolute;
     left: 0px;
-    bottom: -15px;
+    bottom: -25px;
     background-color: var(--btn-line);
-    transform: scaleX(0);
-    transform-origin: bottom left;
+    /* transform: scaleX(0);
+    transform-origin: bottom left; */
     transition: transform 1000ms ease-in-out;
 }
 
@@ -183,9 +186,9 @@ a:link {
 }
 
 .header__nav--links a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-    height: 2.5px;
+    /* transform: scaleX(1);
+    transform-origin: bottom left; */
+    height: 2.8px;
 }
 
 @media (max-width: 1080px) {
@@ -306,7 +309,7 @@ a:link {
 .hero-section {
     width: 100%;
     /* padding: 0 1.5rem; */
-    height: 100rem;
+    /* height: 100rem; */
     position: relative;
 }
 
@@ -320,6 +323,7 @@ a:link {
     background-repeat: no-repeat;
     background-position: center;
     height: 50%;
+    padding: 7rem 0;
     object-fit: cover;
     background-size: cover;
 
@@ -334,6 +338,7 @@ a:link {
     line-height: 1.2;
     margin-bottom: 50px;
     font-family: "Solway", serif;
+    /* font-family: "Metrophobic", sans-serif; */
 }
 
 .hero-section .text span {
@@ -415,6 +420,57 @@ a:link {
 .btn-up:active {
     margin-top: .5px;
     transition: all 400ms ease-in-out;
+}
+
+/* ========== ASSURANCE =========== */
+
+.assurance {
+    gap: 6rem;
+}
+
+.assurance>:not(:last-child) {
+    width: 55rem;
+}
+
+.assurance-main--text {
+    font-size: 2.7rem;
+    font-family: "Metrophobic", sans-serif;
+    font-weight: 900;
+}
+
+.assurance-sub {
+    display: flex;
+    align-items: top;
+    margin-top: 2rem;
+    gap: 3rem;
+}
+
+.assurance-sub span {
+    height: 1px;
+    flex-basis: 10%;
+    margin-top: 16px;
+    padding: 0.5px;
+    background-color: var(--btn-line);
+}
+
+.assurance-sub--text {
+    flex-basis: 80%;
+    font-size: 1.5rem;
+    font-weight: 100;
+    line-height: 2;
+    color: var(--fade-text);
+    font-family: "Metrophobic", sans-serif;
+}
+
+.assurance-img {
+    height: 800px;
+    background-size: cover;
+    background-position: center;
+}
+
+.assurance-img img {
+    width: 450px;
+    height: 350px;
 }
 
 /* ========== OVERLAY =========== */
@@ -606,17 +662,37 @@ a:link {
 }
 
 
+.m-box {
+    margin: 10rem auto;
+    max-width: 1000px;
+    width: 70%;
+}
+
+.col-2 {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0;
+    /* gap: 10rem; */
+}
+
+
+
+
+
+
+
+
+/* I don figure am out, you were right about the grid layout 😂 */
+
 .left div {
     display: flex;
     align-items: center;
     width: 100%;
+    gap: 10px;
 }
 
 .left h3 {
     display: grid;
     flex-basis: 35%;
-    background-color: red;
-    justify-items: left !important;
+    justify-items: right !important;
 }
-
-/* I don figure am out, you were right about the grid layout 😂 */
