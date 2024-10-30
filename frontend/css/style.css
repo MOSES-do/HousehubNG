@@ -708,6 +708,7 @@ a:link {
     background-size: cover;
     background-position: center;
     width: 315px;
+    overflow: hidden;
 }
 
 .recent-search .recent-search--img img {
@@ -723,6 +724,7 @@ a:link {
 
 .recent-search--items {
     background-color: #fff;
+    width: 315px;
     padding-left: 1rem;
     padding-bottom: 1rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
@@ -770,7 +772,7 @@ a:link {
 }
 
 .recent-search--box .recent-search--img img:hover {
-    transform: scale(1.05);
+    transform: scale(1.6);
 }
 
 
