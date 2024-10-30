@@ -693,13 +693,11 @@ a:link {
     display: flex;
     flex-direction: row;
     padding: 1rem 0;
-    /* gap: 10rem; */
 }
 
 
 
 /* Apartment Search  */
-
 .recent-search {
     cursor: pointer;
 }
@@ -707,20 +705,19 @@ a:link {
 .recent-search .recent-search--img {
     background-size: cover;
     background-position: center;
-    width: 315px;
+    width: 326px;
+    height: 180px;
     overflow: hidden;
 }
 
 .recent-search .recent-search--img img {
     width: 100%;
-    height: 190px;
 }
 
 
 .recent-search--text {
     padding-bottom: 1rem;
 }
-
 
 .recent-search--items {
     background-color: #fff;
@@ -731,7 +728,6 @@ a:link {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: var(--fade-text);
-    margin-top: -.5rem;
     padding-top: .8rem;
 }
 
@@ -772,7 +768,7 @@ a:link {
 }
 
 .recent-search--box .recent-search--img img:hover {
-    transform: scale(1.6);
+    transform: scale(1.3);
 }
 
 
