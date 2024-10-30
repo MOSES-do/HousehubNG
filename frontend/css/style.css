@@ -704,15 +704,15 @@ a:link {
     cursor: pointer;
 }
 
-.recent-seaarch .recent-search--img {
+.recent-search .recent-search--img {
     background-size: cover;
     background-position: center;
-    width: 300px;
+    width: 315px;
 }
 
 .recent-search .recent-search--img img {
-    width: 315px;
-    height: 180px;
+    width: 100%;
+    height: 190px;
 }
 
 
@@ -726,7 +726,6 @@ a:link {
     padding-left: 1rem;
     padding-bottom: 1rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
-    width: 315px;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: var(--fade-text);
@@ -771,7 +770,7 @@ a:link {
 }
 
 .recent-search--box .recent-search--img img:hover {
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
 
 
