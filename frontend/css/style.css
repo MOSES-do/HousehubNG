@@ -10,6 +10,7 @@ html {
     --light-dark-2: #807d7d2c;
     --light-dark-1: #2f3031;
     --dark: #3rgb(26, 27, 27);
+    --dark-bl: #210935;
     --bg-color: #FFFFFF;
     --btn-line: rgb(215, 34, 40);
     --fade-text: #3B4144;
@@ -54,7 +55,7 @@ a {
 } */
 
 .swiper {
-    padding-bottom: 16rem;
+    padding-bottom: 5rem;
     width: 600px;
 }
 
@@ -442,7 +443,7 @@ a:link {
 /* ========== ASSURANCE =========== */
 
 .assurance {
-    gap: 2rem;
+    gap: 3.5rem;
 }
 
 .assurance>:not(:last-child) {
@@ -705,10 +706,32 @@ a:link {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     overflow: hidden;
+
+    position: relative;
+    z-index: 1;
 }
 
 .recent-search .recent-search--img img {
     width: 100%;
+}
+
+.recent-search .recent-search--img span {
+    position: absolute;
+    color: #fff;
+    background-color: var(--dark-bl);
+    z-index: 2;
+    border-top-left-radius: 4rem;
+    border-top-right-radius: 4rem;
+    border-bottom-right-radius: 4rem;
+    border-bottom-left-radius: 4rem;
+    padding: .1rem 1.2rem;
+    margin-top: .8rem;
+    margin-left: .8rem;
+
+    font-size: 1.1rem;
+    font-family: "Varela Round", sans-serif;
+    font-weight: 600;
+
 }
 
 
