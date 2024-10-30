@@ -32,7 +32,7 @@ const swiper = new Swiper(".mySwiper", {
         // desktop
         1024: {
             slidesPerView: 4,
-            spaceBetween: 10
+            spaceBetween: 250
         },
 
         2030: {

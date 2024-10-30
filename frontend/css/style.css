@@ -54,7 +54,9 @@ a {
 } */
 
 .swiper {
-    padding-bottom: 4rem;
+    padding-bottom: 16rem;
+    width: 600px;
+    height: 450px;
 }
 
 .swiper-pagination-bullet-active {
@@ -694,8 +696,10 @@ a:link {
 .recent-search .recent-search--img {
     background-size: cover;
     background-position: center;
-    width: 326px;
-    height: 150px;
+    width: 300px;
+    /* height: 150px; */
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
     overflow: hidden;
 }
 
@@ -710,10 +714,10 @@ a:link {
 
 .recent-search--items {
     background-color: #fff;
-    width: 315px;
+    width: 289px;
     padding-left: 1rem;
     padding-bottom: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 012px;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: var(--fade-text);
@@ -749,7 +753,6 @@ a:link {
 .recent-search--box {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
-    overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 12px;
 }
 
