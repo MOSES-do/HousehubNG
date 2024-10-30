@@ -720,11 +720,11 @@ a:link {
     color: #fff;
     background-color: var(--dark-bl);
     z-index: 2;
-    border-top-left-radius: 4rem;
-    border-top-right-radius: 4rem;
-    border-bottom-right-radius: 4rem;
-    border-bottom-left-radius: 4rem;
-    padding: .1rem 1.2rem;
+    border-top-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+    border-bottom-left-radius: .7rem;
+    padding: .3rem 1.2rem;
     margin-top: .8rem;
     margin-left: .8rem;
 
