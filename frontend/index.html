@@ -8,11 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;800;900&amp;display=swap">
+    <!-- swiper js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="css/style.css">
     <script src="js/app.js" defer></script>
     <script src="js/call_to_action.js" defer></script>
+    <script src="js/swiper.js" defer></script>
 
     <title>House Hub NG</title>
 </head>
@@ -68,7 +74,9 @@
                     <h1>Find comfort from your comfort zone <br> at the right price<span>.</span></h1>
                 </div>
                 <div class="search">
-                    <input class="location" type="text" placeholder=" Available locations" />
+                    <input class="location" type="text" id="search-bar" aria-label="Available locations"
+                        role="search-box" aria-autocomplete="both" aria-expanded="false"
+                        aria-controls="search-bar-listbox" placeholder=" Available locations" />
                     <a href="#" class="search-btn btn-up">
                         <i class="fa-solid btn-search fa-magnifying-glass "></i>
                     </a>
@@ -95,6 +103,97 @@
             <div class="assurance-img">
                 <img src="assets/hero1.jpg" alt="picture1" />
             </div>
+        </section>
+
+
+        <section class="recent-search m-box swiper mySwiper">
+            <h3 class="title-text">Apartments for you</h3>
+            <p class="recent-search--text sub-title--text">Based on recent search</p>
+            <div class="swiper-wrapper">
+                <div class="recent-search--box swiper-slide">
+                    <figure class="recent-search--img">
+                        <img src="assets/hero.jpg" alt="picture1" />
+                    </figure>
+
+                    <div class="recent-search--items">
+                        <p class="price">₦13,000,000</p>
+                        <span><span class="qty"><em><b>3</b></em></span> bds | </span><span><span
+                                class="qty"><em><b>3</b></em></span> ba
+                        </span>
+                        <address>Lekki Phase 1, Lekki, Lagos</address>
+                        <p>Haven Realtors, John Smith</p>
+                    </div>
+                </div>
+                <div class="recent-search--box swiper-slide">
+                    <figure class="recent-search--img">
+                        <img src="assets/hero.jpg" alt="picture1" />
+                    </figure>
+
+                    <div class="recent-search--items">
+                        <p class="price">₦13,000,000</p>
+                        <span><span class="qty"><em><b>3</b></em></span> bds | </span><span><span
+                                class="qty"><em><b>3</b></em></span>
+                            ba
+                        </span>
+                        <address>Lekki Phase 1, Lekki, Lagos</address>
+                        <p>Haven Realtors, John Smith</p>
+                    </div>
+                </div>
+                <div class="recent-search--box swiper-slide">
+                    <figure class="recent-search--img">
+                        <img src="assets/hero.jpg" alt="picture1" />
+                    </figure>
+
+                    <div class="recent-search--items">
+                        <p class="price">₦13,000,000</p>
+                        <span><span class="qty"><em><b>3</b></em></span> bds | </span><span><span
+                                class="qty"><em><b>3</b></em></span>
+                            ba
+                        </span>
+                        <address>Lekki Phase 1, Lekki, Lagos</address>
+                        <p>Haven Realtors, John Smith</p>
+                    </div>
+                </div>
+                <div class="recent-search--box swiper-slide">
+                    <figure class="recent-search--img">
+                        <img src="assets/hero.jpg" alt="picture1" />
+                    </figure>
+
+                    <div class="recent-search--items">
+                        <p class="price">₦13,000,000</p>
+                        <span><span class="qty"><em><b>3</b></em></span> bds | </span><span><span
+                                class="qty"><em><b>3</b></em></span>
+                            ba
+                        </span>
+                        <address>Lekki Phase 1, Lekki, Lagos</address>
+                        <p>Haven Realtors, John Smith</p>
+                    </div>
+                </div>
+                <div class="recent-search--box swiper-slide">
+                    <figure class="recent-search--img">
+                        <img src="assets/hero.jpg" alt="picture1" />
+                    </figure>
+
+                    <div class="recent-search--items">
+                        <p class="price">₦13,000,000</p>
+                        <span><span class="qty"><em><b>3</b></em></span> bds | </span><span><span
+                                class="qty"><em><b>3</b></em></span>
+                            ba
+                        </span>
+                        <address>Lekki Phase 1, Lekki, Lagos</address>
+                        <p>Haven Realtors, John Smith</p>
+                    </div>
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button swiper-button-prev"></div>
+            <span class="swiper-btn--next">
+                <div class="swiper-button  swiper-button-next"></div>
+            </span>
+
         </section>
 
 
@@ -170,7 +269,7 @@
 
 
 
-        <div class="left">
+        <!-- <div class="left">
             <div>
                 <h3>Name:</h3>
                 <p>12345</p>
@@ -195,9 +294,10 @@
                 <h3>Name:</h3>
                 <p>12345</p>
             </div>
-        </div>
+        </div> -->
     </main>
 </body>
+
 
 
 </html>

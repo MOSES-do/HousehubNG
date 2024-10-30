@@ -56,7 +56,6 @@ async function handleRegistration() {
             alert('Registration failed: ' + errorData.error)
         }
     } catch (error) {
-        console.error('Error:', error)
         console.log("Registration failed")
     }
 }
