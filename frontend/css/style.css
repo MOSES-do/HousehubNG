@@ -698,7 +698,8 @@ a:link {
 
 
 
-/* Recent Search  */
+/* Apartment Search  */
+
 .recent-search {
     cursor: pointer;
 }
@@ -725,6 +726,7 @@ a:link {
     padding-left: 1rem;
     padding-bottom: 1rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 4px 12px;
+    width: 315px;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     color: var(--fade-text);
