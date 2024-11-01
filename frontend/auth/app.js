@@ -1,4 +1,5 @@
 'use strict';
+import { BASE_API_URL } from "../src/components/common.js";
 
 const burger = document.querySelector(".header_nav--hamburger");
 const burgerFirst = document.querySelector(".hamburger--line:first-child");
@@ -11,9 +12,6 @@ burger.addEventListener("click", function (e) {
     burgerThird.classList.toggle("line-3");
 });
 
-
-
-const url = 'https://aceme.tech/api/v1';
 
 // fetch(url).then((res) => {
 //     return res.json();
@@ -42,7 +40,7 @@ async function handleRegistration() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-pwd').value;
     try {
-        const response = await fetch(`${url}/register`, {
+        const response = await fetch(`${BASE_API_URL}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -65,7 +63,7 @@ async function handleLogin() {
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-pwd').value;
     try {
-        const response = await fetch(`${url}/login`, {
+        const response = await fetch(`${BASE_API_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -105,7 +103,7 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 
 document.querySelector('.g-auth').addEventListener('click', function () {
-    fetch(`${url}/login/google`)
+    fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
             window.location.href = data.authorization_url;
@@ -120,7 +118,7 @@ window.onload = (() => {
         // Send the authorization code to the server
         const handleToken = async () => {
             try {
-                const response = await fetch(`${url}/token`, {
+                const response = await fetch(`${BASE_API_URL}/token`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
