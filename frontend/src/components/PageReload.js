@@ -3,10 +3,12 @@ import renderHouseList from "./HouseList.js";
 import { state, resultLength } from "../common.js";
 
 
-export default async function handlePageByHash(currentPage) {
+export default async function handlePageByHash(currentPage, page) {
+
     const hashValue = window.location.hash.substring(1);
     if (window.location.hash) {
         if (hashValue === currentPage) {
+            page.style.display = 'none';
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 // Get the value of the 'search' parameter

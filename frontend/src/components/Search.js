@@ -1,4 +1,4 @@
-import { search_inputEl, form_location, BASE_API_URL, getData, state, resultLength, } from "../common.js";
+import { search_inputEl, form_location, BASE_API_URL, getData, state, resultLength, index_container } from "../common.js";
 import navigateTo from "./Router.js";
 import renderHouseList from "./HouseList.js";
 import handlePageByHash from "./PageReload.js";
@@ -24,7 +24,6 @@ export const submitHandler = async (e) => {
 
     } catch (error) {
     }
-
 }
 form_location.addEventListener('submit', submitHandler)
 
@@ -32,7 +31,7 @@ form_location.addEventListener('submit', submitHandler)
 *  Check if there's a hash in the URL
 */
 window.addEventListener('DOMContentLoaded', async () => {
-    await handlePageByHash('product_list')
+    await handlePageByHash('product_list', index_container)
 });
 
 
