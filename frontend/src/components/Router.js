@@ -11,7 +11,21 @@ export default function navigateTo(pageId) {
 
     // Update the URL in the address bar without reloading the page
     history.pushState({ pageId: pageId }, "", `#${pageId}`);
+
+    // Dispatch a custom "pageLoad" event on the target page
+    const pageLoadEvent = new Event('pageLoad');
+    targetPage.dispatchEvent(pageLoadEvent);
 }
+
+// Event listener function for a "pageLoad" event
+function onPageLoad(event) {
+    // console.log(`${event.target.id} page has loaded`);
+    // You can add additional logic here, such as fetching data, updating UI, etc.
+}
+
+document.querySelectorAll('.page').forEach(page => {
+    page.addEventListener('pageLoad', onPageLoad);
+});
 
 // Handle the browser’s back and forward buttons
 window.addEventListener('popstate', (event) => {

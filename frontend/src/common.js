@@ -14,6 +14,7 @@ export const BASE_API_URL = 'https://aceme.tech/api/v1';
 // -- STATE --
 export const state = {
     searchHouseItems: [],
+    queryParam: '',
 }
 
 // -- HELPER FUNCTIONS --
