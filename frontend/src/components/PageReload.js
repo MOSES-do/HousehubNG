@@ -1,12 +1,14 @@
 import fetchApi from "./Search.js";
 import renderHouseList from "./HouseList.js";
 import { state, resultLength } from "../common.js";
+import navigateTo from "./Router.js";
 
 
 export default async function handlePageByHash(currentPage, page) {
 
     const hashValue = window.location.hash.substring(1);
     if (window.location.hash) {
+        navigateTo('product_list')
         if (hashValue === currentPage) {
             page.style.display = 'none';
             try {
