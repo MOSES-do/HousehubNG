@@ -5,11 +5,10 @@ import navigateTo from "./Router.js";
 
 
 export default async function handlePageByHash(currentPage, page) {
-
+    // Open current page in a new tab
     const hashValue = window.location.hash.substring(1);
     if (window.location.hash) {
         if (hashValue === currentPage) {
-            page.style.display = 'none';
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 // Get the value of the 'search' parameter

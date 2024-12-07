@@ -1,3 +1,17 @@
+export const burger = document.querySelector(".header_nav--hamburger");
+export const burgerFirst = document.querySelector(".hamburger--line:first-child");
+export const burgerSecond = document.querySelector(".hamburger--line:nth-child(2)");
+export const burgerThird = document.querySelector(".hamburger--line:last-child");
+
+
+export const sign_up = document.querySelector(".sign_up");
+export const log_in = document.querySelector(".log_in");
+export const log_in_form = document.querySelector(".login-form");
+export const container = document.querySelector(".container");
+export const closeForm = document.querySelector(".close");
+export const menu_user = document.querySelector(".bg-user");
+
+
 export const index_container = document.querySelector('.container');
 export const main_product__container = document.querySelector('.main_product--container');
 

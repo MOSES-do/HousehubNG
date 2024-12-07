@@ -1,6 +1,6 @@
 
 /**
- * Add query parameter to the url for easy retrieval
+ * Add query/search parameter to the url for easy retrieval
  */
 
 export function urlUpdate(searchInput, customPath) {

@@ -1,12 +1,14 @@
 'use strict'
 
+import {
+    sign_up,
+    log_in,
+    log_in_form,
+    container,
+    closeForm,
+    menu_user
+} from "../src/common.js"
 
-const sign_up = document.querySelector(".sign_up");
-const log_in = document.querySelector(".log_in");
-const log_in_form = document.querySelector(".login-form");
-const container = document.querySelector(".container");
-const closeForm = document.querySelector(".close");
-const menu_user = document.querySelector(".bg-user");
 
 function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");

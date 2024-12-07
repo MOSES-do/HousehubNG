@@ -1,10 +1,6 @@
 'use strict';
-import { BASE_API_URL } from "../src/components/common.js";
+import { BASE_API_URL, burger, burgerFirst, burgerSecond, burgerThird } from "../src/common.js"
 
-const burger = document.querySelector(".header_nav--hamburger");
-const burgerFirst = document.querySelector(".hamburger--line:first-child");
-const burgerSecond = document.querySelector(".hamburger--line:nth-child(2)");
-const burgerThird = document.querySelector(".hamburger--line:last-child");
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -16,8 +12,6 @@ burger.addEventListener("click", function (e) {
 // fetch(url).then((res) => {
 //     return res.json();
 // }).then(data => console.log(data)).catch((err) => console.log(err))
-
-
 
 /**======SIGN UP, LOGIN========**/
 function decodeJWT(token) {
@@ -101,8 +95,9 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
     }
 });
 
-
+// Google Auth
 document.querySelector('.g-auth').addEventListener('click', function () {
+    console.log('Hola')
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
