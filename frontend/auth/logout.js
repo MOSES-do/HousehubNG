@@ -1,10 +1,11 @@
 'use strict'
+import { BASE_API_URL } from "../src/common.js"
 
 // using JWT for logout validation
 async function handleLogout() {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch(`${url}/logout`, {
+        const response = await fetch(`${BASE_API_URL}/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

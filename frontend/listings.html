@@ -11,9 +11,9 @@
     <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="auth/app.js" defer></script>
-    <script src="auth/logout.js" defer></script>
-    <script src="auth/call_to_action.js" defer></script>
+    <script type="module" src="auth/app.js" defer></script>
+    <script type="module" src="auth/logout.js" defer></script>
+    <script type="module" src="auth/call_to_action.js" defer></script>
 
     <title>House Hub NG</title>
 </head>
@@ -122,6 +122,8 @@
 
 <script>
     // using JWT Token for login authentication
+    const BASE_API_URL = 'https://aceme.tech/api/v1';
+
     window.onload = () => {
         const token = localStorage.getItem('token');
 
@@ -134,7 +136,7 @@
         }
         async function fetchProtectedContent() {
             try {
-                const response = await fetch(`${url}/current_user`, {
+                const response = await fetch(`${BASE_API_URL}/current_user`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
