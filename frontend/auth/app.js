@@ -97,7 +97,6 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 // Google Auth
 document.querySelector('.g-auth').addEventListener('click', function () {
-    console.log('Hola')
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
