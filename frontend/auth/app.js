@@ -68,7 +68,7 @@ async function handleLogin() {
             const data = await response.json();
 
             localStorage.setItem('token', data.token);
-
+            // conso
             // const tokenPayload = decodeJWT(data.token);
 
             window.location.href = 'listings.html';
@@ -104,38 +104,64 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         });
 });
 
-window.onload = (() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-    // console.log(code)
-    if (code) {
-        // Send the authorization code to the server
-        const handleToken = async () => {
-            try {
-                const response = await fetch(`${BASE_API_URL}/token`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ code: code })
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    // console.log(data)
-                    localStorage.setItem('token', data.token);
-
-                    window.location.href = 'listings.html';
-                } else {
-                    const errorData = await response.json();
-                    alert('Login failed: ' + errorData.error)
-                    console.error('Error: Token not received');
-                };
-            } catch (error) {
-                console.error('Error:', error)
-            }
-        }
-        handleToken();
+window.addEventListener('load', () => {
+    // check if we are on the callbak url
+    if (window.location.pathname === '/oauth2/callback') {
+        handleOAuthCallback();
     }
-})();
+})
 
+const handleOAuthCallback = async () => {
+    try {
+        const oauthCode = new URLSearchParams(window.location.search).get('code')
+        const response = await fetch(`${BASE_API_URL}/oauth2/callback?code=` + oauthCode);
+        const data = await response.json();
 
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+
+            // redirect user to desired page
+            window.location.href = data.redirect_url;
+        }
+        else {
+            console.error('Error: no token received');
+        }
+    } catch (error) {
+        console.error('Authentication error:', error)
+    }
+}
+handleOAuthCallback();
+
+// window.onload = (() => {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const code = urlParams.get('code');
+//     // console.log(code)
+//     if (code) {
+//         // Send the authorization code to the server
+//         const handleToken = async () => {
+//             try {
+//                 const response = await fetch(`${BASE_API_URL}/token`, {
+//                     method: 'POST',
+//                     headers: {
+//                         'Content-Type': 'application/json'
+//                     },
+//                     body: JSON.stringify({ code: code })
+//                 });
+//                 if (response.ok) {
+//                     const data = await response.json();
+//                     // console.log(data)
+//                     localStorage.setItem('token', data.token);
+
+//                     window.location.href = 'listings.html';
+//                 } else {
+//                     const errorData = await response.json();
+//                     alert('Login failed: ' + errorData.error)
+//                     console.error('Error: Token not received');
+//                 };
+//             } catch (error) {
+//                 console.error('Error:', error)
+//             }
+//         }
+//         handleToken();
+//     }
+// })();
