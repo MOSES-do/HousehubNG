@@ -112,23 +112,38 @@ window.addEventListener('load', () => {
 })
 
 const handleOAuthCallback = async () => {
-    try {
-        const oauthCode = new URLSearchParams(window.location.search).get('code')
-        const response = await fetch(`${BASE_API_URL}/oauth2/callback?code=` + oauthCode);
-        const data = await response.json();
+    const urlParams = new URLSearchParams(window.location.search);
+    const oauthCode = urlParams.get('code');
 
-        if (data.token) {
-            localStorage.setItem('token', data.token);
+    if (oauthCode) {
+        try {
+            // Send the code to the backend using a POST request
+            const response = await fetch('/oauth2/callback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: oauthCode }),
+            });
 
-            // redirect user to desired page
-            window.location.href = data.redirect_url;
+            const data = await response.json();
+
+            if (data.token) {
+                // Save the token to localStorage
+                localStorage.setItem('token', data.token);
+
+                // Redirect the user to the desired page (e.g., dashboard)
+                window.location.href = data.redirect_url;
+            } else {
+                console.error('Error: No token received');
+            }
+        } catch (error) {
+            console.error('Authentication error:', error);
         }
-        else {
-            console.error('Error: no token received');
-        }
-    } catch (error) {
-        console.error('Authentication error:', error)
+    } else {
+        console.error('OAuth code not found');
     }
+
 }
 handleOAuthCallback();
 
