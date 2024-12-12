@@ -105,10 +105,7 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         });
     // window.location.href = `${BASE_API_URL}/login/google`
 });
-console.log(window.location);
-console.log("Pathname:", window.location.pathname);
-console.log("Full URL:", window.location.href);
-console.log("Search Parameters:", window.location.search);
+
 window.addEventListener('load', () => {
     // check if we are on the callbak url
 
