@@ -102,6 +102,10 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         .then(data => {
             window.location.href = data.authorization_url;
             console.log(data.authorization_url)
+            console.log(window.location);
+            console.log("Pathname:", window.location.pathname);
+            console.log("Full URL:", window.location.href);
+            console.log("Search Parameters:", window.location.search);
         });
     // window.location.href = `${BASE_API_URL}/login/google`
 });
@@ -111,10 +115,7 @@ console.log("Full URL:", window.location.href);
 console.log("Search Parameters:", window.location.search);
 window.addEventListener('load', () => {
     // check if we are on the callbak url
-    console.log(window.location);
-    console.log("Pathname:", window.location.pathname);
-    console.log("Full URL:", window.location.href);
-    console.log("Search Parameters:", window.location.search);
+
     if (window.location.href.includes('/oauth2/callback')) {
         handleOAuthCallback();
         console.log("The URL contains '/oauth2/callback'.");
