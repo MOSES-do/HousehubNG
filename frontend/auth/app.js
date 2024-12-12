@@ -118,6 +118,8 @@ window.addEventListener('load', () => {
 
     if (window.location.pathname === '/oauth2/callback') {
         console.log("The URL contains '/oauth2/callback'.");
+    } else {
+        console.log('not')
     }
 })
 
