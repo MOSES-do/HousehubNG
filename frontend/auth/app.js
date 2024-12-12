@@ -107,20 +107,10 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 window.addEventListener('load', () => {
-    // check if we are on the callbak url
-
+    // check if we are on the callback url
     if (window.location.href.includes('/oauth2/callback')) {
         handleOAuthCallback();
         console.log("The URL contains '/oauth2/callback'.");
-    }
-    else {
-        console.log('no')
-    }
-
-    if (window.location.pathname === '/oauth2/callback') {
-        console.log("The URL contains '/oauth2/callback'.");
-    } else {
-        console.log('not')
     }
 })
 
@@ -129,7 +119,7 @@ const handleOAuthCallback = async () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
-
+    console.log(oauthCode)
     if (oauthCode) {
         try {
             // Send the code to the backend using a POST request
@@ -142,8 +132,9 @@ const handleOAuthCallback = async () => {
             });
 
             const data = await response.json();
-
+            console.log(data)
             if (data.token) {
+                console.log('got it')
                 // Save the token to localStorage
                 localStorage.setItem('token', data.token);
 
