@@ -97,7 +97,7 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 // Google Auth
 document.querySelector('.g-auth').addEventListener('click', function () {
-    fetch(`${BASE_API_URL}/login/google`)
+    fetch(`${BASE_API_URL1}/login/google`)
         .then(response => response.json())
         .then(data => {
             window.location.href = data.authorization_url;
