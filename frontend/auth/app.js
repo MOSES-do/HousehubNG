@@ -110,6 +110,7 @@ window.addEventListener('load', () => {
     // check if we are on the callbak url
     if (window.location.href.includes('/oauth2/callback')) {
         handleOAuthCallback();
+        console.log("The URL contains '/oauth2/callback'.");
     }
     else {
         console.log('no')
