@@ -97,12 +97,13 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 // Google Auth
 document.querySelector('.g-auth').addEventListener('click', function () {
-    fetch(`${BASE_API_URL}/login/google`)
-        .then(response => response.json())
-        .then(data => {
-            window.location.href = data.authorization_url;
-            console.log(data.authorization_url)
-        });
+    // fetch(`${BASE_API_URL}/login/google`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         window.location.href = data.authorization_url;
+    //         console.log(data.authorization_url)
+    //     });
+    window.location.href = `${BASE_API_URL}/login/google`
 });
 
 // window.addEventListener('load', () => {
