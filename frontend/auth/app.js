@@ -97,7 +97,12 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 // Google Auth
 document.querySelector('.g-auth').addEventListener('click', function () {
-    window.location.href = `${BASE_API_URL}/login/google`;
+    fetch(`${BASE_API_URL}/login/google`)
+        .then(response => response.json())
+        .then(data => {
+            window.location.href = data.authorization_url;
+        });
+    // window.location.href = `${BASE_API_URL}/login/google`;
 });
 
 window.addEventListener('load', () => {
@@ -151,7 +156,7 @@ handleOAuthCallback();
 //         // Send the authorization code to the server
 //         const handleToken = async () => {
 //             try {
-//                 const response = await fetch(`${BASE_API_URL}/token`, {
+//                 const response = await fetch(`${BASE_API_URL}/oauth2/callback`, {
 //                     method: 'POST',
 //                     headers: {
 //                         'Content-Type': 'application/json'
