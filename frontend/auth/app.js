@@ -102,17 +102,21 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         .then(data => {
             window.location.href = data.authorization_url;
         });
-    // window.location.href = `${BASE_API_URL}/login/google`;
 });
 
 window.addEventListener('load', () => {
     // check if we are on the callbak url
-    if (window.location.pathname === '/oauth2/callback') {
+    if (window.location.href.includes('/oauth2/callback')) {
         handleOAuthCallback();
+    }
+    else {
+        console.log('no')
     }
 })
 
 const handleOAuthCallback = async () => {
+    console.log('Hola1')
+
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
 
@@ -146,7 +150,6 @@ const handleOAuthCallback = async () => {
     }
 
 }
-handleOAuthCallback();
 
 // window.onload = (() => {
 //     const urlParams = new URLSearchParams(window.location.search);
