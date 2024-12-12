@@ -100,12 +100,12 @@ document.querySelector('.g-auth').addEventListener('click', function () {
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
-            window.location.href = data.authorization_url;
-            console.log(data.authorization_url)
             console.log(window.location);
             console.log("Pathname:", window.location.pathname);
             console.log("Full URL:", window.location.href);
             console.log("Search Parameters:", window.location.search);
+            window.location.href = data.authorization_url;
+            console.log(data.authorization_url)
         });
     // window.location.href = `${BASE_API_URL}/login/google`
 });
