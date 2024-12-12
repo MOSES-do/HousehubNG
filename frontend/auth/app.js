@@ -1,5 +1,5 @@
 'use strict';
-import { BASE_API_URL, BASE_API_URL1, burger, burgerFirst, burgerSecond, burgerThird } from "../src/common.js"
+import { BASE_API_URL, burger, burgerFirst, burgerSecond, burgerThird } from "../src/common.js"
 
 
 burger.addEventListener("click", function (e) {
@@ -97,7 +97,7 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
 
 // Google Auth
 document.querySelector('.g-auth').addEventListener('click', function () {
-    fetch(`${BASE_API_URL1}/login/google`)
+    fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
             window.location.href = data.authorization_url;
@@ -162,7 +162,7 @@ window.onload = (() => {
         // Send the authorization code to the server
         const handleToken = async () => {
             try {
-                const response = await fetch(`${BASE_API_URL1}/oauth2/callback`, {
+                const response = await fetch(`${BASE_API_URL}/oauth2/callback`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

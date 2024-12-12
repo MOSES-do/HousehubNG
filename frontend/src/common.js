@@ -24,7 +24,6 @@ export const spinnerSearchEl = document.querySelector(".spinner--search");
 // console.log(resultLength);
 
 export const BASE_API_URL = 'https://aceme.tech/api/v1';
-export const BASE_API_URL1 = 'https://aceme.tech/api/v2';
 
 // -- STATE --
 export const state = {
