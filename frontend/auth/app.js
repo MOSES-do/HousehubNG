@@ -162,9 +162,14 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 
 
 window.onload = (() => {
+    console.log(window.location);
+    console.log("Pathname:", window.location.pathname);
+    console.log("Full URL:", window.location.href);
+    console.log("Search Parameters:", window.location.search);
+
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-    // console.log(code)
+    console.log(code)
     if (code) {
         // Send the authorization code to the server
         const handleToken = async () => {
