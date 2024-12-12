@@ -108,7 +108,7 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 
 window.addEventListener('load', () => {
     // check if we are on the callbak url
-    if (window.location.pathname.includes('/oauth2/callback')) {
+    if (window.location.href.includes('/oauth2/callback')) {
         handleOAuthCallback();
     }
     else {
