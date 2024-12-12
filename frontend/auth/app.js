@@ -1,5 +1,5 @@
 'use strict';
-import { BASE_API_URL, burger, burgerFirst, burgerSecond, burgerThird } from "../src/common.js"
+import { BASE_API_URL, BASE_API_URL1, burger, burgerFirst, burgerSecond, burgerThird } from "../src/common.js"
 
 
 burger.addEventListener("click", function (e) {
