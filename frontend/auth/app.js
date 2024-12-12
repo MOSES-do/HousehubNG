@@ -101,6 +101,7 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         .then(response => response.json())
         .then(data => {
             window.location.href = data.authorization_url;
+            console.log(data.authorization_url)
         });
 });
 
@@ -150,6 +151,7 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 //     }
 
 // }
+
 
 window.onload = (() => {
     const urlParams = new URLSearchParams(window.location.search);
