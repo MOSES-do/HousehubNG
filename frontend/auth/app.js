@@ -106,10 +106,9 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 
 window.addEventListener('load', () => {
     // check if url path includes callback route
-    // if (window.location.href.includes('/oauth2/callback')) {
-    //     handleOAuthCallback();
-    // }
-    handleOAuthCallback();
+    if (window.location.href.includes('/oauth2/callback')) {
+        handleOAuthCallback();
+    }
 })
 
 const handleOAuthCallback = async () => {
