@@ -105,10 +105,15 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 window.addEventListener('load', () => {
-    // check if url path includes callback route
-    if (window.location.href.includes('/oauth2/callback')) {
-        handleOAuthCallback();
-    }
+    /**
+        check if url path includes callback route
+        No longer required since login is on the homepage of the website,
+        our redirect_uri simply points to the back homepgae of the website 
+     * if (window.location.href.includes('/oauth2/callback')) {
+         handleOAuthCallback();
+        }
+     */
+    handleOAuthCallback();
 })
 
 const handleOAuthCallback = async () => {
