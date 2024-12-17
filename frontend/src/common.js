@@ -11,6 +11,7 @@ export const container = document.querySelector(".container");
 export const closeForm = document.querySelector(".close");
 export const menu_user = document.querySelector(".bg-user");
 
+export const submit_email = document.querySelector(".pwd-reset");
 
 export const index_container = document.querySelector('.container');
 export const main_product__container = document.querySelector('.main_product--container');

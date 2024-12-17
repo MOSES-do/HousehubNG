@@ -125,7 +125,7 @@
     window.onload = () => {
         const token = localStorage.getItem('token');
 
-        fetchProtectedContent(token)
+        fetchProtectedContent()
 
         if (!token) {
             alert('You are not logged in. Redirecting to login page');

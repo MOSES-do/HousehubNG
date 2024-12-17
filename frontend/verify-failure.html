@@ -1,0 +1,10 @@
+<p id="token-error"></p>
+<a href="https://househubng.netlify.app">
+    <h3>Click to return to home page</h3>
+</a>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    document.getElementById('token-error').innerText = `Verification Error: ${status}`;
+</script>
