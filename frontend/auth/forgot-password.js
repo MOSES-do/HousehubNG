@@ -4,15 +4,15 @@ import { BASE_API_URL, submit_email } from "../src/common.js"
 
 async function handlePasswordReset() {
     //Submit email for password reset notification
-    const mail_address = submit_email.value;
-    console.log(mail_address)
+    const email = submit_email.value;
+
     try {
         const response = await fetch(`${BASE_API_URL}/forgot-password`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ mail_address })
+            body: JSON.stringify({ email })
         });
         console.log(response)
         if (response.ok) {
