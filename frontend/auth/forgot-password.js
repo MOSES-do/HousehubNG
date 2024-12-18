@@ -14,6 +14,7 @@ async function handlePasswordReset() {
             },
             body: JSON.stringify({ mail_address })
         });
+        console.log(response)
         if (response.ok) {
             alert("Email sent successfully");
         } else {
