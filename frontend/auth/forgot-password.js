@@ -5,6 +5,7 @@ import { BASE_API_URL, submit_email } from "../src/common.js"
 async function handlePasswordReset() {
     //Submit email for noification
     mail_address = submit_email.value;
+    console.log(mail_address)
     try {
         const response = await fetch(`${BASE_API_URL}/forgot-password`, {
             method: 'POST',
