@@ -42,7 +42,7 @@ async function handleRegistration() {
             body: JSON.stringify({ email, password })
         });
         if (response.ok) {
-            alert("User registered successfully");
+            alert("Email verification link has been sent to your mail");
         } else {
             const errorData = await response.json();
             alert('Registration failed: ' + errorData.error)
