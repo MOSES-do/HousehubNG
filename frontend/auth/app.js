@@ -70,9 +70,9 @@ async function handleLogin() {
             localStorage.setItem('token', data.token);
 
             const tokenPayload = decodeJWT(data.token);
-
+            console.log(tokenPayload.sub.verified)
             if (tokenPayload.sub.verified === true) {
-                window.location.href = 'listings.html';
+                // window.location.href = 'listings.html';
             } else {
                 alert("To log in, complete email verification")
             }
