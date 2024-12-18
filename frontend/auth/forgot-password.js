@@ -24,7 +24,7 @@ async function handlePasswordReset() {
         console.log("Unable to send email: " + error)
     }
 }
-document.querySelector('.sub_mail').addEventListener('click', function (e) {
+document.querySelector('.sub_mail').addEventListener('submit', function (e) {
     e.preventDefault();
     console.log("Hola")
     handlePasswordReset
