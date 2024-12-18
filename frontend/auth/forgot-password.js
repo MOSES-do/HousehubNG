@@ -16,7 +16,7 @@ async function handlePasswordReset() {
         });
         console.log(response)
         if (response.ok) {
-            alert("Email sent successfully");
+            alert("Password reset email sent successfully");
             window.location.href = 'index.html';
         } else {
             const errorData = await response.json();
@@ -26,7 +26,7 @@ async function handlePasswordReset() {
         console.log("Unable to send email: " + error)
     }
 }
-document.querySelector('.sub_mail').addEventListener('submit', function (e) {
+document.getElementById('forgot-password').addEventListener('submit', function (e) {
     e.preventDefault();
-    handlePasswordReset()
+    handlePasswordReset();
 })
