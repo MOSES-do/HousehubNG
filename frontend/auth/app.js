@@ -68,8 +68,9 @@ async function handleLogin() {
             const data = await response.json();
 
             localStorage.setItem('token', data.token);
-            // conso
-            // const tokenPayload = decodeJWT(data.token);
+
+            const tokenPayload = decodeJWT(data.token);
+            console.log(tokenPayload);
 
             window.location.href = 'listings.html';
         } else {
