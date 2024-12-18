@@ -122,24 +122,11 @@
     // using JWT Token for login authentication
     const BASE_API_URL = 'https://aceme.tech/api/v1';
 
-    function decodeJWT(token) {
-        // Split the token into its parts
-        const parts = token.split('.');
 
-        // Check if the token has three parts (header, payload, signature)
-        if (parts.length !== 3) {
-            throw new Error('Invalid token');
-        }
-        const payload = parts[1];
-        const decodedPayload = atob(payload);
-        const payloadObject = JSON.parse(decodedPayload);
-        return payloadObject;
-    }
 
     window.onload = () => {
         const token = localStorage.getItem('token');
-        const tokenPayload = decodeJWT(token);
-        console.log(tokenPayload.sub.verified);
+
         fetchProtectedContent()
 
         if (!token) {
