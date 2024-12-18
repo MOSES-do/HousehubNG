@@ -17,6 +17,7 @@ async function handlePasswordReset() {
         console.log(response)
         if (response.ok) {
             alert("Email sent successfully");
+            window.location.href = 'index.html';
         } else {
             const errorData = await response.json();
             alert('Mail not sent: ' + errorData.error)
