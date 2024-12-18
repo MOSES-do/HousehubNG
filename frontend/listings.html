@@ -139,7 +139,7 @@
     window.onload = () => {
         const token = localStorage.getItem('token');
         const tokenPayload = decodeJWT(token);
-        console.log(tokenPayload);
+        console.log(tokenPayload.sub.verified);
         fetchProtectedContent()
 
         if (!token) {
