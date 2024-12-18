@@ -25,5 +25,6 @@ async function handlePasswordReset() {
 }
 document.querySelector('.sub_mail').addEventListener('click', function (e) {
     e.preventDefault();
+    console.log("Hola")
     handlePasswordReset
 })
