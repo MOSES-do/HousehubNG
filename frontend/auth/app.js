@@ -1,6 +1,9 @@
 'use strict';
-import { BASE_API_URL, burger, burgerFirst, burgerSecond, burgerThird } from "../src/common.js"
-
+import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL } from "../src/common.js"
+import renderListings from "../src/components/Listings.js";
+import navigateTo from "../src/components/Router.js";
+import { state, closeForm } from "../src/common.js";
+import { closePopup } from "./call_to_action.js";
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -13,7 +16,7 @@ burger.addEventListener("click", function (e) {
 //     return res.json();
 // }).then(data => console.log(data)).catch((err) => console.log(err))
 
-/**======SIGN UP, LOGIN========**/
+
 function decodeJWT(token) {
     // Split the token into its parts
     const parts = token.split('.');
@@ -28,7 +31,7 @@ function decodeJWT(token) {
     return payloadObject;
 }
 
-
+/**======SIGN UP, LOGIN========**/
 async function handleRegistration() {
     //Sign up FUNCTIONALITY
     const email = document.getElementById('login-email').value;
@@ -52,6 +55,7 @@ async function handleRegistration() {
     }
 }
 
+
 async function handleLogin() {
     //LOGIN FUNCTIONALITY
     const email = document.getElementById('login-email').value;
@@ -66,12 +70,13 @@ async function handleLogin() {
         });
         if (response.ok) {
             const data = await response.json();
-
             localStorage.setItem('token', data.token);
             const tokenPayload = decodeJWT(data.token);
 
             if (tokenPayload.sub.verified === true) {
-                window.location.href = 'listings.html';
+                const token = localStorage.getItem('token');
+                fetchProtectedContent(token)
+
             } else {
                 alert("To log in, complete email verification")
             }
@@ -85,7 +90,40 @@ async function handleLogin() {
     }
 }
 
+window.addEventListener('DOMContentLoaded', async (e) => {
+    const token = localStorage.getItem('token');
 
+    const listPage = window.location.hash;
+    if (listPage === '#listings') {
+        fetchProtectedContent(token)
+    }
+});
+
+async function fetchProtectedContent(token) {
+    try {
+        const response = await fetch(`${BASE_API_URL}/current_user`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            }
+        });
+        if (response.ok) {
+            const data = await response.json();
+            state.userEmail = data.email;
+            console.log(data.email);
+            // navigate to listing page
+            closeForm.addEventListener("click", closePopup());
+            navigateTo("listings");
+            renderListings();
+        } else {
+            alert('Failed to fetch protected content');
+        }
+    } catch (e) {
+        console.error('Error:', error);
+        alert('Failed to fetch protected content');
+    }
+}
 
 const submitBtn = document.querySelector('.login-btn');
 document.querySelector('.log_user').addEventListener('click', function (e) {
@@ -101,6 +139,7 @@ document.querySelector('.log_user').addEventListener('click', function (e) {
     }
 });
 
+
 //==================================== GO0gle Auth ========================================//
 document.querySelector('.g-auth').addEventListener('click', function () {
     fetch(`${BASE_API_URL}/login/google`)
@@ -109,6 +148,8 @@ document.querySelector('.g-auth').addEventListener('click', function () {
             window.location.href = data.authorization_url;
         });
 });
+
+
 
 window.addEventListener('load', () => {
     /**
@@ -153,3 +194,4 @@ const handleOAuthCallback = async () => {
         console.error('OAuth code not found');
     }
 }
+

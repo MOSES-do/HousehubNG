@@ -22,9 +22,9 @@ function onPageLoad(event) {
     // console.log(`${event.target.id} page has loaded`);
     // You can add additional logic here, such as fetching data, updating UI, etc.
 
-    const targetHref = event.target.href; // Get the link's href
-    const url = new URL(targetHref); // Parse it into a URL object
-    console.log("Target pathname:", url.pathname);
+    // const targetHref = event.target.href; // Get the link's href
+    // const url = new URL(targetHref); // Parse it into a URL object
+    // console.log("Target pathname:", url.pathname);
 }
 
 document.querySelectorAll('.page').forEach(page => {

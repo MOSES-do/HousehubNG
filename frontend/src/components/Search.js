@@ -19,9 +19,8 @@ export const submitHandler = async (e) => {
             renderHouseList();
         } else {
             const errorData = await response.json();
-            alert('Registration failed: ' + errorData.error)
+            alert('Error: ' + errorData.error)
         }
-
     } catch (error) {
     }
 }

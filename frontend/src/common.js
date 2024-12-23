@@ -15,6 +15,7 @@ export const submit_email = document.querySelector(".pwd-reset");
 
 export const index_container = document.querySelector('.container');
 export const main_product__container = document.querySelector('.main_product--container');
+export const main_listing__container = document.querySelector('.main_listing--container');
 
 export const homeListEl = document.querySelector(".product-article");
 export const search_inputEl = document.querySelector('.location');
@@ -24,12 +25,15 @@ export const spinnerSearchEl = document.querySelector(".spinner--search");
 // export const spinnerJobDetailsEl = document.querySelector(".spinner--job-details");
 // console.log(resultLength);
 
+export const userInfo = document.querySelector(".user-info");
+
 export const BASE_API_URL = 'https://aceme.tech/api/v1';
 
 // -- STATE --
 export const state = {
     searchHouseItems: [],
     queryParam: '',
+    userEmail: '',
 }
 
 // -- HELPER FUNCTIONS --

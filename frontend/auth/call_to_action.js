@@ -10,7 +10,7 @@ import {
 } from "../src/common.js"
 
 
-function toggleSignUpForm() {
+export function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");
     container.classList.toggle("overlay");
 }
@@ -18,7 +18,7 @@ sign_up.addEventListener("click", toggleSignUpForm);
 log_in.addEventListener("click", toggleSignUpForm);
 menu_user.addEventListener("click", toggleSignUpForm);
 
-function closePopup() {
+export function closePopup() {
     log_in_form.classList.add("hidden");
     container.classList.remove("overlay");
 }

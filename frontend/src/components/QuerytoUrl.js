@@ -7,7 +7,6 @@ export function urlUpdate(searchInput, customPath) {
     const query = searchInput.trim();
     if (query) {
         // URLSearchParams object with current URL params
-        console.log(query)
         const urlParams = new URLSearchParams(window.location.search)
 
         // Update the "search" parameter with user's query

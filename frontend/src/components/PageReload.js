@@ -9,21 +9,24 @@ export default async function handlePageByHash(currentPage, page) {
     const hashValue = window.location.hash.substring(1);
     if (window.location.hash) {
         if (hashValue === currentPage) {
-            try {
-                const urlParams = new URLSearchParams(window.location.search);
-                // Get the value of the 'search' parameter
-                const searchQuery = urlParams.get('search');
-                const response = await fetchApi(searchQuery);
-                if (response.ok) {
-                    resultLength.textContent = state.searchHouseItems.length
-                    renderHouseList();
-                } else {
-                    const errorData = await response.json();
-                    alert('Registration failed: ' + errorData.error)
-                }
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams) {
+                try {
+                    // Get the value of the 'search' parameter
+                    const searchQuery = urlParams.get('search');
+                    const response = await fetchApi(searchQuery);
+                    if (response.ok) {
+                        resultLength.textContent = state.searchHouseItems.length
+                        renderHouseList();
+                    } else {
+                        const errorData = await response.json();
+                        alert('Error: ' + errorData.error)
+                    }
 
-            } catch (error) {
+                } catch (error) {
+                }
             }
+
         }
     } else {
         // Optionally, handle the default case if there's no hash

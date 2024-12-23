@@ -21,6 +21,7 @@ async function handleLogout() {
         } else {
             const errorData = await response.json();
             alert('Logout failed: ' + errorData.error);
+            window.location.href = 'index.html';
         }
     } catch (error) {
         console.error('Error:', error);
