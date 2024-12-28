@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     renderSpinner('search');
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
-            console.log(entry)
             if (entry.isIntersecting) {
                 // if (state.hasMore) {
                 console.log(state.hasMore)
