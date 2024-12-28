@@ -65,7 +65,7 @@ export const loadMorePages = async () => {
         // Options for the Intersection Observer
         const observerOptions = {
             root: null, // Use the viewport as the root
-            rootMargin: '200px', // Adjust the margin around the root
+            rootMargin: '915px', // Adjust the margin around the root
             threshold: 0
         };
 
