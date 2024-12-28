@@ -1,13 +1,20 @@
 import { state, homeListEl } from "../common.js";
-// console.log(homeList)
-const renderHouseList = () => {
-    homeListEl.innerHTML = '';
-    const dataItems = state.searchHouseItems;
-    dataItems.map(data => {
-        const newHouseItem = `
-        <li>
+
+const renderHouseList = (dataItems) => {
+    const fragment = document.createDocumentFragment();
+
+    dataItems.forEach(data => {
+        const listItem = document.createElement('li');
+
+        listItem.innerHTML = `
             <figure class="recent-search--img">
-                <img src="${data.apartment_pic}" alt="picture1" />
+                <div class="spinner spinner--search spinner--visible"></div>
+                <img 
+                    src="${data.apartment_pic}" 
+                    alt="Apartment Picture" 
+                    onload="this.previousElementSibling.style.display = 'none'; this.style.display = 'block';"
+                    style="display: none;"
+                />
             </figure>
 
             <div class="recent-search--products">
@@ -16,12 +23,24 @@ const renderHouseList = () => {
                 <address>${data.address}</address>
                 <p>${data.sales_exec}</p>
             </div>
-        </li>
-        `
-        homeListEl.insertAdjacentHTML('beforeend', newHouseItem);
+        `;
+
+
+        // Add fade-in effect for smooth appearance
+        listItem.style.opacity = 0;
+        listItem.style.transition = 'opacity 0.5s';
+        fragment.appendChild(listItem);
+
+        // Trigger the fade-in after appending to the fragment
+        requestAnimationFrame(() => {
+            listItem.style.opacity = 1;
+        });
     })
 
-}
+    // Append all new items at once to reduce layout recalculations
+    homeListEl.appendChild(fragment);
+
+};
 
 export default renderHouseList;
 

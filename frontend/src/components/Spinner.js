@@ -1,9 +1,12 @@
 import { spinnerSearchEl } from "../common.js";
 
-const renderSpinner = (whichSpinner) => {
-    const spinnerEl = whichSpinner === 'search' ? spinnerSearchEl : '';
+const renderSpinner = (whichSpinner = '') => {
+    if (whichSpinner === 'search') {
+        spinnerSearchEl.classList.add('spinner--visible');
+    } else {
+        spinnerSearchEl.classList.remove('spinner--visible');
+    }
 
-    // spinnerEl.classList.toggle('spinner--visible');
 }
 
 export default renderSpinner;

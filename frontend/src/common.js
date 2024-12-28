@@ -17,7 +17,7 @@ export const index_container = document.querySelector('.container');
 export const main_product__container = document.querySelector('.main_product--container');
 export const main_listing__container = document.querySelector('.main_listing--container');
 
-export const homeListEl = document.querySelector(".product-article");
+export const homeListEl = document.querySelector(".product_article");
 export const search_inputEl = document.querySelector('.location');
 export const form_location = document.querySelector('.search_location');
 export const resultLength = document.querySelector('.count__number');
@@ -32,8 +32,12 @@ export const BASE_API_URL = 'https://aceme.tech/api/v1';
 // -- STATE --
 export const state = {
     searchHouseItems: [],
+    houselist_search_result_length: '',
     queryParam: '',
     userEmail: '',
+    curPage: 1,
+    hasMore: true,
+    loading: false,
 }
 
 // -- HELPER FUNCTIONS --
