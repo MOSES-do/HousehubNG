@@ -36,7 +36,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 // Initial data load into state
 export default async function fetchApi(query) {
-    const path = query === null ? `apartments` : `apartments?location=${query}`;
+    const path = query === null ? `apartment?sort_by=created_at&order=desc` : `apartment?sort_by=created_at&order=desc&location=${query}`;
     const data = await getData(`${BASE_API_URL}/${path}`)
     // extract job items
     const houseList = data;

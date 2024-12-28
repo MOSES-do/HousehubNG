@@ -55,7 +55,6 @@ async function handleRegistration() {
     }
 }
 
-
 async function handleLogin() {
     //LOGIN FUNCTIONALITY
     const email = document.getElementById('login-email').value;
@@ -76,7 +75,6 @@ async function handleLogin() {
             if (tokenPayload.sub.verified === true) {
                 const token = localStorage.getItem('token');
                 fetchProtectedContent(token)
-
             } else {
                 alert("To log in, complete email verification")
             }
@@ -111,7 +109,7 @@ async function fetchProtectedContent(token) {
         if (response.ok) {
             const data = await response.json();
             state.userEmail = data.email;
-            console.log(data.email);
+
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
             navigateTo("listings");
