@@ -39,8 +39,8 @@ export default async function fetchApi(query) {
     const path = query === null ? `apartment?sort_by=created_at&order=desc` : `apartment?sort_by=created_at&order=desc&location=${query}`;
     const data = await getData(`${BASE_API_URL}/${path}`)
     // extract job items
-    const houseList = data;
-    state.searchHouseItems = houseList[0];
-    return houseList[1]
+    const houseList = data[0].data;
+    state.searchHouseItems = houseList;
+    return data[1]
 }
 
