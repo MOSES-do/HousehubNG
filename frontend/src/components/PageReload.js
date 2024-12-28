@@ -14,6 +14,7 @@ export default async function handlePageByHash(currentPage, page) {
     if (window.location.hash) {
         if (hashValue === currentPage) {
             // Get the value of the 'search' parameter
+            const urlParams = new URLSearchParams(window.location.search);
             if (urlParams) {
                 const query = urlParams.get('search');
                 const response = await fetchApi(query, curPage);
@@ -44,9 +45,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
         entries.forEach(entry => {
             console.log(entry)
             if (entry.isIntersecting) {
+                // if (state.hasMore) {
+                console.log(state.hasMore)
                 state.curPage = curPage++;
                 submitHandler(e, curPage);
             }
+            // }
         });
     };
 
