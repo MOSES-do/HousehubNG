@@ -18,6 +18,7 @@
     <script type="module" src="/auth/app.js" defer></script>
     <script type="module" src="/auth/call_to_action.js" defer></script>
     <script type="module" src="/auth/logout.js" defer></script>
+    <script type="module" src="/auth/utils.js" defer></script>
     <script type="module" src="/src/index.js" defer></script>
 
 
@@ -312,7 +313,7 @@
 
     <div id="product_list" class="main_product--container page">
         <div class="product_container">
-            <div class="nav-container">
+            <div class="nav-container product_list">
                 <nav class="header_nav">
                     <figure class="logo">
                         <!-- <a href="#"><span>H</span>ousehub<sup>NG</sup></a> -->
@@ -354,28 +355,33 @@
                 </nav>
             </div>
 
+            <section class="left--view">
+                <!-- dldldk -->
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure beatae possimus eligendi unde suscipit
+                impedit eum quam perferendis soluta veritatis! Beatae a sit debitis unde veritatis praesentium
+                laboriosam expedita laborum ab sapiente error eum quis dolores pariatur eligendi, est nostrum nulla
+                recusandae dolorem natus fuga? Saepe fugit culpa fugiat dolorum!
+            </section>
 
-            <div class="jobList-view">
-                <section class="left--view">
-                    <!-- dldldk -->
-                </section>
-
-                <section class="right--view">
+            <section class="jobList-view">
+                <div class="right--view">
                     <div class="right--view_height">
-                        <h3 class="title-text">Apartments For Rent</h3>
-                        <div class="sort--view">
-                            <p class="sub-title--text result-length">
-                                <span class="count__number">0</span> results
-                            </p>
-                            <div class="sub-title--text">
-                                <p>Recent</p>
-                                <p>Price (High to Low)</p>
-                                <p>Price (Low High to)</p>
+                        <div class="right--view-header">
+                            <h3 class="title-text">Apartments For Rent</h3>
+                            <div class="sort--view">
+                                <p class="sub-title--text result-length">
+                                    <span class="count__number">0</span> results
+                                </p>
+                                <div class="sub-title--text">
+                                    <p>Recent</p>
+                                    <p>Price (High to Low)</p>
+                                    <p>Price (Low High to)</p>
+                                </div>
                             </div>
                         </div>
 
                         <div class="spinner spinner--search spinner--hidden"></div>
-                        <article class="product_article">
+                        <article class="product_article" id="productArticle">
                             <!-- <li>
                                 <figure class="recent-search--img">
                                    
@@ -395,12 +401,60 @@
                             </li> -->
 
                         </article>
-                        <div id="bottom-marker" style="height: 1px; background: transparent; margin-top:100px">
+                        <div id="bottom-marker" style="height: 1px; background: transparent; margin-top:10px">
                             <div class="spinner spinner--search spinner--hidden"></div>
                         </div>
                     </div>
-                </section>
-            </div>
+
+                    <div class="placeholder" style="height: 1px; background: transparent; margin-top:10px">
+                        <div class="spinner spinner--search spinner--hidden"></div>
+                    </div>
+                    <div class="right--view_footer" id="rightFooter">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nemo quisquam nihil, at similique,
+                        earum eum perspiciatis porro ducimus excepturi cum ut commodi repellat. Consequuntur aliquam
+                        eligendi quam laborum minima provident suscipit perferendis blanditiis est quod doloremque
+                        dolores voluptates harum asperiores natus, accusantium, ea impedit fugiat dolorum quidem, optio
+                        exercitationem. Provident voluptatum quod ut, ex explicabo consequuntur magnam recusandae cum
+                        rem alias fugiat a voluptates et adipisci. Perferendis repellendus eligendi consequuntur, animi
+                        dolor quidem voluptates rerum illo, labore architecto, placeat porro ex. Consequuntur cupiditate
+                        sunt doloribus fugit. Aliquam sint fuga quo quam et ipsam ab quos ea sequi animi mollitia,
+                        quaerat consequatur laboriosam dicta dolor distinctio? Esse quaerat ducimus error voluptatibus
+                        eligendi tenetur dolores, omnis nulla aliquid, odit explicabo asperiores dolorum totam ipsum
+                        voluptatum rerum consequatur deserunt tempora eveniet sit enim in dolor. Pariatur autem corrupti
+                        non, possimus ullam sunt cumque sapiente, a laborum itaque officiis voluptatem explicabo
+                        asperiores sint maxime laboriosam veniam unde nemo sit? Facere natus est quisquam suscipit
+                        consequuntur, tempore esse aut impedit molestiae aliquam explicabo, accusamus qui temporibus
+                        minus molestias repellat, nam eveniet ad? Voluptas omnis obcaecati alias dolorum aperiam error
+                        recusandae cum facilis, quidem provident harum, hic sit ab corrupti exercitationem distinctio
+                        voluptatem, quibusdam animi.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, inventore officia. Dolorum,
+                        quibusdam sed molestias voluptatem rem debitis architecto porro repellat. Quaerat esse illo
+                        culpa ipsa cum ducimus dolor beatae doloribus saepe, minima voluptatibus ex dolore. Ex
+                        aspernatur similique eum libero sed beatae repellat voluptatem, obcaecati quasi in enim officia
+                        doloremque cupiditate quia est dignissimos fuga consequuntur, eveniet esse blanditiis illum?
+                        Perferendis eum, voluptates quia ea qui reiciendis. Porro maxime repudiandae dolorem soluta
+                        quam, vero iste rerum itaque consequuntur saepe. Quasi voluptatum neque rerum corrupti aperiam
+                        qui aspernatur odio expedita repellendus iure ullam, recusandae cumque ex minima quidem eum
+                        molestiae repellat labore modi perferendis! Molestias, accusantium sit tempore voluptate qui,
+                        atque quas eligendi earum recusandae eius deleniti magni rerum culpa ratione facere alias
+                        officia quam neque voluptatem cum ipsam vel nesciunt ad libero. Repellat, commodi velit
+                        distinctio qui ex nisi odio dicta magni omnis temporibus consequuntur sapiente nemo corporis
+                        recusandae maiores. Corrupti, cumque praesentium quaerat repudiandae natus aut ipsam tempora
+                        voluptatibus enim! Dolorem veniam quo recusandae magni eaque ut expedita, ipsa non beatae, iste
+                        excepturi soluta tempora. Quibusdam, ut saepe sapiente eum quos at laborum recusandae debitis
+                        minus dolore odit odio eos a ab cupiditate exercitationem quae suscipit sunt deleniti quaerat
+                        iste? Amet, alias commodi perspiciatis expedita inventore in minus voluptatibus animi, dicta et
+                        dolorum, quod praesentium assumenda minima perferendis consectetur possimus. Officiis, placeat.
+                        Maxime amet dicta ut eos, temporibus dolore facere cum nulla, modi praesentium doloremque sed
+                        aliquam. Velit accusantium labore perspiciatis! Magni porro officia quidem harum eaque. Nesciunt
+                        voluptatibus, nisi eligendi eum error necessitatibus cupiditate voluptatum nam culpa ad fugit
+                        dolorem, quisquam corporis recusandae a laudantium. Commodi, consequuntur doloribus, voluptatem
+                        voluptatibus id sequi veniam harum accusantium architecto laboriosam, fugiat ex expedita vel!
+                        Asperiores eius cum dolorem doloribus voluptas natus consequatur molestiae tempora porro,
+                        tempore, eum veniam ut incidunt.
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 

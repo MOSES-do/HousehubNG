@@ -36,7 +36,7 @@ export const submitHandler = async (e, curPage, query = "") => {
     } catch (error) {
         console.error('Error fetching list', error)
     } finally {
-        renderSpinner();
+        renderSpinner('');
         state.loading = true;
         // console.log(state.loading);
     }
@@ -47,7 +47,6 @@ export const submitHandler = async (e, curPage, query = "") => {
 export const loadMorePages = async () => {
     document.addEventListener('DOMContentLoaded', (e) => {
         const bottomMarker = document.getElementById('bottom-marker');
-        renderSpinner('search');
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -55,17 +54,17 @@ export const loadMorePages = async () => {
                     // console.log('Near bottom of the page');
                     if (state.loading) {
                         state.curPage = curPage++;
-                        spinnerSearchEl.classList.add('spinner--visible')
                         submitHandler(e, curPage);
                     }
                 }
+                // observer.unobserve(entry.target); //only observe on page reload once
             });
         };
 
         // Options for the Intersection Observer
         const observerOptions = {
-            root: null, // Use the viewport as the root
-            rootMargin: '200px', // Adjust the margin around the root
+            root: null,
+            rootMargin: '100px',
             threshold: 0,
         };
 
@@ -95,7 +94,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 // Initial data load into state
 export default async function fetchApi(query, curPage) {
-    const path = query === null ? `apartment?page=${curPage}&per_page=20&sort_by=created_at&order=desc` : `apartment?page=${curPage}&per_page=20&sort_by=created_at&order=desc&location=${query}`;
+    const path = query === null ? `apartment?page=${curPage}&per_page=50&sort_by=created_at&order=desc` : `apartment?page=${curPage}&per_page=50&sort_by=created_at&order=desc&location=${query}`;
 
     const data = await getData(`${BASE_API_URL}/${path}`)
     state.hasMore = data[0].pagination.has_more

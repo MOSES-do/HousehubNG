@@ -5,6 +5,7 @@ const renderHouseList = (dataItems) => {
 
     dataItems.forEach(data => {
         const listItem = document.createElement('li');
+        listItem.className = "product_box"
 
         listItem.innerHTML = `
             <figure class="recent-search--img">
