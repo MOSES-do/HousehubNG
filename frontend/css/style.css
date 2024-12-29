@@ -936,14 +936,12 @@ a:link {
 }
 
 .left--view .map-text {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 5rem;
     font-weight: 600;
-    margin-top: 20rem;
-
 }
 
 @media (max-width:1138px) {
