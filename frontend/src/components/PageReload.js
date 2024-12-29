@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 // if (state.hasMore) {
-                console.log(state.hasMore)
                 state.curPage = curPage++;
                 submitHandler(e, curPage);
             }
