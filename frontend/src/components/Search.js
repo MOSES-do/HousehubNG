@@ -51,8 +51,8 @@ export const loadMorePages = async () => {
         const observerCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log('You are near the bottom of the page!');
-                    console.log('Near bottom of the page');
+                    // console.log('You are near the bottom of the page!');
+                    // console.log('Near bottom of the page');
                     if (state.loading) {
                         state.curPage = curPage++;
                         spinnerSearchEl.classList.add('spinner--visible')
@@ -65,8 +65,8 @@ export const loadMorePages = async () => {
         // Options for the Intersection Observer
         const observerOptions = {
             root: null, // Use the viewport as the root
-            rootMargin: '915px', // Adjust the margin around the root
-            threshold: 0
+            rootMargin: '200px', // Adjust the margin around the root
+            threshold: 0,
         };
 
         // Create the Intersection Observer
