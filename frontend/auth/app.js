@@ -97,7 +97,26 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    cleanUpUrlOnRedirect();
+});
 
+window.addEventListener('hashchange', () => {
+    cleanUpUrlOnRedirect();
+});
+
+function cleanUpUrlOnRedirect() {
+    const currentUrl = window.location.href;
+    const hash = window.location.hash;
+
+    if (hash === '#listings') {
+        const baseUrl = 'https://househubng.netlify.app/#listings';
+
+        if (currentUrl !== baseUrl) {
+            history.replaceState(null, '', baseUrl);
+        }
+    }
+}
 
 
 async function fetchProtectedContent(token) {
