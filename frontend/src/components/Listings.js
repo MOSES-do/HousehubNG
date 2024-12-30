@@ -1,6 +1,5 @@
 import { state, userInfo } from "../common.js";
 
-
 window.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
 
@@ -17,7 +16,6 @@ window.addEventListener('DOMContentLoaded', async () => {
 const renderListings = () => {
     userInfo.innerHTML = '';
     const data = state.userEmail;
-
     const ListingItems = `
          <h2>Current Listings </h2>
         <p id="welcome-user">Welcome, ${data}!</p>    

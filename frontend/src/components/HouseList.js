@@ -1,4 +1,4 @@
-import { state, homeListEl } from "../common.js";
+import { homeListEl } from "../common.js";
 
 const renderHouseList = (dataItems) => {
     const fragment = document.createDocumentFragment();

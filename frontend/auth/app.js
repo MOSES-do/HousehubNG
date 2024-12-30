@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL } from "../src/common.js"
 import renderListings from "../src/components/Listings.js";
 import navigateTo from "../src/components/Router.js";
@@ -106,14 +106,15 @@ async function fetchProtectedContent(token) {
                 'Authorization': `Bearer ${token}`,
             }
         });
+
         if (response.ok) {
+
             const data = await response.json();
             state.userEmail = data.email;
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            // navigateTo("listings");
-            window.location.href = "listings.html"
+            navigateTo("listings");
             renderListings();
         } else {
             alert('Failed to fetch protected content');
@@ -176,11 +177,11 @@ const handleOAuthCallback = async () => {
             });
 
             const data = await response.json();
-
+            console.log(data)
             if (data.token) {
                 // Save the token to localStorage
                 localStorage.setItem('token', data.token);
-                fetchProtectedContent(token)
+                fetchProtectedContent(data.token)
             } else {
                 console.error('Error: No token received');
             }
