@@ -112,7 +112,8 @@ async function fetchProtectedContent(token) {
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            navigateTo("listings");
+            // navigateTo("listings");
+            window.location.href = "listings.html"
             renderListings();
         } else {
             alert('Failed to fetch protected content');
@@ -153,11 +154,10 @@ window.addEventListener('load', () => {
     /**
         check if url path includes callback route
         No longer required since login is on the homepage of the website,
-        our redirect_uri simply points to the back homepgae of the website 
-     * if (window.location.href.includes('/oauth2/callback')) {
-         handleOAuthCallback();
+        our redirect_uri simply points to the back homepage of the website 
+        if (window.location.href.includes('/oauth2/callback')) {
         }
-     */
+    */
     handleOAuthCallback();
 })
 
@@ -180,9 +180,7 @@ const handleOAuthCallback = async () => {
             if (data.token) {
                 // Save the token to localStorage
                 localStorage.setItem('token', data.token);
-
-                navigateTo("listings");
-                renderListings();
+                fetchProtectedContent(token)
             } else {
                 console.error('Error: No token received');
             }
