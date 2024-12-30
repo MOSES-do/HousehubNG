@@ -1,4 +1,4 @@
 [[redirects]]
 from = "/oauth2/callback"
-to = "/callback.html"
+to = "/index.html"
 status = 200
