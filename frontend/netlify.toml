@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/oauth2/callback"
+to = "/callback.html"
+status = 200
