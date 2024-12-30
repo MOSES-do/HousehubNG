@@ -88,6 +88,7 @@ async function handleLogin() {
     }
 }
 
+// On page refresh/open a new tab
 window.addEventListener('DOMContentLoaded', async (e) => {
     const token = localStorage.getItem('token');
 
@@ -97,15 +98,8 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    cleanUpUrlOnRedirect();
-});
 
-window.addEventListener('hashchange', () => {
-    cleanUpUrlOnRedirect();
-    console.log('Hola')
-});
-
+// On oauth redirection login strip href of er'tin befofe the hash
 function cleanUpUrlOnRedirect() {
     const currentUrl = window.location.href;
     const hash = window.location.hash;
@@ -118,7 +112,6 @@ function cleanUpUrlOnRedirect() {
         }
     }
 }
-
 
 async function fetchProtectedContent(token) {
     try {
@@ -183,7 +176,10 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
-    handleOAuthCallback();
+    const urlParams = new URLSearchParams(window.location.search);
+    const oauthCode = urlParams.get('code');
+    if (oauthCode)
+        handleOAuthCallback();
 })
 
 const handleOAuthCallback = async () => {
