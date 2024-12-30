@@ -181,7 +181,8 @@ const handleOAuthCallback = async () => {
                 // Save the token to localStorage
                 localStorage.setItem('token', data.token);
 
-                window.location.href = data.redirect_url;
+                navigateTo("listings");
+                renderListings();
             } else {
                 console.error('Error: No token received');
             }
