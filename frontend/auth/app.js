@@ -97,20 +97,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const currentUrl = window.location.href; // Get the full current URL
-    const hash = window.location.hash; // Extract the hash fragment
 
-    // Check if the URL ends with #listings
-    if (hash === '#listings') {
-        const baseUrl = 'https://househubng.netlify.app/#listings'; // Desired cleaned-up URL
-
-        // Replace the current URL in the browser without reloading the page
-        if (currentUrl !== baseUrl) {
-            history.replaceState(null, '', baseUrl);
-        }
-    }
-});
 
 
 async function fetchProtectedContent(token) {
