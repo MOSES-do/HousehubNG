@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('hashchange', () => {
     cleanUpUrlOnRedirect();
+    console.log('Hola')
 });
 
 function cleanUpUrlOnRedirect() {
@@ -137,6 +138,7 @@ async function fetchProtectedContent(token) {
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
             navigateTo("listings");
+            cleanUpUrlOnRedirect();
             renderListings();
         } else {
             alert('Failed to fetch protected content');
