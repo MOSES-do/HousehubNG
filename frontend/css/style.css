@@ -1129,7 +1129,6 @@ a:link {
         grid-row: 2;
         grid-column: 1/-1;
         height: 30dvh;
-        margin-bottom: 10rem;
     }
 
     .left--view .map-text {
@@ -1241,13 +1240,6 @@ a:link {
         grid-template-columns: repeat(2, 1fr);
         padding: 0 2% 0 2%;
         margin-top: -10px;
-        width: 97%;
-    }
-
-    .right--view-header {
-        position: fixed;
-        margin-top: -10rem;
-        width: 97%;
     }
 
     .right--view article li {
