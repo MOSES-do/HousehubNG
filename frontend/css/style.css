@@ -1095,6 +1095,12 @@ a:link {
     }
 }
 
+@media (max-width:450px) {
+    .jobList-view {
+        height: 60dvh;
+    }
+}
+
 .left--view {
     grid-column: 1/7;
     grid-row: 2;
