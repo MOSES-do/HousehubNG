@@ -51,7 +51,7 @@ export default async function handlePageByHash(currentPage, page) {
 const bottomMarker = document.getElementById('bottom-marker');
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting && state.hasMore && !state.loading) {
+        if (entry.isIntersecting && state.hasMore && !state.loading && state.pageReload) {
             renderScrollLoader('morecontent_loading')
             state.curPage = curPage++;
             state.loading = true;
