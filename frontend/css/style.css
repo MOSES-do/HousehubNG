@@ -1241,12 +1241,13 @@ a:link {
         grid-template-columns: repeat(2, 1fr);
         padding: 0 2% 0 2%;
         margin-top: -10px;
+        width: 97%;
     }
 
     .right--view-header {
-        /* position: sticky; */
-        /* margin-top: -10rem; */
-        /* width: 97%; */
+        position: fixed;
+        margin-top: -10rem;
+        width: 97%;
     }
 
     .right--view article li {
