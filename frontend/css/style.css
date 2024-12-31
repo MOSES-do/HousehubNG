@@ -1092,6 +1092,7 @@ a:link {
         grid-column: 1/-1;
         height: 50dvh;
         margin-top: -30px;
+        width: 97%;
     }
 }
 
@@ -1258,7 +1259,7 @@ a:link {
 @media (max-width:550px) {
     .right--view article {
         grid-template-columns: repeat(1, 1fr);
-        /* padding: 0 10% 0 10%; */
+        padding: 0 10% 0 10%;
     }
 }
 
@@ -1266,13 +1267,6 @@ a:link {
     .right--view article {
         grid-template-columns: repeat(1, 1fr);
         padding: 0 2% 0 2%;
-    }
-}
-
-@media (max-width:380px) {
-    .right--view article {
-        grid-template-columns: repeat(1, 1fr);
-        width: 100%;
     }
 }
 
