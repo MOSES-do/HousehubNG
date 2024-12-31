@@ -1,86 +1,86 @@
-import { search_inputEl, form_location, BASE_API_URL, getData, state, resultLength, index_container, spinnerSearchEl, homeListEl } from "../common.js";
+import { search_inputEl, form_location, BASE_API_URL, getData, state, resultLength, index_container } from "../common.js";
 import navigateTo from "./Router.js";
 import renderHouseList from "./HouseList.js";
 import handlePageByHash from "./PageReload.js";
 import { urlUpdate } from "./QuerytoUrl.js";
-import renderSpinner from "./Spinner.js";
+import { renderScrollLoader } from "./Spinner.js";
+import renderInitLoad from "./Spinner.js";
 
-
-
-let curPage = state.curPage;
+let curPage = state.curPage
 
 export const submitHandler = async (e, curPage, query = "") => {
     e.preventDefault();
 
     if (!state.hasMore) return;
 
-    renderSpinner('search')
-    state.loading = false;
+    if (curPage === 1)
+        renderInitLoad('spinner--initial_search')
+
+    state.loading = true;
 
     try {
-        // console.log(query)
         const response = await fetchApi(query, curPage);
         if (response.ok) {
             // navigate to product page
             const data = state.searchHouseItems;
-
-            navigateTo("product_list");
             resultLength.textContent = state.houselist_search_result_length
+            navigateTo("product_list");
             urlUpdate(query, 'product_list')
-
             renderHouseList(data);
         } else {
             const errorData = await response.json();
             alert('Error: ' + errorData.error)
         }
+
     } catch (error) {
         console.error('Error fetching list', error)
     } finally {
-        renderSpinner('');
-        state.loading = true;
-        // console.log(state.loading);
+        if (state.curPage === 1)
+            renderInitLoad('stop')
+        state.loading = false;
     }
 }
 
 
 // infinite scroll logic for API call to load page
-export const loadMorePages = async () => {
-    document.addEventListener('DOMContentLoaded', (e) => {
-        const bottomMarker = document.getElementById('bottom-marker');
-        const observerCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // console.log('You are near the bottom of the page!');
-                    // console.log('Near bottom of the page');
-                    if (state.loading) {
-                        state.curPage = curPage++;
-                        submitHandler(e, curPage);
-                    }
-                }
-                // observer.unobserve(entry.target); //only observe on page reload once
-            });
-        };
+document.addEventListener('DOMContentLoaded', (e) => {
+    const bottomMarker = document.getElementById('bottom-marker');
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && state.hasMore && !state.loading) {
+                // console.log('You are near the bottom of the page!');
+                renderScrollLoader('morecontent_loading')
+                state.curPage = curPage++;
+                state.loading = true;
+                submitHandler(e, curPage).finally(() => {
+                    renderScrollLoader('stop')
+                });
 
-        // Options for the Intersection Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '100px',
-            threshold: 0,
-        };
 
-        // Create the Intersection Observer
-        const observer = new IntersectionObserver(observerCallback, observerOptions);
+            }
+            // observer.unobserve(entry.target); //only observe on page reload once
+        });
+    };
 
-        // Start observing the marker
-        observer.observe(bottomMarker);
-    });
-}
-loadMorePages()
+    // Options for the Intersection Observer
+    const observerOptions = {
+        root: null,
+        rootMargin: '100px',
+        threshold: 0,
+    };
+
+    // Create the Intersection Observer
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    // Start observing the marker
+    observer.observe(bottomMarker);
+});
 
 form_location.addEventListener('submit', (e) => {
+    state.searchHouseItems = [];
+    state.pageReload = false;
     const query = search_inputEl.value
-
-    submitHandler(e, curPage, query);
+    submitHandler(e, state.curPage, query);
 })
 
 
@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 // Initial data load into state
 export default async function fetchApi(query, curPage) {
-    const path = query === null ? `apartment?page=${curPage}&per_page=50&sort_by=created_at&order=desc` : `apartment?page=${curPage}&per_page=50&sort_by=created_at&order=desc&location=${query}`;
+    const path = query === null ? `apartment?page=${curPage}&per_page=10&sort_by=created_at&order=desc` : `apartment?page=${curPage}&per_page=10&sort_by=created_at&order=desc&location=${query}`;
 
     const data = await getData(`${BASE_API_URL}/${path}`)
     state.hasMore = data[0].pagination.has_more

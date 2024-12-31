@@ -10,6 +10,7 @@ let curPage = state.curPage;
 export default async function handlePageByHash(currentPage, page) {
     // Open current page in a new tab
     const hashValue = window.location.hash.substring(1);
+    state.pageReload = true;
     if (window.location.hash) {
         if (hashValue === currentPage) {
             // Get the value of the 'search' parameter
@@ -41,7 +42,7 @@ export default async function handlePageByHash(currentPage, page) {
 const bottomMarker = document.getElementById('bottom-marker');
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && state.pageReload) {
             if (state.hasMore) {
                 state.curPage = curPage++;
                 fetchMorePages();

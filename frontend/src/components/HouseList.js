@@ -1,19 +1,19 @@
 import { homeListEl } from "../common.js";
-
 const renderHouseList = (dataItems) => {
     const fragment = document.createDocumentFragment();
 
     dataItems.forEach(data => {
         const listItem = document.createElement('li');
         listItem.className = "product_box"
-
         listItem.innerHTML = `
             <figure class="recent-search--img">
                 <div class="spinner spinner--search spinner--visible"></div>
                 <img 
                     src="${data.apartment_pic}" 
                     alt="Apartment Picture" 
-                    onload="this.previousElementSibling.style.display = 'none'; this.style.display = 'block';"
+                    // onload="this.previousElementSibling.style.display = 'none'; this.style.display = 'block';"
+                    onload="this.closest('.product_box').querySelector('.spinner').style.display = 'none';"
+                    onerror="this.closest('.product_box').querySelector('.spinner').style.display = 'none';"
                     style="display: none;"
                 />
             </figure>
@@ -37,10 +37,8 @@ const renderHouseList = (dataItems) => {
             listItem.style.opacity = 1;
         });
     })
-
     // Append all new items at once to reduce layout recalculations
     homeListEl.appendChild(fragment);
-
 };
 
 export default renderHouseList;

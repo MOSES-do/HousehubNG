@@ -21,7 +21,8 @@ export const homeListEl = document.querySelector(".product_article");
 export const search_inputEl = document.querySelector('.location');
 export const form_location = document.querySelector('.search_location');
 export const resultLength = document.querySelector('.count__number');
-export const spinnerSearchEl = document.querySelector(".spinner--search");
+export const spinnerInitialSearchEl = document.getElementById("spinner--initial_search");
+export const scroll_loaderEl = document.getElementById("scroll--loader");
 // export const spinnerJobDetailsEl = document.querySelector(".spinner--job-details");
 // console.log(resultLength);
 
@@ -38,6 +39,8 @@ export const state = {
     curPage: 1,
     hasMore: true,
     loading: false,
+    isLoadingMore: false,
+    pageReload: false,
 }
 
 // -- HELPER FUNCTIONS --
