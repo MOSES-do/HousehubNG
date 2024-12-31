@@ -2,8 +2,8 @@ import fetchApi from "./Search.js";
 import renderHouseList from "./HouseList.js";
 import { state, resultLength } from "../common.js";
 import navigateTo from "./Router.js";
-import renderSpinner from "./Spinner.js";
-
+import renderInitLoad from "./Spinner.js";
+import { renderScrollLoader } from "./Spinner.js";
 
 let curPage = state.curPage;
 
@@ -16,6 +16,11 @@ export default async function handlePageByHash(currentPage, page) {
             // Get the value of the 'search' parameter
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams) {
+                if (curPage === 1)
+                    renderInitLoad('spinner--initial_search')
+
+                state.loading = true;
+
                 const query = urlParams.get('search');
                 const response = await fetchApi(query, curPage);
                 try {
@@ -27,6 +32,10 @@ export default async function handlePageByHash(currentPage, page) {
                         alert('Error: ' + errorData.error)
                     }
                 } catch (error) {
+                } finally {
+                    if (state.curPage === 1)
+                        renderInitLoad('stop')
+                    state.loading = false;
                 }
             }
         }
@@ -42,23 +51,31 @@ export default async function handlePageByHash(currentPage, page) {
 const bottomMarker = document.getElementById('bottom-marker');
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting && state.pageReload) {
-            if (state.hasMore) {
-                state.curPage = curPage++;
-                fetchMorePages();
-            }
+        if (entry.isIntersecting && state.hasMore && !state.loading) {
+            renderScrollLoader('morecontent_loading')
+            state.curPage = curPage++;
+            state.loading = true;
+            fetchMorePages().finally(() => {
+                renderScrollLoader('stop')
+            });
         }
     })
 }
 
 async function fetchMorePages() {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams) {
-        const query = urlParams.get('search')
-        const response = await fetchApi(query, curPage);
-        if (response.ok) {
-            renderHouseList(state.searchHouseItems);
+    try {
+        if (urlParams) {
+            const query = urlParams.get('search')
+            const response = await fetchApi(query, curPage);
+            if (response.ok) {
+                renderHouseList(state.searchHouseItems);
+            }
         }
+    } catch (error) {
+
+    } finally {
+        renderScrollLoader('stop')
     }
 }
 
