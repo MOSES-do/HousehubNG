@@ -1050,7 +1050,6 @@ a:link {
     height: 100dvh;
     width: 100%;
     position: relative;
-    overflow: hidden;
 }
 
 @media (max-width:786px) {
