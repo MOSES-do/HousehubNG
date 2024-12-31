@@ -1089,8 +1089,7 @@ a:link {
     .jobList-view {
         /* padding: 10px; */
         grid-row: 3;
-        grid-column: 8/-1;
-
+        grid-column: 1/-1;
         height: 50dvh;
         margin-top: -30px;
     }
