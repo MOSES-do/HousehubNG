@@ -1090,7 +1090,7 @@ a:link {
         padding: 10px;
         grid-row: 3;
         grid-column: 1/-1;
-        height: 50dvh;
+        /* height: 50dvh; */
         margin-top: -30px;
     }
 }
