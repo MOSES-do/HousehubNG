@@ -76,6 +76,7 @@ async function fetchMorePages() {
 
     } finally {
         renderScrollLoader('stop')
+        state.loading = false;
     }
 }
 
