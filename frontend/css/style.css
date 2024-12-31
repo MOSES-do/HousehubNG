@@ -1090,7 +1090,7 @@ a:link {
         padding: 10px;
         grid-row: 3;
         grid-column: 1/-1;
-        /* height: 50dvh; */
+        height: 50dvh;
         margin-top: -30px;
     }
 }
@@ -1258,7 +1258,7 @@ a:link {
 @media (max-width:550px) {
     .right--view article {
         grid-template-columns: repeat(1, 1fr);
-        padding: 0 10% 0 10%;
+        /* padding: 0 10% 0 10%; */
     }
 }
 
@@ -1313,7 +1313,7 @@ article li .recent-search--products p {
 
 /* I don figure am out, you were right about the grid layout 😂 */
 
-.left div {
+/* .left div {
     display: flex;
     align-items: center;
     width: 100%;
@@ -1324,4 +1324,4 @@ article li .recent-search--products p {
     display: grid;
     flex-basis: 35%;
     justify-items: right !important;
-}
+} */
