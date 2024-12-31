@@ -1087,12 +1087,11 @@ a:link {
 
 @media (max-width:786px) {
     .jobList-view {
-        padding: 10px;
+        /* padding: 10px;
         grid-row: 3;
         grid-column: 1/-1;
         height: 50dvh;
-        margin-top: -30px;
-        width: 97%;
+        margin-top: -30px; */
     }
 }
 
