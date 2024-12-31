@@ -1092,6 +1092,7 @@ a:link {
         grid-row: 3;
         grid-column: 1/-1;
         height: 100%;
+        margin-top: -60px;
     }
 }
 
@@ -1243,11 +1244,12 @@ a:link {
     .right--view article {
         grid-template-columns: repeat(2, 1fr);
         padding: 0 2% 0 2%;
+        margin-top: -10px;
     }
 
     .right--view-header {
         position: fixed;
-        z-index: 10;
+        /* z-index: 10; */
         margin-top: -10rem;
         width: 97%;
     }
