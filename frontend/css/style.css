@@ -1097,7 +1097,7 @@ a:link {
 
 @media (max-width:450px) {
     .jobList-view {
-        height: 60dvh;
+        height: 65dvh;
     }
 }
 
