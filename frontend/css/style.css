@@ -1244,9 +1244,9 @@ a:link {
     }
 
     .right--view-header {
-        /* position: fixed; */
-        /* margin-top: -10rem;
-        width: 97%; */
+        position: fixed;
+        /* margin-top: -10rem; */
+        /* width: 97%; */
     }
 
     .right--view article li {
