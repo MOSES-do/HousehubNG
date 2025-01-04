@@ -116,8 +116,8 @@ export async function fetchProtectedContent(token) {
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
             navBarUpdate();
-            cleanUpUrlOnRedirect('#home');
             renderDashboard();
+            cleanUpUrlOnRedirect('#home');
         } else {
             alert('Failed to fetch protected content');
         }
@@ -126,18 +126,6 @@ export async function fetchProtectedContent(token) {
         alert('Failed to fetch protected content');
     }
 }
-// export function cleanUpUrlOnRedirect() {
-//     const currentUrl = window.location.href;
-//     const hash = window.location.hash;
-
-//     if (hash === '#home') {
-//         const baseUrl = 'https://househubng.netlify.app/';
-//         if (currentUrl !== baseUrl) {
-//             history.replaceState(null, '', baseUrl);
-//         }
-//     }
-
-// }
 
 // On page refresh/open a new tab
 window.addEventListener('DOMContentLoaded', async (e) => {
