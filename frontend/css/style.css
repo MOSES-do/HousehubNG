@@ -97,7 +97,8 @@ a {
     font-size: 1.5rem;
 }
 
-.btn.sign_up {
+.btn.sign_up,
+.btn.dashbtn {
     background-color: var(--btn-line);
     padding: .8rem 2rem !important;
     font-weight: 600 !important;
@@ -110,14 +111,12 @@ figure a {
     padding: .3rem;
 }
 
-
 .nav-container {
     font-family: "Varela Round", sans-serif;
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
 }
-
 
 .bg-user {
     position: absolute;
@@ -149,8 +148,6 @@ figure a {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    padding: 0.8rem 0;
-    margin-bottom: 1rem;
 }
 
 .row {
@@ -163,7 +160,6 @@ figure a {
 
 .header__nav--links li {
     position: relative;
-    margin-top: 1.5rem;
 }
 
 .figure.logo {
@@ -188,7 +184,7 @@ figure a {
 }
 
 .logo .icon-text {
-    width: 120px;
+    width: 110px;
 }
 
 .header__nav--links li a {
@@ -203,7 +199,7 @@ figure a {
     height: 0px;
     position: absolute;
     left: 0px;
-    bottom: -25px;
+    bottom: -15px;
     background-color: var(--btn-line);
     /* transform: scaleX(0);
     transform-origin: bottom left; */

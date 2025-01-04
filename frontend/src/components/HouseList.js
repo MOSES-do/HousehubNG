@@ -1,5 +1,8 @@
 import { homeListEl } from "../common.js";
+import { handleLogout } from "../../auth/logout.js";
+
 const renderHouseList = (dataItems) => {
+
     const fragment = document.createDocumentFragment();
 
     dataItems.forEach(data => {
@@ -39,6 +42,13 @@ const renderHouseList = (dataItems) => {
     })
     // Append all new items at once to reduce layout recalculations
     homeListEl.appendChild(fragment);
+
+
+    document.body.addEventListener('click', (event) => {
+        if (event.target.classList.contains('log_out_user')) {
+            handleLogout();
+        }
+    });
 };
 
 export default renderHouseList;

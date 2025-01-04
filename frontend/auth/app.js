@@ -1,9 +1,18 @@
-// 'use strict';
+'use strict';
 import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL } from "../src/common.js"
-import renderListings from "../src/components/Listings.js";
+import navBarUpdate from "../src/components/CallToActionForm.js";
+import renderDashboard from "../src/components/Dashboard.js";
 import navigateTo from "../src/components/Router.js";
 import { state, closeForm } from "../src/common.js";
 import { closePopup } from "./call_to_action.js";
+import { cleanUpUrlOnRedirect } from "./utils.js";
+
+const userLog = JSON.parse(localStorage.getItem('userLog'));
+// On pageload check if userEmail and logState is available in localStorage
+if (userLog) {
+    state.userEmail = userLog.userEmail;
+    state.isLoggedIn = userLog.isLoggedIn;
+}
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -11,11 +20,8 @@ burger.addEventListener("click", function (e) {
     burgerThird.classList.toggle("line-3");
 });
 
-
-// fetch(url).then((res) => {
-//     return res.json();
-// }).then(data => console.log(data)).catch((err) => console.log(err))
-
+// Check if user is logged in to determine call to action form to display
+navBarUpdate();
 
 function decodeJWT(token) {
     // Split the token into its parts
@@ -32,7 +38,7 @@ function decodeJWT(token) {
 }
 
 /**======SIGN UP, LOGIN========**/
-async function handleRegistration() {
+export async function handleRegistration() {
     //Sign up FUNCTIONALITY
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-pwd').value;
@@ -55,7 +61,7 @@ async function handleRegistration() {
     }
 }
 
-async function handleLogin() {
+export async function handleLogin() {
     //LOGIN FUNCTIONALITY
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-pwd').value;
@@ -72,6 +78,7 @@ async function handleLogin() {
             localStorage.setItem('token', data.token);
             const tokenPayload = decodeJWT(data.token);
 
+            // localStorage.setItem('userName', data.token.email)
             if (tokenPayload.sub.verified === true) {
                 const token = localStorage.getItem('token');
                 fetchProtectedContent(token)
@@ -88,32 +95,8 @@ async function handleLogin() {
     }
 }
 
-// On page refresh/open a new tab
-window.addEventListener('DOMContentLoaded', async (e) => {
-    const token = localStorage.getItem('token');
 
-    const listPage = window.location.hash;
-    if (listPage === '#listings') {
-        fetchProtectedContent(token)
-    }
-});
-
-
-// On oauth redirection login strip href of er'tin befofe the hash
-function cleanUpUrlOnRedirect() {
-    const currentUrl = window.location.href;
-    const hash = window.location.hash;
-
-    if (hash === '#listings') {
-        const baseUrl = 'https://househubng.netlify.app/#listings';
-
-        if (currentUrl !== baseUrl) {
-            history.replaceState(null, '', baseUrl);
-        }
-    }
-}
-
-async function fetchProtectedContent(token) {
+export async function fetchProtectedContent(token) {
     try {
         const response = await fetch(`${BASE_API_URL}/current_user`, {
             method: 'GET',
@@ -124,15 +107,18 @@ async function fetchProtectedContent(token) {
         });
 
         if (response.ok) {
-
             const data = await response.json();
             state.userEmail = data.email;
+            localStorage.setItem('userLog', JSON.stringify({
+                'userEmail': data.email,
+                'isLoggedIn': state.isLoggedIn = true
+            }));
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            navigateTo("listings");
-            cleanUpUrlOnRedirect();
-            renderListings();
+            renderDashboard();
+            cleanUpUrlOnRedirect('#dashboard');
+            navBarUpdate();
         } else {
             alert('Failed to fetch protected content');
         }
@@ -142,20 +128,15 @@ async function fetchProtectedContent(token) {
     }
 }
 
-const submitBtn = document.querySelector('.login-btn');
-document.querySelector('.log_user').addEventListener('click', function (e) {
-    e.preventDefault();
-    //Matching strategy
-    if (e.target.classList.contains('log_in')) {
-        submitBtn.removeEventListener('click', handleRegistration)
-        submitBtn.addEventListener('click', handleLogin)
-    }
-    if (e.target.classList.contains('sign_up')) {
-        submitBtn.removeEventListener('click', handleLogin)
-        submitBtn.addEventListener('click', handleRegistration)
+// On page refresh/open a new tab
+window.addEventListener('DOMContentLoaded', async (e) => {
+    const token = localStorage.getItem('token');
+
+    const listPage = window.location.hash;
+    if (listPage === '#dashboard') {
+        fetchProtectedContent(token)
     }
 });
-
 
 //==================================== GO0gle Auth ========================================//
 document.querySelector('.g-auth').addEventListener('click', function () {
@@ -211,4 +192,8 @@ const handleOAuthCallback = async () => {
         console.error('OAuth code not found');
     }
 }
+
+
+
+
 

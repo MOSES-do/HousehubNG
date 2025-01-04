@@ -5,4 +5,5 @@ import './components/HouseList.js';
 import './components/Swiper.js'
 import './components/Router.js';
 import './components/PageReload.js';
-import './components/Listings.js';
+import './components/Dashboard.js';
+import './components/CallToActionForm.js'

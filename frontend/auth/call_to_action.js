@@ -1,21 +1,18 @@
-'use strict'
+// 'use strict'
 
 import {
-    sign_up,
-    log_in,
     log_in_form,
     container,
     closeForm,
     menu_user
 } from "../src/common.js"
-
+import navigateTo from "../src/components/Router.js";
 
 export function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");
     container.classList.toggle("overlay");
 }
-sign_up.addEventListener("click", toggleSignUpForm);
-log_in.addEventListener("click", toggleSignUpForm);
+
 menu_user.addEventListener("click", toggleSignUpForm);
 
 export function closePopup() {
@@ -24,3 +21,5 @@ export function closePopup() {
 }
 
 closeForm.addEventListener("click", closePopup);
+
+

@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 import { state } from "../src/common.js";
 
 // const article = document.getElementById('article');
@@ -17,3 +17,34 @@ const observerCallback = (entries) => {
 const observer = new IntersectionObserver(observerCallback, { threshold: 0 });
 const placeholder = document.querySelector('.placeholder');
 observer.observe(placeholder);
+
+
+// On oauth redirection login strip href of er'tin befofe the hash
+export function cleanUpUrlOnRedirect(keyword) {
+    const baseUrl = 'https://househubng.netlify.app/#listings';
+    const url = new URL(window.location.href);
+    const hasQueryParams = url.search.length > 0; // Check if there are query parameters
+    const hashMatches = url.hash === keyword;
+
+    if (hasQueryParams && hashMatches) {
+        history.replaceState(null, '', baseUrl);
+    }
+    return false; // Return false if no match is found
+}
+
+// // On oauth redirection login strip href of er'tin befofe the hash
+// export function cleanUpUrlOnRedirect() {
+//     const currentUrl = window.location.href;
+//     const hash = window.location.hash;
+
+//     if (hash === '#dashboard') {
+//         const baseUrl = 'https://househubng.netlify.app/#dashboard';
+//         if (currentUrl !== baseUrl) {
+//             history.replaceState(null, '', baseUrl);
+//         }
+//     }
+
+// }
+
+
+

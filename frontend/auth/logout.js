@@ -2,8 +2,9 @@
 import { BASE_API_URL } from "../src/common.js"
 
 // using JWT for logout validation
-async function handleLogout() {
+export async function handleLogout() {
     const token = localStorage.getItem('token');
+
     try {
         const response = await fetch(`${BASE_API_URL}/logout`, {
             method: 'POST',
@@ -15,18 +16,16 @@ async function handleLogout() {
 
         if (response.ok) {
             localStorage.removeItem('token');
-            localStorage.removeItem('userEmail');
-            alert('Logged out successfully!');
+            localStorage.removeItem('userLog');
             window.location.href = 'index.html';
         } else {
             const errorData = await response.json();
-            alert('Logout failed: ' + errorData.error);
+            console.error('Logout failed: ' + errorData.error);
             window.location.href = 'index.html';
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Logout failed!');
+        console.error('Logout failed: ' + errorData.error);
     }
 }
-document.querySelector('.log_out_user').addEventListener('click', handleLogout)
 
