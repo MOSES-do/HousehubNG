@@ -4,7 +4,7 @@ import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/Dashboard.js";
 import { state, closeForm } from "../src/common.js";
 import { closePopup } from "./call_to_action.js";
-// import { cleanUpUrlOnRedirect } from "./utils.js";
+import { cleanUpUrlOnRedirect } from "./utils.js";
 
 const userLog = JSON.parse(localStorage.getItem('userLog'));
 // On pageload check if userEmail and logState is available in localStorage
@@ -115,10 +115,9 @@ export async function fetchProtectedContent(token) {
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            // cleanUpUrlOnRedirect('#dashboard');
-            renderDashboard();
-            cleanUpUrlOnRedirect();
             navBarUpdate();
+            cleanUpUrlOnRedirect('#home');
+            renderDashboard();
         } else {
             alert('Failed to fetch protected content');
         }
@@ -127,18 +126,18 @@ export async function fetchProtectedContent(token) {
         alert('Failed to fetch protected content');
     }
 }
-export function cleanUpUrlOnRedirect() {
-    const currentUrl = window.location.href;
-    const hash = window.location.hash;
+// export function cleanUpUrlOnRedirect() {
+//     const currentUrl = window.location.href;
+//     const hash = window.location.hash;
 
-    if (hash === '#home') {
-        const baseUrl = 'https://househubng.netlify.app/';
-        if (currentUrl !== baseUrl) {
-            history.replaceState(null, '', baseUrl);
-        }
-    }
+//     if (hash === '#home') {
+//         const baseUrl = 'https://househubng.netlify.app/';
+//         if (currentUrl !== baseUrl) {
+//             history.replaceState(null, '', baseUrl);
+//         }
+//     }
 
-}
+// }
 
 // On page refresh/open a new tab
 window.addEventListener('DOMContentLoaded', async (e) => {
@@ -200,6 +199,7 @@ const handleOAuthCallback = async () => {
             }
         } catch (error) {
             console.error('Authentication error:', error);
+        } finally {
         }
     } else {
         console.error('OAuth code not found');
