@@ -131,8 +131,8 @@ export function cleanUpUrlOnRedirect() {
     const currentUrl = window.location.href;
     const hash = window.location.hash;
 
-    if (hash === '#dashboard') {
-        const baseUrl = 'https://househubng.netlify.app/#dashboard';
+    if (hash === '#home') {
+        const baseUrl = 'https://househubng.netlify.app/';
         if (currentUrl !== baseUrl) {
             history.replaceState(null, '', baseUrl);
         }
@@ -169,6 +169,7 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
+    cleanUpUrlOnRedirect();
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
     if (oauthCode)
