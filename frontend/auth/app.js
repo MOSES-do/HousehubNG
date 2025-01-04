@@ -2,10 +2,9 @@
 import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/Dashboard.js";
-import navigateTo from "../src/components/Router.js";
 import { state, closeForm } from "../src/common.js";
 import { closePopup } from "./call_to_action.js";
-import { cleanUpUrlOnRedirect } from "./utils.js";
+// import { cleanUpUrlOnRedirect } from "./utils.js";
 
 const userLog = JSON.parse(localStorage.getItem('userLog'));
 // On pageload check if userEmail and logState is available in localStorage
@@ -116,8 +115,9 @@ export async function fetchProtectedContent(token) {
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
+            // cleanUpUrlOnRedirect('#dashboard');
             renderDashboard();
-            cleanUpUrlOnRedirect('#dashboard');
+            cleanUpUrlOnRedirect();
             navBarUpdate();
         } else {
             alert('Failed to fetch protected content');
@@ -126,6 +126,18 @@ export async function fetchProtectedContent(token) {
         console.error('Error:', error);
         alert('Failed to fetch protected content');
     }
+}
+export function cleanUpUrlOnRedirect() {
+    const currentUrl = window.location.href;
+    const hash = window.location.hash;
+
+    if (hash === '#dashboard') {
+        const baseUrl = 'https://househubng.netlify.app/#dashboard';
+        if (currentUrl !== baseUrl) {
+            history.replaceState(null, '', baseUrl);
+        }
+    }
+
 }
 
 // On page refresh/open a new tab
