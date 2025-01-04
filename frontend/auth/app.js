@@ -169,7 +169,7 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
-    cleanUpUrlOnRedirect();
+    // cleanUpUrlOnRedirect();
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
     if (oauthCode)
