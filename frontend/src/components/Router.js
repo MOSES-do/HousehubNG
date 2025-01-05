@@ -1,11 +1,9 @@
 // Function to handle navigation to a specific page
-import navBarUpdate from "./CallToActionForm.js";
 export default function navigateTo(pageId) {
     // Find all pages and hide them
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
     });
-    navBarUpdate();
 
     // Show the selected page
     const targetPage = document.getElementById(pageId);

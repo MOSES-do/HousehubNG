@@ -23,12 +23,6 @@ const renderDashboard = () => {
     <p id="welcome-user">Welcome, ${data}!</p>    
     `
     userInfo.insertAdjacentHTML('beforeend', ListingItems);
-
-    document.body.addEventListener('click', (event) => {
-        if (event.target.classList.contains('log_out_user')) {
-            handleLogout();
-        }
-    });
 }
 
 export default renderDashboard;

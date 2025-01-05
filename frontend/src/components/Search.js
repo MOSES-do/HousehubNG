@@ -5,6 +5,7 @@ import handlePageByHash from "./PageReload.js";
 import { urlUpdate } from "./QuerytoUrl.js";
 import { renderScrollLoader } from "./Spinner.js";
 import renderInitLoad from "./Spinner.js";
+import navBarUpdate from "./CallToActionForm.js";
 
 let curPage = state.curPage
 
@@ -24,9 +25,10 @@ export const submitHandler = async (e, curPage, query = "") => {
             // navigate to product page
             const data = state.searchHouseItems;
             resultLength.textContent = state.houselist_search_result_length
-            navigateTo("product_list");
             urlUpdate(query, 'product_list')
+            navBarUpdate();
             renderHouseList(data);
+            navigateTo("product_list");
         } else {
             const errorData = await response.json();
             alert('Error: ' + errorData.error)
@@ -55,8 +57,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 submitHandler(e, curPage).finally(() => {
                     renderScrollLoader('stop')
                 });
-
-
             }
             // observer.unobserve(entry.target); //only observe on page reload once
         });

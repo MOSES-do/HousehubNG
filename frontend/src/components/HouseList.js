@@ -1,10 +1,10 @@
 import { homeListEl } from "../common.js";
-import { handleLogout } from "../../auth/logout.js";
+import houseListNavUpdate from "./HouseListForm.js";
+
 
 const renderHouseList = (dataItems) => {
-
+    houseListNavUpdate();
     const fragment = document.createDocumentFragment();
-
     dataItems.forEach(data => {
         const listItem = document.createElement('li');
         listItem.className = "product_box"
@@ -42,13 +42,6 @@ const renderHouseList = (dataItems) => {
     })
     // Append all new items at once to reduce layout recalculations
     homeListEl.appendChild(fragment);
-
-
-    document.body.addEventListener('click', (event) => {
-        if (event.target.classList.contains('log_out_user')) {
-            handleLogout();
-        }
-    });
 };
 
 export default renderHouseList;

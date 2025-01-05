@@ -1,17 +1,13 @@
 'use strict';
-import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL } from "../src/common.js"
+import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/Dashboard.js";
 import { state, closeForm } from "../src/common.js";
 import { closePopup } from "./call_to_action.js";
 import { cleanUpUrlOnRedirect } from "./utils.js";
-
-const userLog = JSON.parse(localStorage.getItem('userLog'));
-// On pageload check if userEmail and logState is available in localStorage
-if (userLog) {
-    state.userEmail = userLog.userEmail;
-    state.isLoggedIn = userLog.isLoggedIn;
-}
+import { handleLogout } from "./logout.js";
+import navigateTo from "../src/components/Router.js";
+import houseListNavUpdate from "../src/components/HouseListForm.js";
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -19,8 +15,6 @@ burger.addEventListener("click", function (e) {
     burgerThird.classList.toggle("line-3");
 });
 
-// Check if user is logged in to determine call to action form to display
-navBarUpdate();
 
 function decodeJWT(token) {
     // Split the token into its parts
@@ -116,6 +110,8 @@ export async function fetchProtectedContent(token) {
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
             navBarUpdate();
+            if (window.location.hash === "#product_list")
+                houseListNavUpdate();
             renderDashboard();
             cleanUpUrlOnRedirect('#home');
         } else {
@@ -147,7 +143,6 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 
-
 window.addEventListener('load', () => {
     /**
         check if url path includes callback route
@@ -156,7 +151,8 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
-    // cleanUpUrlOnRedirect();
+    // navBarUpdate();
+
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
     if (oauthCode)
@@ -196,5 +192,36 @@ const handleOAuthCallback = async () => {
 
 
 
+document.body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('log_out_user')) {
+        handleLogout();
+    }
 
+    if (event.target.classList.contains('log_in')) {
+        login_btn.removeEventListener('click', handleRegistration)
+        login_btn.addEventListener('click', handleLogin)
+    }
+    if (event.target.classList.contains('sign_up')) {
+        login_btn.removeEventListener('click', handleLogin)
+        login_btn.addEventListener('click', handleRegistration)
+    }
+
+
+    if (event.target.classList.contains('dashbtn')) {
+        renderDashboard();
+        navigateTo('dashboard');
+    }
+});
+
+
+const userLog = JSON.parse(localStorage.getItem('userLog'));
+
+// On pageload check if userEmail and logState is available in localStorage
+if (userLog) {
+    state.userEmail = userLog.userEmail;
+    state.isLoggedIn = userLog.isLoggedIn;
+    navBarUpdate();
+} else {
+    navBarUpdate();
+}
 
