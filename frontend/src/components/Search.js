@@ -5,7 +5,6 @@ import handlePageByHash from "./PageReload.js";
 import { urlUpdate } from "./QuerytoUrl.js";
 import { renderScrollLoader } from "./Spinner.js";
 import renderInitLoad from "./Spinner.js";
-import navBarUpdate from "./CallToActionForm.js";
 
 let curPage = state.curPage
 
@@ -26,7 +25,6 @@ export const submitHandler = async (e, curPage, query = "") => {
             const data = state.searchHouseItems;
             resultLength.textContent = state.houselist_search_result_length
             urlUpdate(query, 'product_list')
-            navBarUpdate();
             renderHouseList(data);
             navigateTo("product_list");
         } else {

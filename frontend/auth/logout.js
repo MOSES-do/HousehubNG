@@ -26,6 +26,7 @@ export async function handleLogout() {
     } catch (error) {
         console.error('Error:', error);
         console.error('Logout failed: ' + errorData.error);
+        window.location.href = 'index.html';
     }
 }
 

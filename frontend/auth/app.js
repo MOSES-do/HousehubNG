@@ -88,7 +88,6 @@ export async function handleLogin() {
     }
 }
 
-
 export async function fetchProtectedContent(token) {
     try {
         const response = await fetch(`${BASE_API_URL}/current_user`, {
@@ -151,8 +150,6 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
-    // navBarUpdate();
-
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
     if (oauthCode)
