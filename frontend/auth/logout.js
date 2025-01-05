@@ -21,11 +21,15 @@ export async function handleLogout() {
         } else {
             const errorData = await response.json();
             console.error('Logout failed: ' + errorData.error);
+            localStorage.removeItem('token');
+            localStorage.removeItem('userLog');
             window.location.href = 'index.html';
         }
     } catch (error) {
         console.error('Error:', error);
         console.error('Logout failed: ' + errorData.error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('userLog');
         window.location.href = 'index.html';
     }
 }
