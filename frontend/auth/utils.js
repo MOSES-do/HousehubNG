@@ -48,10 +48,10 @@ export function generalUrlRedirectCleanUp(keyword) {
 }
 
 //
-// window.addEventListener('DOMContentLoaded', () => {
-//     const hash = window.location.hash;
-//     generalUrlRedirectCleanUp(hash);
-// })
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+    generalUrlRedirectCleanUp(hash);
+})
 
 
 

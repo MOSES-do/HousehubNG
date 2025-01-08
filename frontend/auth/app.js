@@ -110,19 +110,19 @@ export async function fetchProtectedContent(token) {
             if (window.location.hash === "#home") {
                 navBarUpdate();
                 oauthUrlRedirectCleanUp('home');
-                generalUrlRedirectCleanUp(hash)
+                // generalUrlRedirectCleanUp(hash)
             }
 
             // on login thru product page
             if (window.location.hash === "#product_list") {
                 houseListNavUpdate();
-                generalUrlRedirectCleanUp(hash)
+                // generalUrlRedirectCleanUp(hash)
             }
 
             // On page reload
             if (window.location.hash === "#dashboard") {
                 renderDashboard();
-                generalUrlRedirectCleanUp(hash)
+                // generalUrlRedirectCleanUp(hash)
             }
 
         } else {
