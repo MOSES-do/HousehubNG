@@ -10,7 +10,7 @@ function navBarUpdate(isLoggedIn = state.isLoggedIn) {
     if (isLoggedIn && userEmail) {
         const LogDashBoard = `
             <button class="btn log_out_user">Log OUT</button>
-            <button class="btn dashbtn">Dashboard</button>
+            <button class="btn btn-dash dashbtn">Dashboard</button>
             `
         callToActionForm.innerHTML = LogDashBoard;
     } else {
@@ -28,5 +28,3 @@ function navBarUpdate(isLoggedIn = state.isLoggedIn) {
 }
 
 export default navBarUpdate;
-
-

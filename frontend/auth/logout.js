@@ -1,5 +1,6 @@
 'use strict'
-import { BASE_API_URL } from "../src/common.js"
+import { BASE_API_URL, state } from "../src/common.js"
+import navBarUpdate from "../src/components/CallToActionForm.js";
 
 // using JWT for logout validation
 export async function handleLogout() {
@@ -17,20 +18,26 @@ export async function handleLogout() {
         if (response.ok) {
             localStorage.removeItem('token');
             localStorage.removeItem('userLog');
-            window.location.href = 'index.html';
+            state.isLoggedIn = false;
+            if (!state.isLoggedIn)
+                if (window.location.hash === "#home") {
+                    navBarUpdate();
+                } else {
+                    window.location.href = 'index.html';
+                }
         } else {
             const errorData = await response.json();
             console.error('Logout failed: ' + errorData.error);
             localStorage.removeItem('token');
             localStorage.removeItem('userLog');
-            window.location.href = 'index.html';
+            // window.location.href = 'index.html';
         }
     } catch (error) {
         console.error('Error:', error);
         console.error('Logout failed: ' + errorData.error);
         localStorage.removeItem('token');
         localStorage.removeItem('userLog');
-        window.location.href = 'index.html';
+        // window.location.href = 'index.html';
     }
 }
 

@@ -51,8 +51,8 @@ function houseListNavUpdate() {
 
     if (state.isLoggedIn && userEmail) {
         logUser.innerHTML = `
-         <button class="btn log_out_user">Log OUT</button>
-            <button class="btn dashbtn">Dashboard</button>
+            <button class="btn log_out_user">Log OUT</button>
+            <button class="btn btn-dash dashbtn">Dashboard</button>
         `
     } else {
         logUser.innerHTML = `
@@ -66,3 +66,5 @@ function houseListNavUpdate() {
 }
 
 export default houseListNavUpdate;
+
+
