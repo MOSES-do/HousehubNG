@@ -1,9 +1,9 @@
 import { homeListEl } from "../common.js";
 import houseListNavUpdate from "./HouseListForm.js";
 
-
 const renderHouseList = (dataItems) => {
     houseListNavUpdate();
+
     const fragment = document.createDocumentFragment();
     dataItems.forEach(data => {
         const listItem = document.createElement('li');

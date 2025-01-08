@@ -20,11 +20,11 @@ observer.observe(placeholder);
 
 
 // On oauth redirection login strip href of er'tin befofe the hash
-export function cleanUpUrlOnRedirect(keyword) {
-    const baseUrl = `https://househubng.netlify.app/#${keyword}`
+export function oauthUrlRedirectCleanUp(keyword) {
+    const baseUrl = `https://househubng.netlify.app/${keyword}`
     const url = new URL(window.location.href);
     const hasQueryParams = url.search.length > 0; // Check if there are query parameters
-    const hashMatches = url.hash === keyword;
+    const hashMatches = url.hash.slice(1) === keyword;
 
     if (hasQueryParams && hashMatches) {
         history.replaceState(null, '', baseUrl);
@@ -32,17 +32,34 @@ export function cleanUpUrlOnRedirect(keyword) {
     return false; // Return false if no match is found
 }
 
-export function generalRedirectCleanUP(keyword) {
-    const baseUrl = `https://househubng.netlify.app/#${keyword}`
+
+export function generalUrlRedirectCleanUp(keyword) {
+    const baseUrl = `https://househubng.netlify.app/${keyword}`;
     const url = new URL(window.location.href);
-    const hasQueryParams = url.search.length === 0; // Check if there are query parameters
-    const hashMatches = url.hash === keyword;
 
-    if (hasQueryParams && hashMatches) {
+    const hasNoQueryParams = url.search.length === 0;
+    const hasHtml = url.pathname.includes('.html');
+
+    if (hasHtml && hasNoQueryParams) {
         history.replaceState(null, '', baseUrl);
+        return true;
     }
-    return false; // Return false if no match is found
+    return false;
 }
+
+
+
+// //
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash;
+    // setTimeout(() => {
+    generalUrlRedirectCleanUp(hash);
+    // }, 20000);
+    console.log('i\'m working')
+})
+
+
+
 
 
 

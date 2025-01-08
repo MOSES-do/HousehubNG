@@ -4,7 +4,7 @@ import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/Dashboard.js";
 import { state, closeForm } from "../src/common.js";
 import { closePopup } from "./call_to_action.js";
-import { cleanUpUrlOnRedirect, generalRedirectCleanUP } from "./utils.js";
+import { oauthUrlRedirectCleanUp, generalUrlRedirectCleanUp } from "./utils.js";
 import { handleLogout } from "./logout.js";
 import navigateTo from "../src/components/Router.js";
 import houseListNavUpdate from "../src/components/HouseListForm.js";
@@ -105,24 +105,24 @@ export async function fetchProtectedContent(token) {
                 'userEmail': data.email,
                 'isLoggedIn': state.isLoggedIn = true
             }));
-
-            // navigate to listing page
+            const hash = window.location.hash;
             closeForm.addEventListener("click", closePopup());
             if (window.location.hash === "#home") {
                 navBarUpdate();
-                cleanUpUrlOnRedirect('#home');
-                generalRedirectCleanUP('#home');
+                oauthUrlRedirectCleanUp('home');
+                generalUrlRedirectCleanUp(hash)
             }
 
-
+            // on login thru product page
             if (window.location.hash === "#product_list") {
                 houseListNavUpdate();
-                generalRedirectCleanUP('#product_list');
+                generalUrlRedirectCleanUp(hash)
             }
 
+            // On page reload
             if (window.location.hash === "#dashboard") {
                 renderDashboard();
-                generalRedirectCleanUP('#dashboard');
+                generalUrlRedirectCleanUp(hash)
             }
 
         } else {

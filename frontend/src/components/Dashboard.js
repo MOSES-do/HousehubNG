@@ -1,5 +1,4 @@
 import { state, userInfo } from "../common.js";
-import { handleLogout } from "../../auth/logout.js";
 
 window.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
@@ -15,6 +14,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
 const renderDashboard = () => {
+
+
     userInfo.innerHTML = '';
     const data = state.userEmail;
 

@@ -8,7 +8,7 @@ function houseListNavUpdate() {
     nav.innerHTML = `
           <nav class="header_nav">
                     <figure class="logo">
-                        <a href="index.html">
+                        <a href="">
                             <span><img class="icon" src="/assets/logo.png" alt="logo-icon"></span>
                             <span><img class="icon-text" src="/assets/icon-1.png" alt="logo-text"></span>
                         </a>

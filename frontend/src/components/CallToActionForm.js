@@ -2,8 +2,6 @@ import { callToActionForm } from "../common.js";
 import { toggleSignUpForm } from "../../auth/call_to_action.js";
 import { state } from "../common.js";
 
-
-
 function navBarUpdate(isLoggedIn = state.isLoggedIn) {
     const userEmail = state.userEmail;
     if (isLoggedIn && userEmail) {
@@ -26,5 +24,6 @@ function navBarUpdate(isLoggedIn = state.isLoggedIn) {
     }
 
 }
+
 
 export default navBarUpdate;

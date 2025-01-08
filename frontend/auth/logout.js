@@ -1,6 +1,7 @@
 'use strict'
 import { BASE_API_URL, state } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
+import { generalUrlRedirectCleanUp } from "./utils.js";
 
 // Deleting JWT upon logout request
 export async function handleLogout() {
@@ -38,6 +39,7 @@ export async function handleLogout() {
         localStorage.removeItem('token');
         localStorage.removeItem('userLog');
         window.location.href = 'index.html';
+    } finally {
     }
 }
 
