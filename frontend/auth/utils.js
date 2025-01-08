@@ -21,9 +21,21 @@ observer.observe(placeholder);
 
 // On oauth redirection login strip href of er'tin befofe the hash
 export function cleanUpUrlOnRedirect(keyword) {
-    const baseUrl = 'https://househubng.netlify.app/#home';
+    const baseUrl = `https://househubng.netlify.app/#${keyword}`
     const url = new URL(window.location.href);
     const hasQueryParams = url.search.length > 0; // Check if there are query parameters
+    const hashMatches = url.hash === keyword;
+
+    if (hasQueryParams && hashMatches) {
+        history.replaceState(null, '', baseUrl);
+    }
+    return false; // Return false if no match is found
+}
+
+export function generalRedirectCleanUP(keyword) {
+    const baseUrl = `https://househubng.netlify.app/#${keyword}`
+    const url = new URL(window.location.href);
+    const hasQueryParams = url.search.length === 0; // Check if there are query parameters
     const hashMatches = url.hash === keyword;
 
     if (hasQueryParams && hashMatches) {

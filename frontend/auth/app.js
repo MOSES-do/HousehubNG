@@ -4,7 +4,7 @@ import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/Dashboard.js";
 import { state, closeForm } from "../src/common.js";
 import { closePopup } from "./call_to_action.js";
-import { cleanUpUrlOnRedirect } from "./utils.js";
+import { cleanUpUrlOnRedirect, generalRedirectCleanUP } from "./utils.js";
 import { handleLogout } from "./logout.js";
 import navigateTo from "../src/components/Router.js";
 import houseListNavUpdate from "../src/components/HouseListForm.js";
@@ -108,8 +108,11 @@ export async function fetchProtectedContent(token) {
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            if (window.location.hash === "#home")
+            if (window.location.hash === "#home") {
                 navBarUpdate();
+                cleanUpUrlOnRedirect('#home');
+            }
+
 
             if (window.location.hash === "#product_list")
                 houseListNavUpdate();
@@ -117,7 +120,8 @@ export async function fetchProtectedContent(token) {
             if (window.location.hash === "#dashboard")
                 renderDashboard();
 
-            cleanUpUrlOnRedirect('#home');
+            generalRedirectCleanUP('#dashboard');
+
         } else {
             alert('Failed to fetch protected content');
         }
