@@ -108,14 +108,14 @@ export async function fetchProtectedContent(token) {
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            // if (window.location.hash === "#home")
-            navBarUpdate();
+            if (window.location.hash === "#home")
+                navBarUpdate();
 
-            // if (window.location.hash === "#product_list")
-            houseListNavUpdate();
+            if (window.location.hash === "#product_list")
+                houseListNavUpdate();
 
-            // if (window.location.hash === "#dashboard")
-            renderDashboard();
+            if (window.location.hash === "#dashboard")
+                renderDashboard();
 
             cleanUpUrlOnRedirect('#home');
         } else {
