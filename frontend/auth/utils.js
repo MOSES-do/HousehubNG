@@ -21,7 +21,7 @@ observer.observe(placeholder);
 
 // On oauth redirection login strip href of er'tin befofe the hash
 export function cleanUpUrlOnRedirect(keyword) {
-    const baseUrl = 'https://househubng.netlify.app';
+    const baseUrl = 'https://househubng.netlify.app#home';
     const url = new URL(window.location.href);
     const hasQueryParams = url.search.length > 0; // Check if there are query parameters
     const hashMatches = url.hash === keyword;

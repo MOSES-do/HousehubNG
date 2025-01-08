@@ -5,9 +5,9 @@ import { state } from "../common.js";
 
 
 function navBarUpdate(isLoggedIn = state.isLoggedIn) {
-    callToActionForm.innerHTML = '';
     const userEmail = state.userEmail;
     if (isLoggedIn && userEmail) {
+        callToActionForm.innerHTML = '';
         const LogDashBoard = `
             <button class="btn log_out_user">Log OUT</button>
             <button class="btn btn-dash dashbtn">Dashboard</button>

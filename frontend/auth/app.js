@@ -212,7 +212,6 @@ document.body.addEventListener('click', (event) => {
 
 
 const userLog = JSON.parse(localStorage.getItem('userLog'));
-
 // On pageload check if userEmail and logState is available in localStorage
 if (userLog) {
     state.userEmail = userLog.userEmail;
@@ -221,4 +220,3 @@ if (userLog) {
 } else {
     navBarUpdate();
 }
-

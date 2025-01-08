@@ -5,7 +5,6 @@ function houseListNavUpdate() {
     const userEmail = state.userEmail;
 
     const nav = document.querySelector('.nav-container.product_list');
-    nav.innerHTML = "";
     nav.innerHTML = `
           <nav class="header_nav">
                     <figure class="logo">
@@ -41,8 +40,8 @@ function houseListNavUpdate() {
                         </svg>
                     </span>
                     <div class="log_user1">
-                        <!--<button class="btn log_in  log_out_user">Log OUT</button>
-                        <button class="btn dashbtn">Dashboard</button>--!>
+                        <button class="btn log_in btn-up">Log in</button>
+                        <button class="btn btn-up sign_up ">Sign up</button>
                     </div>
                         </nav>
                         `
@@ -50,6 +49,7 @@ function houseListNavUpdate() {
 
 
     if (state.isLoggedIn && userEmail) {
+        nav.innerHTML = "";
         logUser.innerHTML = `
             <button class="btn log_out_user">Log OUT</button>
             <button class="btn btn-dash dashbtn">Dashboard</button>

@@ -2,7 +2,7 @@
 import { BASE_API_URL, state } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
 
-// using JWT for logout validation
+// Deleting JWT upon logout request
 export async function handleLogout() {
     const token = localStorage.getItem('token');
 
@@ -40,4 +40,7 @@ export async function handleLogout() {
         window.location.href = 'index.html';
     }
 }
+
+
+
 
