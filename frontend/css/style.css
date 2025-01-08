@@ -219,6 +219,7 @@ figure a {
 .header__nav--links li a {
     color: var(--dark);
     font-size: 1.6rem;
+    position: relative;
 }
 
 .header__nav--links a::after {
@@ -228,7 +229,7 @@ figure a {
     height: 0px;
     position: absolute;
     left: 0px;
-    bottom: -15px;
+    bottom: -13px;
     background-color: var(--btn-line);
     /* transform: scaleX(0);
     transform-origin: bottom left; */

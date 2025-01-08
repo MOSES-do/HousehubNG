@@ -20,7 +20,7 @@ function houseListNavUpdate() {
                         <div class="hamburger--line"></div>
                     </div>
 
-                    <ul class="header__nav--links row">
+                    <ul class="header__nav--links">
                         <li><a href="#" class="header__nav--links__link" role="tab" id="tab1">Buy</a>
                         </li>
                         <li><a href="#" class="header__nav--links__link" role="tab" id="tab2">Rent</a>
