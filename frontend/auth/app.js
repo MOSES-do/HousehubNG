@@ -111,16 +111,19 @@ export async function fetchProtectedContent(token) {
             if (window.location.hash === "#home") {
                 navBarUpdate();
                 cleanUpUrlOnRedirect('#home');
+                generalRedirectCleanUP('#home');
             }
 
 
-            if (window.location.hash === "#product_list")
+            if (window.location.hash === "#product_list") {
                 houseListNavUpdate();
+                generalRedirectCleanUP('#product_list');
+            }
 
-            if (window.location.hash === "#dashboard")
+            if (window.location.hash === "#dashboard") {
                 renderDashboard();
-
-            generalRedirectCleanUP('#dashboard');
+                generalRedirectCleanUP('#dashboard');
+            }
 
         } else {
             alert('Failed to fetch protected content');
