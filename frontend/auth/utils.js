@@ -47,13 +47,11 @@ export function generalUrlRedirectCleanUp(keyword) {
     return false;
 }
 
-
-
-// 
-window.addEventListener('DOMContentLoaded', () => {
-    const hash = window.location.hash;
-    generalUrlRedirectCleanUp(hash);
-})
+//
+// window.addEventListener('DOMContentLoaded', () => {
+//     const hash = window.location.hash;
+//     generalUrlRedirectCleanUp(hash);
+// })
 
 
 
