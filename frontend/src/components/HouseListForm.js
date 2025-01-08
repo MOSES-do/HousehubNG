@@ -3,8 +3,8 @@ import { state } from "../common.js";
 
 function houseListNavUpdate() {
     const userEmail = state.userEmail;
-
     const nav = document.querySelector('.nav-container.product_list');
+    nav.innerHTML = "";
     nav.innerHTML = `
           <nav class="header_nav">
                     <figure class="logo">
@@ -42,23 +42,22 @@ function houseListNavUpdate() {
                     <div class="log_user1">
                         <button class="btn log_in btn-up">Log in</button>
                         <button class="btn btn-up sign_up ">Sign up</button>
-                    </div>
+                        </div>
                         </nav>
                         `
     const logUser = document.querySelector('.log_user1');
 
 
     if (state.isLoggedIn && userEmail) {
-        nav.innerHTML = "";
         logUser.innerHTML = `
-            <button class="btn log_out_user">Log OUT</button>
-            <button class="btn btn-dash dashbtn">Dashboard</button>
-        `
+                            <button class="btn log_out_user">Log OUT</button>
+                            <button class="btn btn-dash dashbtn">Dashboard</button>
+                            `
     } else {
         logUser.innerHTML = `
-         <button class="btn log_in log btn-up">Log in</button>
-         <button class="btn btn-up sign sign_up ">Sign up</button>
-        `
+                            <button class="btn log_in log btn-up">Log in</button>
+                            <button class="btn btn-up sign sign_up ">Sign up</button>
+                            `
         // event listeners must be re-attached to dynamically added elements 
         document.querySelector('.sign').addEventListener('click', toggleSignUpForm);
         document.querySelector('.log').addEventListener('click', toggleSignUpForm);
@@ -66,5 +65,6 @@ function houseListNavUpdate() {
 }
 
 export default houseListNavUpdate;
+
 
 
