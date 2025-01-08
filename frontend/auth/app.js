@@ -108,10 +108,15 @@ export async function fetchProtectedContent(token) {
 
             // navigate to listing page
             closeForm.addEventListener("click", closePopup());
-            navBarUpdate();
+            if (window.location.hash === "#home")
+                navBarUpdate();
+
             if (window.location.hash === "#product_list")
                 houseListNavUpdate();
-            renderDashboard();
+
+            if (window.location.hash === "#dashboard")
+                renderDashboard();
+
             cleanUpUrlOnRedirect('#home');
         } else {
             alert('Failed to fetch protected content');
