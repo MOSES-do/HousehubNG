@@ -199,7 +199,7 @@ document.body.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('dashbtn')) {
         const data = state.userEmail;
-        // renderDashboard(data);
+        renderDashboard();
         renderUserDetails(data)
         renderAnnouncement();
         navigateTo('dashboard');
@@ -213,3 +213,5 @@ if (userLog) {
 } else {
     navBarUpdate();
 }
+
+

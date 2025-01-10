@@ -332,23 +332,23 @@
             <section class="dashboard_tiles">
                 <div class="tab">
                     <ul class="tab_nav--links operations_tab-container">
-                        <li class="operations_tab operations_tab--1 " data-tab="1">
+                        <li class="operations_tab operations_tab--1" data-tool_tip="dashboard" data-tab="1">
                             <a class="operations_link" data-tool-tip="Dashboard" role="tab" id="tab1"> <i
                                     class="fa-solid fa-house opt_icon"></i></i> </a>
                             <span class="role_hide">Dashboard</span>
                         </li>
-                        <li class="operations_tab operations_tab--2" data-tab="2">
+                        <li class="operations_tab operations_tab--2" data-tool_tip="listings" data-tab="2">
                             <a class="operations_link" role="tab" id="tab2" data-tool-tip="Listings"><i
                                     class="fa-solid fa-users-gear opt_icon" aria-label="Listings"></i>
                             </a>
                             <span class="role_hide">Listings</span>
                         </li>
-                        <li class="operations_tab operations_tab--3" data-tab="3">
+                        <li class="operations_tab operations_tab--3" data-tool_tip="subscription" data-tab="3">
                             <a class="operations_link" data-tool-tip="Subscription" role="tab" id="tab3"><i
                                     class="fa-solid fa-credit-card opt_icon"></i></a>
                             <span class="role_hide">Subscription</span>
                         </li>
-                        <li class="operations_tab operations_tab--4" data-tab="4">
+                        <li class="operations_tab operations_tab--4" data-tool_tip="profile" data-tab="4">
                             <a class="operations_link" data-tool-tip="Profile" role="tab" id="tab4"><i
                                     class="fa-solid fa-user opt_icon "></i></a>
                             <span class="role_hide tab4_icon_span">Profile</span>
@@ -403,9 +403,10 @@
                         fugit dolorum tempore doloribus debitis molestias est eligendi nisi. Accusamus fugit, architecto
                         provident ipsum sunt consequuntur cupiditate odit repudiandae eum aliquam nihil debitis nisi
                         laudantium dicta quam magni omnis obcaecati repellendus totam!</div>
-                    <div class="operations_content operations_content--2">B</div>
-                    <div class="operations_content operations_content--3">C</div>
-                    <div class="operations_content operations_content--4">D</div>
+                    <div id="listings" class="operation_listing operations_content operations_content--2 page">B</div>
+                    <div id="subscription" class="operation_subscription operations_content operations_content--3 page">
+                        C</div>
+                    <div id="profile" class="operation_profile operations_content operations_content--4 page">D</div>
                 </div>
 
                 <!-- User details -->
@@ -422,8 +423,6 @@
                     cupiditate placeat consequuntur.
                 </div> -->
         </section>
-
-    </div>
     </div>
 
     <div class="login-form hidden">

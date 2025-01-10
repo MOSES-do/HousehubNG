@@ -8,7 +8,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 });
 export const renderAnnouncement = () => {
-    console.log('Yyeye')
     alert.innerHTML = '';
     const Announce = `
             <div> Announcements Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde ipsam dolor labore

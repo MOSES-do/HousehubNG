@@ -33,6 +33,10 @@ export const userLog = JSON.parse(localStorage.getItem('userLog'));
 
 export const userInfo = document.querySelector(".user-info");
 export const alert = document.querySelector(".alert");
+export const userSummary = document.querySelector('.user_summary');
+export const listing = document.querySelector('.operation_listing');
+export const subscription = document.querySelector('.operation_subscription');
+export const profile = document.querySelector('.operation_profile');
 export const BASE_API_URL = 'https://aceme.tech/api/v1';
 
 // -- STATE --

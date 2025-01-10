@@ -1,5 +1,4 @@
 import { userInfo, state } from "../../common.js";
-
 window.addEventListener('DOMContentLoaded', async () => {
     const listPage = window.location.hash;
     // On page refresh/open a new tab

@@ -6,5 +6,10 @@ import './components/HouseListForm.js';
 import './components/Swiper.js'
 import './components/Router.js';
 import './components/PageReload.js';
-import './components/DashBoard/Dashboard.js';
 import './components/CallToActionForm.js'
+import './components/DashBoard/Announcement.js';
+import './components/DashBoard/Dashboard.js';
+import './components/DashBoard/Listing.js';
+import './components/DashBoard/Profile.js';
+import './components/DashBoard/Subscription.js';
+import './components/DashBoard/UserInfo.js';

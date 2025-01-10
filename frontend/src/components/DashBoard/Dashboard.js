@@ -1,4 +1,4 @@
-import { state } from "../../common.js";
+import { state, userSummary } from "../../common.js";
 
 window.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
@@ -11,15 +11,15 @@ window.addEventListener('DOMContentLoaded', async () => {
         }
         // On page refresh/open a new tab
         const data = state.userEmail;
-        renderDashboard(data)
+        renderDashboard()
     }
 });
 
 
-const renderDashboard = (data) => {
-    // userInfo.innerHTML = '';
+const renderDashboard = () => {
+    userSummary.innerHTML = '';
 
-    // const ListingItems = `   
+    const ListingItems = `   
     //     <div class="">
     //     Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus quas laboriosam dolorum odio.
     //                     Modi debitis dolorem error exercitationem placeat harum quas facere vitae! Amet voluptatibus,
@@ -1222,7 +1222,7 @@ const renderDashboard = (data) => {
     //                     ullam libero doloremque excepturi beatae reiciendis omnis itaque soluta!
     // </div> 
     // `
-    // userInfo.insertAdjacentHTML('afterbegin', ListingItems);
+    userSummary.insertAdjacentHTML('afterbegin', ListingItems);
 }
 
 export default renderDashboard;
