@@ -1,5 +1,5 @@
 import { toggleSignUpForm } from "../../auth/call_to_action.js";
-import { state } from "../common.js";
+import { state, close_form } from "../common.js";
 
 function houseListNavUpdate() {
     const userEmail = state.userEmail;
@@ -62,6 +62,24 @@ function houseListNavUpdate() {
         document.querySelector('.sign').addEventListener('click', toggleSignUpForm);
         document.querySelector('.log').addEventListener('click', toggleSignUpForm);
     }
+
+
+    close_form.addEventListener('click', () => {
+        document.querySelector('.mobile-form').classList.remove('reveal');
+        logUser.classList.remove("reveal");
+    })
+
+    document.body.addEventListener('click', (event) => {
+        if (event.target.classList.contains('sign_up')) {
+            document.querySelector('.mobile-form').classList.remove('reveal');
+            logUser.classList.remove("reveal");
+        }
+
+        if (event.target.classList.contains('log_in')) {
+            document.querySelector('.mobile-form').classList.remove('reveal');
+            logUser.classList.remove("reveal");
+        }
+    })
 
     document.querySelector('.bg-user1').addEventListener('click', () => {
         if (window.location.hash === "#product_list") {

@@ -13,6 +13,8 @@ export const callToActionForm1 = document.querySelector(".log_user1");
 export const user_auth = document.querySelector(".user_auth");
 export const container = document.querySelector(".container");
 export const closeForm = document.querySelector(".close");
+export const close_form = document.querySelector(".close_form");
+
 export const menu_user = document.querySelector(".bg-user");
 
 export const submit_email = document.querySelector(".pwd-reset");

@@ -6,7 +6,7 @@ import {
     closeForm,
     menu_user,
     callToActionForm,
-    callToActionForm1
+    close_form
 } from "../src/common.js"
 
 export function toggleSignUpForm() {
@@ -20,13 +20,7 @@ export function toggleSignUpForm() {
 menu_user.addEventListener('click', () => {
     document.querySelector('.mobile-form').classList.toggle('reveal');
     callToActionForm.classList.toggle("reveal");
-
-    // if (window.location.hash === "#product_list") {
-    //     document.querySelector('.mobile-form').classList.toggle('reveal');
-    //     callToActionForm1.classList.toggle("reveal");
-    // }
 })
-
 
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
@@ -35,6 +29,13 @@ document.addEventListener('keydown', function (e) {
     }
 })
 
+
+
+
+close_form.addEventListener('click', () => {
+    document.querySelector('.mobile-form').classList.remove('reveal');
+    callToActionForm.classList.remove("reveal");
+})
 
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {

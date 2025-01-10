@@ -1,6 +1,5 @@
 'use strict';
-import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn, userLog, state, closeForm } from "../src/common.js"
-import { toggleSignUpForm } from "./call_to_action.js";
+import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn, userLog, state, callToActionForm, closeForm } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/DashBoard/Dashboard.js";
 import { renderUserDetails } from "../src/components/DashBoard/UserInfo.js";
@@ -191,10 +190,21 @@ document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('log_in')) {
         login_btn.removeEventListener('click', handleRegistration)
         login_btn.addEventListener('click', handleLogin)
+
+        if (window.location.hash === "#home") {
+            document.querySelector('.mobile-form').classList.remove('reveal');
+            callToActionForm.classList.remove("reveal");
+        }
     }
+
     if (event.target.classList.contains('sign_up')) {
         login_btn.removeEventListener('click', handleLogin)
         login_btn.addEventListener('click', handleRegistration)
+
+        if (window.location.hash === "#home") {
+            document.querySelector('.mobile-form').classList.remove('reveal');
+            callToActionForm.classList.remove("reveal");
+        }
     }
 
     if (event.target.classList.contains('dashbtn')) {
@@ -203,6 +213,9 @@ document.body.addEventListener('click', (event) => {
         renderUserDetails(data)
         renderAnnouncement();
         navigateTo('dashboard');
+
+        document.querySelector('.mobile-form').classList.remove('reveal');
+        callToActionForm.classList.remove("reveal");
     }
 });
 
