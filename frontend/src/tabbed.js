@@ -16,7 +16,10 @@ tabsContainer.addEventListener("click", function (e) {
     tabsContent.forEach((c) => c.classList.remove("operations_content--active"));
 
     // Activate tab
-    clicked.classList.add("operations_tab--active");
+    if (window.innerWidth > 600) {
+        clicked.classList.add("operations_tab--active");
+    }
+
 
     // Activate content area
     document

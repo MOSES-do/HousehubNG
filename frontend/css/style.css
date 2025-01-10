@@ -1560,6 +1560,10 @@ article li .recent-search--products p {
     color: white;
 }
 
+.tab ul li a:active {
+    color: inherit;
+}
+
 .tab ul li:not(:last-child) {
     padding-bottom: 15px;
 }
@@ -1619,11 +1623,6 @@ article li .recent-search--products p {
     width: 100%;
 }
 
-@media (max-width:600px) {
-    .operations_tab--active {
-        transform: translateX(0) !important;
-    }
-}
 
 .operations_content {
     display: none;
