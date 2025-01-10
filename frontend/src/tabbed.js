@@ -16,7 +16,10 @@ tabsContainer.addEventListener("click", function (e) {
     tabsContent.forEach((c) => c.classList.remove("operations_content--active"));
 
     // Activate tab
-    if (window.innerWidth > 600) {
+    if (window.innerWidth <= 600) {
+        tabs.forEach((t) => t.classList.remove("operations_tab--active"));
+        tabs.forEach((t) => t.classList.add("shrink"));
+    } else {
         clicked.classList.add("operations_tab--active");
     }
 

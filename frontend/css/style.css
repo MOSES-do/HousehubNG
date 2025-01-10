@@ -1425,7 +1425,7 @@ article li .recent-search--products p {
     }
 
     .operations_tab--2 {
-        margin-left: 20px !important;
+        /* margin-left: 20px !important; */
     }
 
     .gb_Jc {
@@ -1622,6 +1622,12 @@ article li .recent-search--products p {
 .operations_tab--active {
     transform: translateX(10%);
     width: 100%;
+}
+
+@media (max-width: 600px) {
+    .operations_tab .operations_tab--active.shrink {
+        transform: translateX(0) !important;
+    }
 }
 
 
