@@ -17,6 +17,8 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 
 const renderDashboard = () => {
+    const data = state.userEmail;
+    renderUserDetails(data);
     userSummary.innerHTML = '';
 
     const ListingItems = `   

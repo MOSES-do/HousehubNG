@@ -1,7 +1,11 @@
-import { listing, getData, BASE_API_URL } from "../../common.js";
+import { listing, getData, state, BASE_API_URL } from "../../common.js";
+import { renderUserDetails } from "./UserInfo.js";
 
 
 const renderListing = () => {
+    const data = state.userEmail;
+    renderUserDetails(data);
+
     listing.innerHTML = '';
     async function fetchApi(query, curPage) {
         const path = query === null ? `apartment?page=${curPage}&per_page=10&sort_by=created_at&order=desc` : `apartment?page=${curPage}&per_page=10&sort_by=created_at&order=desc&location=${query}`;
