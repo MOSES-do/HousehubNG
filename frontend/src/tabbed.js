@@ -6,8 +6,10 @@ import renderDashboard from './components/DashBoard/Dashboard.js'
 import renderListing from './components/DashBoard/Listing.js'
 import { renderUserDetails } from './components/DashBoard/UserInfo.js'
 import { state } from './common.js'
-const tabs = document.querySelectorAll(".operations_tab");
+
+
 const tabsContainer = document.querySelector(".operations_tab-container");
+const tabs = document.querySelectorAll(".operations_tab");
 const tabsContent = document.querySelectorAll(".operations_content");
 
 ///////////////////////////////////////
