@@ -245,10 +245,30 @@ a:link {
     height: 2.8px;
 }
 
+.mobile-form {
+    display: none;
+}
+
 @media (max-width: 1080px) {
     .header_nav {
         padding-right: 30px;
     }
+}
+
+.mobile-form.reveal {
+    display: block;
+}
+
+.log_user.reveal,
+.log_user1.reveal {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    gap: 15px;
+    right: 0;
+    z-index: 2;
+    top: 120px;
+    margin-right: 90px;
 }
 
 @media (max-width: 980px) {

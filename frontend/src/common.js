@@ -10,6 +10,7 @@ export const login_btn = document.querySelector(".login-btn");
 export const log_in_form = document.querySelector(".login-form");
 export const callToActionForm = document.querySelector(".log_user")
 export const callToActionForm1 = document.querySelector(".log_user1");
+export const user_auth = document.querySelector(".user_auth");
 export const container = document.querySelector(".container");
 export const closeForm = document.querySelector(".close");
 export const menu_user = document.querySelector(".bg-user");

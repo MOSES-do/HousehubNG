@@ -1,5 +1,6 @@
 'use strict';
 import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn, userLog, state, closeForm } from "../src/common.js"
+import { toggleSignUpForm } from "./call_to_action.js";
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/DashBoard/Dashboard.js";
 import { renderUserDetails } from "../src/components/DashBoard/UserInfo.js";
@@ -196,7 +197,6 @@ document.body.addEventListener('click', (event) => {
         login_btn.addEventListener('click', handleRegistration)
     }
 
-
     if (event.target.classList.contains('dashbtn')) {
         const data = state.userEmail;
         renderDashboard();
@@ -205,6 +205,7 @@ document.body.addEventListener('click', (event) => {
         navigateTo('dashboard');
     }
 });
+
 
 if (userLog) {
     state.userEmail = userLog.userEmail;

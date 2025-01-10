@@ -39,6 +39,7 @@ export async function handleLogout() {
             if (!state.isLoggedIn)
                 if (window.location.hash === "#home") {
                     navBarUpdate();
+                    // mobileNavBarUpdate();
                 } else {
                     redirectToHomePage();
                 }
