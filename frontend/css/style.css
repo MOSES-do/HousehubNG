@@ -1380,18 +1380,21 @@ article li .recent-search--products p {
 .dashboard_tiles .tab {
     grid-row: 2/13;
     grid-column: 1/1;
+
+    height: 81dvh;
 }
 
 @media (max-width:600px) {
     .dashboard_tiles .tab {
         grid-row: 13 !important;
         grid-column: 1/-1 !important;
+        height: 0 !important;
     }
 
     .dashboard_tiles .operations {
         grid-row: 3/12 !important;
         grid-column: 1/-1 !important;
-        height: 76dvh !important;
+        height: 65dvh !important;
     }
 
 
@@ -1401,6 +1404,7 @@ article li .recent-search--products p {
         justify-content: space-between !important;
         padding: 0 3rem 0 3rem !important;
         align-content: center !important;
+        margin-top: -5.5rem !important;
     }
 
     .dashboard_tiles .tab_nav--links .log_out_user-box {
@@ -1427,10 +1431,23 @@ article li .recent-search--products p {
         display: none !important;
     }
 
+    .dashboard_tiles .alerts .alert {
+        /* display: none; */
+    }
+
     .dashboard_tiles .alerts {
         grid-template-columns: 0px 60px 1fr !important;
     }
 }
+
+@media (max-width:520px) {
+    .dashboard_tiles .operations {
+        grid-row: 3/12 !important;
+        grid-column: 1/-1 !important;
+        height: 95% !important;
+    }
+}
+
 
 .dashboard_tiles .tab.expanded {
     /* on click */
@@ -1447,11 +1464,7 @@ article li .recent-search--products p {
     grid-template-rows: auto;
 }
 
-@media (max-width:794px) {
-    .dashboard_tiles .alerts .alert {
-        /* display: none; */
-    }
-}
+
 
 .dashboard_tiles .alerts .alert {
     font-size: 1.5rem;
@@ -1608,6 +1621,12 @@ article li .recent-search--products p {
     width: 100%;
 }
 
+@media (max-width:600px) {
+    .operations_tab--active {
+        transform: translateX(0) !important;
+    }
+}
+
 .operations_content {
     display: none;
     padding: 2rem;
@@ -1635,6 +1654,12 @@ article li .recent-search--products p {
     transform: scale(1);
     visibility: hidden;
     transition: transform ease-out 150ms, bottom ease-out 150ms;
+}
+
+@media (max-width:600px) {
+    .operations_link:after {
+        display: none;
+    }
 }
 
 .operations_link.expanded:after {
