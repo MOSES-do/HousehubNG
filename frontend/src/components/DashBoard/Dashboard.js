@@ -1,4 +1,5 @@
 import { state, userSummary } from "../../common.js";
+import { renderUserDetails } from "./UserInfo.js";
 
 window.addEventListener('DOMContentLoaded', async () => {
     const token = localStorage.getItem('token');
