@@ -16,6 +16,23 @@ const tabsContent = document.querySelectorAll(".operations_content");
 // Tabbed component
 const data = state.userEmail;
 
+const destinationRoutes = () => {
+    renderAnnouncement();
+    renderUserDetails(data);
+
+    if (window.location.hash === "#dashboard")
+        renderDashboard();
+
+    if (window.location.hash === "#listings")
+        renderListing();
+
+    if (window.location.hash === "#subscription")
+        renderSubscription();
+
+    if (window.location.hash === "#profile")
+        renderProfile();
+}
+
 function manageDashboardActiveTabs() {
     tabsContainer.addEventListener("click", function (e) {
         e.preventDefault();
@@ -34,23 +51,10 @@ function manageDashboardActiveTabs() {
         if (window.innerWidth <= 600) {
             tabs.forEach((t) => t.classList.remove("operations_tab--active"));
             tabs.forEach((t) => t.classList.add("shrink"));
+            destinationRoutes();
         } else {
             clicked.classList.add("operations_tab--active");
-
-            renderAnnouncement();
-            renderUserDetails(data);
-
-            if (window.location.hash === "#dashboard")
-                renderDashboard();
-
-            if (window.location.hash === "#listings")
-                renderListing();
-
-            if (window.location.hash === "#subscription")
-                renderSubscription();
-
-            if (window.location.hash === "#profile")
-                renderProfile();
+            destinationRoutes();
         }
 
         // Activate content area
