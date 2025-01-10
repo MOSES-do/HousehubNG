@@ -1,13 +1,14 @@
 'use strict';
-import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn } from "../src/common.js"
+import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn, userLog, state, closeForm } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
-import renderDashboard from "../src/components/Dashboard.js";
-import { state, closeForm } from "../src/common.js";
+import renderDashboard from "../src/components/DashBoard/Dashboard.js";
+import { renderUserDetails } from "../src/components/DashBoard/UserInfo.js";
 import { closePopup } from "./call_to_action.js";
-import { oauthUrlRedirectCleanUp, generalUrlRedirectCleanUp } from "./utils.js";
+import { oauthUrlRedirectCleanUp } from "./utils.js";
 import { handleLogout } from "./logout.js";
 import navigateTo from "../src/components/Router.js";
 import houseListNavUpdate from "../src/components/HouseListForm.js";
+import { renderAnnouncement } from "../src/components/DashBoard/Announcement.js";
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -107,24 +108,14 @@ export async function fetchProtectedContent(token) {
             }));
             const hash = window.location.hash;
             closeForm.addEventListener("click", closePopup());
-            if (window.location.hash === "#home") {
+            if (hash === "#home") {
                 navBarUpdate();
                 oauthUrlRedirectCleanUp('home');
-                // generalUrlRedirectCleanUp(hash)
             }
 
             // on login thru product page
-            if (window.location.hash === "#product_list") {
+            if (hash === "#product_list")
                 houseListNavUpdate();
-                // generalUrlRedirectCleanUp(hash)
-            }
-
-            // On page reload
-            if (window.location.hash === "#dashboard") {
-                renderDashboard();
-                // generalUrlRedirectCleanUp(hash)
-            }
-
         } else {
             alert('Failed to fetch protected content');
         }
@@ -133,16 +124,6 @@ export async function fetchProtectedContent(token) {
         alert('Failed to fetch protected content');
     }
 }
-
-// On page refresh/open a new tab
-window.addEventListener('DOMContentLoaded', async (e) => {
-    const token = localStorage.getItem('token');
-
-    const listPage = window.location.hash;
-    if (listPage === '#dashboard') {
-        fetchProtectedContent(token)
-    }
-});
 
 //==================================== GO0gle Auth ========================================//
 document.querySelector('.g-auth').addEventListener('click', function () {
@@ -217,14 +198,14 @@ document.body.addEventListener('click', (event) => {
 
 
     if (event.target.classList.contains('dashbtn')) {
-        renderDashboard();
+        const data = state.userEmail;
+        // renderDashboard(data);
+        renderUserDetails(data)
+        renderAnnouncement();
         navigateTo('dashboard');
     }
 });
 
-
-const userLog = JSON.parse(localStorage.getItem('userLog'));
-// On pageload check if userEmail and logState is available in localStorage
 if (userLog) {
     state.userEmail = userLog.userEmail;
     state.isLoggedIn = userLog.isLoggedIn;

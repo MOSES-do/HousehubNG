@@ -6,5 +6,5 @@ import './components/HouseListForm.js';
 import './components/Swiper.js'
 import './components/Router.js';
 import './components/PageReload.js';
-import './components/Dashboard.js';
+import './components/DashBoard/Dashboard.js';
 import './components/CallToActionForm.js'

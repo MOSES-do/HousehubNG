@@ -105,18 +105,15 @@ a {
     font-size: 1.5rem;
 }
 
+.tab__nav--links>li {
+    cursor: pointer;
+}
+
 .btn.log_out_user {
     font-size: 1.5rem;
 }
 
-.btn.log_out_user,
-.btn.dashbtn {
-    /* margin-left: 50px;
-    position: absolute;
-    right: -100px;
-    top: 0; */
-    /* padding: .8rem 1rem !important; */
-}
+
 
 ul li a,
 figure a {
@@ -279,7 +276,8 @@ a:link {
         top: 5%;
     }
 
-    .logo {
+    #home .logo,
+    #product_list .logo {
         position: absolute;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -1346,6 +1344,310 @@ article li .recent-search--products address {
 article li .recent-search--products p {
     padding-top: 10px;
 }
+
+
+/* DASHBOARD */
+.dashboard_tiles {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100dvh;
+
+    background-color: #edf2f3f3;
+}
+
+.gb_Jc {
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.NMm5M {
+    fill: white;
+}
+
+.alerts .tab_reveal,
+.alerts .logo {
+    margin-top: 8px;
+}
+
+.dashboard_tiles .tab,
+.dashboard_tiles .alerts {
+    grid-row: 1;
+}
+
+.dashboard_tiles .tab {
+    grid-row: 2/13;
+    grid-column: 1/1;
+}
+
+@media (max-width:600px) {
+    .dashboard_tiles .tab {
+        grid-row: 13 !important;
+        grid-column: 1/-1 !important;
+    }
+
+    .dashboard_tiles .operations {
+        grid-row: 3/12 !important;
+        grid-column: 1/-1 !important;
+        height: 76dvh !important;
+    }
+
+
+    .dashboard_tiles .tab_nav--links {
+        display: flex;
+        width: 100% !important;
+        justify-content: space-between !important;
+        padding: 0 3rem 0 3rem !important;
+        align-content: center !important;
+    }
+
+    .dashboard_tiles .tab_nav--links .log_out_user-box {
+        margin-top: 0rem !important;
+    }
+
+    .operations_tab {
+        margin-top: 15px;
+    }
+
+    .operations_tab--active {
+        width: 0 !important;
+    }
+
+    .dashboard_tiles .tab_nav--links li:not(:last-child) {
+        margin-bottom: 0rem !important;
+    }
+
+    .operations_tab--2 {
+        margin-left: 20px !important;
+    }
+
+    .gb_Jc {
+        display: none !important;
+    }
+
+    .dashboard_tiles .alerts {
+        grid-template-columns: 0px 60px 1fr !important;
+    }
+}
+
+.dashboard_tiles .tab.expanded {
+    /* on click */
+    grid-column: 1/4;
+    width: 180px;
+}
+
+.dashboard_tiles .alerts {
+    grid-column: 1/-1;
+    padding: 0.8rem 2.1rem 0.8rem 0.5rem;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 70px 60px 1fr;
+    grid-template-rows: auto;
+}
+
+@media (max-width:794px) {
+    .dashboard_tiles .alerts .alert {
+        /* display: none; */
+    }
+}
+
+.dashboard_tiles .alerts .alert {
+    font-size: 1.5rem;
+}
+
+.dashboard_tiles .operations {
+    grid-row: 3/-1;
+    grid-column: 2/-1;
+    overflow-y: auto;
+    margin: 0 2rem;
+
+    height: 81dvh;
+    background-color: #fafbfcf3;
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+    border-start-start-radius: 20px;
+    border-start-end-radius: 20px;
+}
+
+.dashboard_tiles .operations.expanded {
+    /* onclick */
+    grid-column: 4/-1;
+}
+
+.dashboard_tiles .alerts .alert div {
+    background-color: var(--btn-line);
+    height: 100%;
+    border-end-end-radius: 10px;
+    border-end-start-radius: 10px;
+    border-start-start-radius: 10px;
+    border-start-end-radius: 10px;
+    padding: 1rem;
+}
+
+.dashboard_tiles .user-info {
+    padding: 1.5rem;
+    grid-row: 2;
+    grid-column: 2/-1;
+    margin: 0 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard_tiles .user-info.expanded {
+    /* on click */
+    grid-column: 4/-1;
+}
+
+.dashboard_tiles .tab_nav--links {
+    padding: 1.8rem;
+    background-color: red;
+}
+
+.dashboard_tiles .tab_nav--links li {
+    cursor: pointer;
+}
+
+.dashboard_tiles .tab_nav--links .log_out_user-box {
+    margin-top: 30.5rem;
+
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-weight: 900;
+}
+
+.dashboard_tiles .tab_nav--links li:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+.tab_nav--links .role_hide {
+    display: none;
+}
+
+.tab_nav--links .role_hide.role_reveal {
+    display: inline;
+}
+
+.opt_icon {
+    position: relative;
+    font-size: 18px;
+}
+
+
+.tab ul li {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: white;
+}
+
+.tab ul li:not(:last-child) {
+    padding-bottom: 15px;
+}
+
+.tab4_icon_span {
+    margin-left: 6px;
+    font-size: 1.3rem;
+}
+
+.user-info #welcome-user {
+    font-size: 1.9rem;
+    font-weight: 900;
+}
+
+.operations_tab--1::before {
+    background-color: #0095da;
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-left: -7px;
+}
+
+.operations_tab--2::before {
+    background-color: #006760;
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-left: -6px;
+}
+
+.operations_tab--3::before {
+    background-color: #fe9900;
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-left: -7px;
+}
+
+.operations_tab--4::before {
+    background-color: #fe00a9;
+    position: absolute;
+    content: '';
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    margin-left: -10px;
+}
+
+.operations_tab--active {
+    transform: translateX(10%);
+    width: 100%;
+}
+
+.operations_content {
+    display: none;
+    padding: 2rem;
+}
+
+.operations_content--active {
+    display: block;
+}
+
+.operations_link[data-tool-tip] {
+    position: relative;
+}
+
+.operations_link:after {
+    content: attr(data-tool-tip);
+    display: block;
+    position: absolute;
+    background-color: #3b3a3a;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    bottom: 10%;
+    left: 0;
+    white-space: nowrap;
+    transform: scale(1);
+    visibility: hidden;
+    transition: transform ease-out 150ms, bottom ease-out 150ms;
+}
+
+.operations_link.expanded:after {
+    display: none;
+}
+
+.operations_link:hover:after {
+    visibility: visible;
+    left: 150%;
+}
+
+
+
 
 /* I don figure am out, you were right about the grid layout 😂 */
 

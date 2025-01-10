@@ -26,11 +26,13 @@ export const form_location = document.querySelector('.search_location');
 export const resultLength = document.querySelector('.count__number');
 export const spinnerInitialSearchEl = document.getElementById("spinner--initial_search");
 export const scroll_loaderEl = document.getElementById("scroll--loader");
+export const userLog = JSON.parse(localStorage.getItem('userLog'));
+
 // export const spinnerJobDetailsEl = document.querySelector(".spinner--job-details");
 // console.log(resultLength);
 
 export const userInfo = document.querySelector(".user-info");
-
+export const alert = document.querySelector(".alert");
 export const BASE_API_URL = 'https://aceme.tech/api/v1';
 
 // -- STATE --
@@ -58,3 +60,5 @@ export const getData = async (url) => {
         throw error;
     }
 }
+
+

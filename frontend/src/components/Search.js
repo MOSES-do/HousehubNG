@@ -82,7 +82,7 @@ form_location.addEventListener('submit', (e) => {
 })
 
 
-/* Function to get current data when a new tab of same * page is opened
+/* Function to get API data when a new tab of same * page is opened
 *  Check if there's a hash in the URL
 */
 window.addEventListener('DOMContentLoaded', async () => {

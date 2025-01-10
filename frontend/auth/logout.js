@@ -1,8 +1,15 @@
 'use strict'
 import { BASE_API_URL, state } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
+import navigateTo from "../src/components/Router.js";
 import { generalUrlRedirectCleanUp } from "./utils.js";
 
+
+
+const redirectToHomePage = () => {
+    navBarUpdate()
+    navigateTo('home')
+}
 // Deleting JWT upon logout request
 export async function handleLogout() {
     const token = localStorage.getItem('token');
@@ -24,24 +31,24 @@ export async function handleLogout() {
                 if (window.location.hash === "#home") {
                     navBarUpdate();
                 } else {
-                    window.location.href = 'index.html';
+                    redirectToHomePage();
                 }
         } else {
             const errorData = await response.json();
             console.error('Logout failed: ' + errorData.error);
-            localStorage.removeItem('token');
-            localStorage.removeItem('userLog');
-            window.location.href = 'index.html';
         }
     } catch (error) {
         console.error('Error:', error);
         console.error('Logout failed: ' + errorData.error);
+    } finally {
+        // remove .html from url object
         localStorage.removeItem('token');
         localStorage.removeItem('userLog');
-        window.location.href = 'index.html';
-    } finally {
+        redirectToHomePage();
     }
 }
+
+// mace36381 @gmail.com
 
 
 
