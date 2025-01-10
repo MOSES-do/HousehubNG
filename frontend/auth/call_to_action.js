@@ -21,17 +21,17 @@ menu_user.addEventListener('click', () => {
     document.querySelector('.mobile-form').classList.toggle('reveal');
     callToActionForm.classList.toggle("reveal");
 
-    if (window.location.hash === "#product_list")
-        callToActionForm1.classList.toggle("reveal");
+    // if (window.location.hash === "#product_list") {
+    //     document.querySelector('.mobile-form').classList.toggle('reveal');
+    //     callToActionForm1.classList.toggle("reveal");
+    // }
 })
+
 
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         document.querySelector('.mobile-form').classList.remove('reveal');
         callToActionForm.classList.remove("reveal");
-
-        if (window.location.hash === "#product_list")
-            callToActionForm1.classList.remove("reveal");
     }
 })
 

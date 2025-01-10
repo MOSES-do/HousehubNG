@@ -30,7 +30,7 @@ function houseListNavUpdate() {
                         <li><a href="#" class="header__nav--links__link" role="tab" id="tab4">News & Insights</a>
                         </li>
                     </ul>
-                    <span class="bg-user">
+                    <span class="bg-user1">
                         <svg data-testid="icon-user" class="menu-user" viewBox="0 0 24 24"
                             style="display: inline-block; width: 1em; height: 1em; font-size: 24px; fill: #d72228;"
                             role="img" aria-label="User avatar" focusable="false">
@@ -62,6 +62,20 @@ function houseListNavUpdate() {
         document.querySelector('.sign').addEventListener('click', toggleSignUpForm);
         document.querySelector('.log').addEventListener('click', toggleSignUpForm);
     }
+
+    document.querySelector('.bg-user1').addEventListener('click', () => {
+        if (window.location.hash === "#product_list") {
+            document.querySelector('.mobile-form').classList.toggle('reveal');
+            logUser.classList.toggle("reveal");
+        }
+    })
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            document.querySelector('.mobile-form').classList.remove('reveal');
+            logUser.classList.remove("reveal");
+        }
+    })
 }
 
 export default houseListNavUpdate;

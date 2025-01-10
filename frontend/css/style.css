@@ -130,7 +130,8 @@ figure a {
     position: relative;
 }
 
-.bg-user {
+.bg-user,
+.bg-user1 {
     position: absolute;
     left: 95%;
     transform: translate(-95%, -95%);
@@ -138,7 +139,8 @@ figure a {
     display: none;
 }
 
-.bg-user::before {
+.bg-user::before,
+.bg-user1::before {
     content: "";
     position: absolute;
     background-color: #000;
@@ -304,7 +306,8 @@ a:link {
         top: 50%;
     }
 
-    .bg-user {
+    .bg-user,
+    .bg-user1 {
         display: block;
         cursor: pointer;
     }
