@@ -1,4 +1,4 @@
-import { userInfo, state } from "../../common.js";
+import { userInfo, state, msg_count, notify_count } from "../../common.js";
 window.addEventListener('DOMContentLoaded', async () => {
     const listPage = window.location.hash;
     // On page refresh/open a new tab
@@ -11,11 +11,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 export const renderUserDetails = (data) => {
     userInfo.innerHTML = '';
+    msg_count.innerHTML = '';
+    notify_count.innerHTML = '';
 
-    const ListingItems = `   
-        <p id="welcome-user">Welcome, ${data}!</p>
-         <h2 class="post">Post a property</h2>
-    `
+    const ListingItems = `
+    <span class="user_name_salutation">
+        <span>Good Afternoon🧰</span>
+        <p id="welcome-user"> ${data}!</p>
+    </span>   
+       `
+    msg_count.innerHTML = '2'
+    notify_count.innerHTML = '10'
     userInfo.insertAdjacentHTML('afterbegin', ListingItems);
 }
 

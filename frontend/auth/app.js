@@ -214,7 +214,7 @@ document.body.addEventListener('click', (event) => {
         const data = state.userEmail;
         renderDashboard();
         renderUserDetails(data)
-        renderAnnouncement();
+        // renderAnnouncement();
         navigateTo('dashboard');
 
         // close cta when user navigates to dashboard

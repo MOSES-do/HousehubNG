@@ -1,5 +1,5 @@
 import navigateTo from "./components/Router.js";
-import { renderAnnouncement } from './components/DashBoard/Announcement.js'
+// import { renderAnnouncement } from './components/DashBoard/Announcement.js'
 import renderSubscription from './components/DashBoard/Subscription.js'
 import renderProfile from './components/DashBoard/Profile.js'
 import renderDashboard from './components/DashBoard/Dashboard.js'
@@ -17,7 +17,7 @@ const tabsContent = document.querySelectorAll(".operations_content");
 const data = state.userEmail;
 
 const destinationRoutes = () => {
-    renderAnnouncement();
+    // renderAnnouncement();
     renderUserDetails(data);
 
     if (window.location.hash === "#dashboard")
@@ -92,7 +92,7 @@ function pageVariables(tabNum, pageHash, comp) {
 }
 
 function onPageReload() {
-    renderAnnouncement();
+    // renderAnnouncement();
     renderUserDetails(data);
 
     if (window.location.hash === "#listings") {
