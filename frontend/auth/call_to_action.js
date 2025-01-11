@@ -6,15 +6,16 @@ import {
     closeForm,
     menu_user,
     callToActionForm,
-    close_form
+    close_form,
+    state
 } from "../src/common.js"
+import { renderUserDetails, renderUserDetailsNav } from "../src/components/DashBoard/UserInfo.js";
 
 export function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");
     container.classList.toggle("overlay");
     document.querySelector('.logo').style.visibility = "hidden";
 }
-
 
 // cta mobile view 
 menu_user.addEventListener('click', () => {
@@ -50,4 +51,37 @@ document.addEventListener('keydown', function (e) {
     }
 })
 
+
+// dashbord navbar
+const openMobileSidebar = document.querySelector('.bg-user2');
+const overlay_mobile = document.getElementById('overlay-mobile');
+const mobileNavBar = document.querySelector('.mobile_side__nav');
+const closeMobileSideBar = document.querySelector('.cancel');
+
+
+
+// Open Sidebar
+openMobileSidebar.addEventListener('click', function () {
+    const data = state.userEmail;
+
+    mobileNavBar.classList.add('open');
+    overlay_mobile.classList.add('show');
+    closeMobileSideBar.style.display = "block"
+
+    renderUserDetailsNav(data)
+});
+
+// Close Sidebar
+closeMobileSideBar.addEventListener('click', function () {
+    mobileNavBar.classList.remove('open');
+    overlay_mobile.classList.remove('show');
+    closeMobileSideBar.style.display = "none"
+});
+
+// Close Sidebar When Clicking on Overlay
+overlay_mobile.addEventListener('click', function () {
+    mobileNavBar.classList.remove('open');
+    overlay_mobile.classList.remove('show');
+    closeMobileSideBar.style.display = "none"
+});
 

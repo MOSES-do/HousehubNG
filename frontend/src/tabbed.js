@@ -118,19 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const tabExpandBtn = document.querySelector('.tab_reveal')
 tabExpandBtn.addEventListener('click', () => {
-    // tabExpandBtn.classList.toggle('bg_hide');
-    const tab = document.querySelector('.dashboard_tiles .tab');
-    tab.classList.toggle('expanded');
+    const dashBoardHome = document.querySelector('.dashboard_tiles');
+    dashBoardHome.classList.toggle('expanded')
+    // const tab = document.querySelector('.dashboard_tiles .tab');
+    // tab.classList.toggle('expanded');
 
-    const operations = document.querySelector('.dashboard_tiles .operations');
-    operations.classList.toggle('expanded');
+    // const operations = document.querySelector('.dashboard_tiles .operations');
+    // operations.classList.toggle('expanded');
 
-    const userInfo = document.querySelector('.dashboard_tiles .user-info');
-    userInfo.classList.toggle('expanded');
+    // const userInfo = document.querySelector('.dashboard_tiles .user-info');
+    // userInfo.classList.toggle('expanded');
 
     const tabDescription = document.querySelectorAll('.tab_nav--links .role_hide');
     tabDescription.forEach((c) => c.classList.toggle("role_reveal"));
 
-    const tooltip = document.querySelectorAll('.operations_link');
-    tooltip.forEach((t) => t.classList.toggle("expanded"))
+    // const tooltip = document.querySelectorAll('.operations_link');
+    // tooltip.forEach((t) => t.classList.toggle("expanded"))
 })
