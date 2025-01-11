@@ -187,10 +187,12 @@ document.body.addEventListener('click', (event) => {
         handleLogout();
     }
 
+
     if (event.target.classList.contains('log_in')) {
         login_btn.removeEventListener('click', handleRegistration)
         login_btn.addEventListener('click', handleLogin)
 
+        // close cta when login button is pressed
         if (window.location.hash === "#home") {
             document.querySelector('.mobile-form').classList.remove('reveal');
             callToActionForm.classList.remove("reveal");
@@ -201,6 +203,7 @@ document.body.addEventListener('click', (event) => {
         login_btn.removeEventListener('click', handleLogin)
         login_btn.addEventListener('click', handleRegistration)
 
+        // close cta when signup button is pressed
         if (window.location.hash === "#home") {
             document.querySelector('.mobile-form').classList.remove('reveal');
             callToActionForm.classList.remove("reveal");
@@ -214,6 +217,7 @@ document.body.addEventListener('click', (event) => {
         renderAnnouncement();
         navigateTo('dashboard');
 
+        // close cta when user navigates to dashboard
         document.querySelector('.mobile-form').classList.remove('reveal');
         callToActionForm.classList.remove("reveal");
     }

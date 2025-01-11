@@ -16,21 +16,11 @@ export function toggleSignUpForm() {
 }
 
 
-// mobile view
+// cta mobile view 
 menu_user.addEventListener('click', () => {
     document.querySelector('.mobile-form').classList.toggle('reveal');
     callToActionForm.classList.toggle("reveal");
 })
-
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-        document.querySelector('.mobile-form').classList.remove('reveal');
-        callToActionForm.classList.remove("reveal");
-    }
-})
-
-
-
 
 close_form.addEventListener('click', () => {
     document.querySelector('.mobile-form').classList.remove('reveal');
@@ -45,7 +35,6 @@ document.addEventListener('keydown', function (e) {
     }
 })
 
-
 export function closePopup() {
     log_in_form.classList.add("hidden");
     container.classList.remove("overlay");
@@ -53,5 +42,12 @@ export function closePopup() {
 }
 
 closeForm.addEventListener("click", closePopup);
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        document.querySelector('.mobile-form').classList.remove('reveal');
+        callToActionForm.classList.remove("reveal");
+    }
+})
 
 

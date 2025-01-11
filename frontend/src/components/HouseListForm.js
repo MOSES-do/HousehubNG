@@ -64,11 +64,13 @@ function houseListNavUpdate() {
     }
 
 
+    // close cta form on handle click
     close_form.addEventListener('click', () => {
         document.querySelector('.mobile-form').classList.remove('reveal');
         logUser.classList.remove("reveal");
     })
 
+    // close cta form when sign up or login button is clicked
     document.body.addEventListener('click', (event) => {
         if (event.target.classList.contains('sign_up')) {
             document.querySelector('.mobile-form').classList.remove('reveal');
@@ -81,6 +83,7 @@ function houseListNavUpdate() {
         }
     })
 
+    // toggle cta in mobile view with user icon
     document.querySelector('.bg-user1').addEventListener('click', () => {
         if (window.location.hash === "#product_list") {
             document.querySelector('.mobile-form').classList.toggle('reveal');
@@ -88,6 +91,7 @@ function houseListNavUpdate() {
         }
     })
 
+    // close cta when escape key is pressed
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             document.querySelector('.mobile-form').classList.remove('reveal');

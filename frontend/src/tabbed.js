@@ -116,8 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
     onPageReload();
 })
 
-
-document.querySelector('.tab_reveal').addEventListener('click', () => {
+const tabExpandBtn = document.querySelector('.tab_reveal')
+tabExpandBtn.addEventListener('click', () => {
+    // tabExpandBtn.classList.toggle('bg_hide');
     const tab = document.querySelector('.dashboard_tiles .tab');
     tab.classList.toggle('expanded');
 
