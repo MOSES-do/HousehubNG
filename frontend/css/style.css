@@ -1417,7 +1417,7 @@ article li .recent-search--products p {
     .dashboard_tiles .operations {
         grid-row: 2/12 !important;
         grid-column: 1/-1 !important;
-        height: 65dvh !important;
+        height: 78dvh !important;
         margin: 0 0.5rem !important;
     }
 
