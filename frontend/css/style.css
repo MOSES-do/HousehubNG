@@ -1575,7 +1575,7 @@ article li .recent-search--products p {
 .dashboard_tiles .tab_nav--links {
     padding: 1.2rem;
     background-color: var(--swiper-theme-color);
-    height: 87.85dvh;
+    height: 100%;
     margin-left: 3px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
@@ -1976,12 +1976,11 @@ article li .recent-search--products p {
 .mobile_side__nav {
     position: fixed;
 
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 1.6rem;
     font-weight: 500;
-    position: absolute;
     top: 0;
     right: -300px;
     color: var(--light-dark);
@@ -2104,9 +2103,9 @@ article li .recent-search--products p {
 }
 
 @media (max-width:906px) {
-    .mobile_side__nav {
+    /* .mobile_side__nav {
         display: flex;
-    }
+    } */
 
     .bg-user2 {
         display: block !important;
