@@ -2,7 +2,7 @@
 import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn, userLog, state, callToActionForm, closeForm } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/DashBoard/Dashboard.js";
-import { renderUserDetails } from "../src/components/DashBoard/UserInfo.js";
+import { renderUserDetails, renderUserDetailsNav } from "../src/components/DashBoard/UserInfo.js";
 import { closePopup } from "./call_to_action.js";
 import { oauthUrlRedirectCleanUp } from "./utils.js";
 import { handleLogout } from "./logout.js";
@@ -214,6 +214,7 @@ document.body.addEventListener('click', (event) => {
         const data = state.userEmail;
         renderDashboard();
         renderUserDetails(data)
+        renderUserDetailsNav(data)
         // renderAnnouncement();
         navigateTo('dashboard');
 

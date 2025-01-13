@@ -7,9 +7,8 @@ import {
     menu_user,
     callToActionForm,
     close_form,
-    state
 } from "../src/common.js"
-import { renderUserDetails, renderUserDetailsNav } from "../src/components/DashBoard/UserInfo.js";
+
 
 export function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");
@@ -62,13 +61,9 @@ const closeMobileSideBar = document.querySelector('.cancel');
 
 // Open Sidebar
 openMobileSidebar.addEventListener('click', function () {
-    const data = state.userEmail;
-
     mobileNavBar.classList.add('open');
     overlay_mobile.classList.add('show');
     closeMobileSideBar.style.display = "block"
-
-    renderUserDetailsNav(data)
 });
 
 // Close Sidebar

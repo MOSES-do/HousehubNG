@@ -5,6 +5,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (listPage === "#dashboard") {
         const data = state.userEmail;
         renderUserDetails(data)
+        renderUserDetailsNav(data)
     }
 });
 
