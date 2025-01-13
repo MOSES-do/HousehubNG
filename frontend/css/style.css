@@ -1520,36 +1520,54 @@ article li .recent-search--products p {
 @media (max-width:600px) {
     .dashboard_tiles .user-info .board_accordion {
         min-width: 0px;
+        flex-basis: 0%;
     }
 
     .dashboard_tiles .user-info .search-container {
         margin-left: -15px;
     }
-
-    .dashboard_tiles .user-info .logo {
-        margin-left: -50px;
-    }
 }
 
-@media (max-width:362px) {
+@media (max-width:385px) {
     .dashboard_tiles .user-info .search-container {
-        display: none;
+        /* display: none; */
     }
 
     .dashboard_tiles .user-info .bg-user2 {
-        margin-left: 20px !important;
+        order: 0;
     }
 
     .dashboard_tiles .user-info .user_notifications .logo {
-        margin-left: 100px;
+        margin-left: 140px;
+        display: none;
     }
 
     .dashboard_tiles .user-info .user_notifications .icon-text {
-        display: block;
+        /* display: block; */
+        display: none;
         margin-left: -30px;
     }
 
 
+}
+
+@media (max-width:344px) {
+    .dashboard_tiles .user-info .search-container {
+        width: 250px;
+        margin-left: -25px;
+    }
+}
+
+@media (max-width:329px) {
+    .dashboard_tiles .user-info .search-container {
+        width: 240px;
+    }
+}
+
+@media (max-width:314px) {
+    .dashboard_tiles .user-info .search-container {
+        width: 230px;
+    }
 }
 
 @media (max-width:688px) {
