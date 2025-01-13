@@ -1519,12 +1519,10 @@ article li .recent-search--products p {
 }
 
 @media (max-width:600px) {
+
     .dashboard_tiles .user-info .board_accordion {
         min-width: 0px;
         flex-basis: 0%;
-    }
-
-    .dashboard_tiles .user-info .search-container {
         margin-left: -15px;
     }
 }
@@ -1571,6 +1569,13 @@ article li .recent-search--products p {
 @media (max-width:329px) {
     .dashboard_tiles .user-info .search-container {
         width: 240px;
+        margin-left: -25px !important;
+    }
+}
+
+@media (max-width:329px) {
+    .dashboard_tiles .user-info .search-container .search-icon {
+        margin-left: -10px !important;
     }
 }
 
@@ -1701,7 +1706,12 @@ article li .recent-search--products p {
     }
 
     .dashboard_tiles .user-info .search-container {
-        flex-basis: 75% !important;
+        flex-basis: 88% !important;
+        margin-left: -7px;
+    }
+
+    .dashboard_tiles .user-info .logo {
+        margin-left: -5px;
     }
 }
 
