@@ -50,7 +50,9 @@ function manageDashboardActiveTabs() {
         // Activate tab
         if (window.innerWidth <= 600) {
             tabs.forEach((t) => t.classList.remove("operations_tab--active"));
+            tabs.forEach((t) => t.classList.remove("operations_tab--active_mobile"));
             tabs.forEach((t) => t.classList.add("shrink"));
+            clicked.classList.add("operations_tab--active_mobile");
             destinationRoutes();
         } else {
             clicked.classList.add("operations_tab--active");
@@ -120,18 +122,8 @@ const tabExpandBtn = document.querySelector('.tab_reveal')
 tabExpandBtn.addEventListener('click', () => {
     const dashBoardHome = document.querySelector('.dashboard_tiles');
     dashBoardHome.classList.toggle('expanded')
-    // const tab = document.querySelector('.dashboard_tiles .tab');
-    // tab.classList.toggle('expanded');
-
-    // const operations = document.querySelector('.dashboard_tiles .operations');
-    // operations.classList.toggle('expanded');
-
-    // const userInfo = document.querySelector('.dashboard_tiles .user-info');
-    // userInfo.classList.toggle('expanded');
 
     const tabDescription = document.querySelectorAll('.tab_nav--links .role_hide');
     tabDescription.forEach((c) => c.classList.toggle("role_reveal"));
 
-    // const tooltip = document.querySelectorAll('.operations_link');
-    // tooltip.forEach((t) => t.classList.toggle("expanded"))
 })
