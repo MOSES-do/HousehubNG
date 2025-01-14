@@ -1772,11 +1772,12 @@ article li .recent-search--products p {
     margin-left: -10px;
 }
 
+
+
 .operations_tab--active {
-    transform: translateX(10%);
-    width: 100%;
+    animation: slideAndExpand 0.5s ease forwards;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s transform ease;
 }
 
 @media (min-width:601px) {
@@ -1793,9 +1794,18 @@ article li .recent-search--products p {
 
     .operations_tab--active::after {
         width: 5px;
-        /* Slides in from the left */
         left: -23px;
     }
+
+    .dashboard_tiles.expanded .operations_tab--active::after {
+        width: 5px;
+        left: -34px !important;
+    }
+
+    .dashboard_tiles.expanded .operations_tab--active:nth-child(4)::after {
+        left: -37px !important;
+    }
+
 
     .operations_tab--active:nth-child(4)::after {
         width: 5px;
@@ -2262,6 +2272,22 @@ article li .recent-search--products p {
 
 
 /* KEYFRAMES */
+@keyframes slideAndExpand {
+    0% {
+        transform: translateX(0);
+        width: 80%;
+        /* Initial width */
+    }
+
+    100% {
+        transform: translateX(10%);
+        width: 100%;
+        /* Final width */
+    }
+}
+
+
+
 @keyframes spinner {
     0% {
         transform: translateX(-50%) rotate(0deg);
