@@ -1857,7 +1857,7 @@ article li .recent-search--products p {
 
     /* Position animation for each tab */
     .tab_nav--links button:nth-child(1):focus~.animation {
-        margin-left: 0px;
+        margin-left: 20px;
         height: 48px;
     }
 
@@ -1918,30 +1918,54 @@ article li .recent-search--products p {
         margin-left: 66.2%;
     }
 
-    @media only screen and (max-width:548px) {
+    @media only screen and (max-width:574px) {
         .tab_nav--links button:nth-child(4):focus~.animation {
-            margin-left: 65.3%;
+            margin-left: 65.4%;
         }
 
-        @media only screen and (max-width:494px) {
+        @media only screen and (max-width:548px) {
             .tab_nav--links button:nth-child(4):focus~.animation {
-                margin-left: 64% !important;
+                margin-left: 65.3%;
             }
 
-            @media only screen and (max-width:422px) {
+            @media only screen and (max-width:502px) {
                 .tab_nav--links button:nth-child(4):focus~.animation {
-                    margin-left: 62% !important;
+                    margin-left: 64% !important;
                 }
             }
 
-            @media only screen and (max-width:360px) {
+            @media only screen and (max-width:494px) {
                 .tab_nav--links button:nth-child(4):focus~.animation {
-                    margin-left: 60% !important;
+                    margin-left: 64% !important;
                 }
 
-                @media only screen and (max-width:336px) {
+                @media only screen and (max-width:464px) {
                     .tab_nav--links button:nth-child(4):focus~.animation {
-                        margin-left: 59% !important;
+                        margin-left: 63% !important;
+                    }
+                }
+
+                @media only screen and (max-width:422px) {
+                    .tab_nav--links button:nth-child(4):focus~.animation {
+                        margin-left: 62% !important;
+                    }
+
+                    @media only screen and (max-width:390px) {
+                        .tab_nav--links button:nth-child(4):focus~.animation {
+                            margin-left: 61% !important;
+                        }
+                    }
+                }
+
+                @media only screen and (max-width:360px) {
+                    .tab_nav--links button:nth-child(4):focus~.animation {
+                        margin-left: 60% !important;
+                    }
+
+                    @media only screen and (max-width:336px) {
+                        .tab_nav--links button:nth-child(4):focus~.animation {
+                            margin-left: 59% !important;
+                        }
                     }
                 }
             }
