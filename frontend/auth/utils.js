@@ -47,6 +47,7 @@ export function generalUrlRedirectCleanUp(keyword) {
     return false;
 }
 
+
 // remove .html from url object
 window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash;

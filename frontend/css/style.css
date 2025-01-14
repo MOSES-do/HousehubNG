@@ -17,6 +17,7 @@ html {
     --sub-text: #090a0a;
     --swiper-navigation-size: 20px;
     --swiper-theme-color: rgb(215, 34, 40);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 body {
@@ -105,7 +106,7 @@ a {
     font-size: 1.5rem;
 }
 
-.tab__nav--links>li {
+.tab__nav--links>button {
     cursor: pointer;
 }
 
@@ -1379,7 +1380,7 @@ article li .recent-search--products p {
         width: 0 !important;
     }
 
-    .dashboard_tiles .tab_nav--links li:not(:last-child) {
+    .dashboard_tiles .tab_nav--links button:not(:last-child) {
         margin-bottom: 0rem !important;
     }
 
@@ -1409,8 +1410,8 @@ article li .recent-search--products p {
 
 .dashboard_tiles .user-info {
     padding: 1.5rem;
-    grid-row: 1;
-    grid-column: 1/-1;
+    grid-row: 1 !important;
+    grid-column: 1/-1 !important;
 
     display: flex;
     gap: 2rem;
@@ -1529,18 +1530,18 @@ article li .recent-search--products p {
     border-top-right-radius: 30px;
 }
 
-.dashboard_tiles .tab_nav--links li {
+.dashboard_tiles .tab_nav--links button {
     cursor: pointer;
     margin-top: 20px;
 }
 
-.dashboard_tiles .tab_nav--links li:nth-child(4) {
+.dashboard_tiles .tab_nav--links button:nth-child(4) {
     margin-left: 9px;
 }
 
-.dashboard_tiles .tab_nav--links li:nth-child(1),
-.dashboard_tiles .tab_nav--links li:nth-child(2),
-.dashboard_tiles .tab_nav--links li:nth-child(3) {
+.dashboard_tiles .tab_nav--links button:nth-child(1),
+.dashboard_tiles .tab_nav--links button:nth-child(2),
+.dashboard_tiles .tab_nav--links button:nth-child(3) {
     margin-left: 6px;
 }
 
@@ -1558,7 +1559,7 @@ article li .recent-search--products p {
     font-size: 1.2rem;
 }
 
-.dashboard_tiles .tab_nav--links li:not(:last-child) {
+.dashboard_tiles .tab_nav--links button:not(:last-child) {
     margin-bottom: 2rem;
 }
 
@@ -1567,7 +1568,7 @@ article li .recent-search--products p {
 }
 
 @media (max-width:600px) {
-    .tab_nav--links li span {
+    .tab_nav--links button span {
         display: none;
     }
 }
@@ -1582,7 +1583,7 @@ article li .recent-search--products p {
 }
 
 
-.tab ul li {
+.tab div button {
     display: flex;
     align-items: center;
     gap: 18px;
@@ -1593,16 +1594,17 @@ article li .recent-search--products p {
     color: white;
 }
 
-.tab ul li a {
-    color: white;
+.tab div button a {
+    color: inherit;
+    margin-left: 3px;
 }
 
-.tab ul li a:active {
+.tab div button a:active {
     color: inherit;
 }
 
-.tab ul li:not(:last-child) {
-    padding-bottom: 15px;
+.tab div button:not(:last-child) {
+    padding-bottom: 30px;
 }
 
 .tab4_icon_span {
@@ -1781,6 +1783,10 @@ article li .recent-search--products p {
 }
 
 @media (min-width:601px) {
+    .tab_nav--links {
+        position: relative;
+    }
+
     .operations_tab::after {
         content: "";
         position: absolute;
@@ -1813,37 +1819,137 @@ article li .recent-search--products p {
     }
 }
 
-.operations_tab--active_mobile {
-    position: relative;
-    transition: color 0.3s ease;
+
+.tab_nav--links button {
+    outline: none;
+    border: none;
+    background: none;
 }
 
 @media (max-width:600px) {
 
+    .dashboard_tiles .tab_nav--links button {
+        height: 10px !important;
+        margin-top: 27px !important;
+    }
+
+    .tab_nav--links button a {
+        pointer-events: none;
+    }
+
+    .tab_nav--links {
+        position: relative;
+    }
+
+    .tab_nav--links .animation {
+        z-index: 0;
+        margin-left: 5px;
+        position: absolute;
+        height: 48px;
+        top: -23px;
+        left: 40px;
+        z-index: 0;
+        background: white;
+        width: 4px;
+        transform: rotate(90deg);
+        transition: all 0.5s ease;
+    }
+
+    /* Position animation for each tab */
+    .tab_nav--links button:nth-child(1):focus~.animation {
+        margin-left: 0px;
+        height: 48px;
+    }
+
+    .tab_nav--links button:nth-child(2):focus~.animation {
+        margin-left: 22.5%;
+    }
+
+    @media only screen and (max-width:560px) {
+        .tab_nav--links button:nth-child(2):focus~.animation {
+            margin-left: 22.2%;
+        }
+
+        @media only screen and (max-width:450px) {
+            .tab_nav--links button:nth-child(2):focus~.animation {
+                margin-left: 21.5%;
+            }
+
+            @media only screen and (max-width:400px) {
+                .tab_nav--links button:nth-child(2):focus~.animation {
+                    margin-left: 21.2%;
+                }
+            }
+        }
+    }
+
+    .tab_nav--links button:nth-child(3):focus~.animation {
+        margin-left: 44.5%;
+    }
+
+    @media only screen and (max-width:560px) {
+        .tab_nav--links button:nth-child(3):focus~.animation {
+            margin-left: 44%;
+        }
+
+        @media only screen and (max-width:450px) {
+            .tab_nav--links button:nth-child(3):focus~.animation {
+                margin-left: 42.5%;
+
+            }
+
+            @media only screen and (max-width:400px) {
+                .tab_nav--links button:nth-child(3):focus~.animation {
+                    margin-left: 41.5%;
+
+                }
+
+                @media only screen and (max-width:4344px) {
+                    .tab_nav--links button:nth-child(3):focus~.animation {
+                        margin-left: 40.5%;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .tab_nav--links button:nth-child(4):focus~.animation {
+        margin-left: 66.2%;
+    }
+
+    @media only screen and (max-width:548px) {
+        .tab_nav--links button:nth-child(4):focus~.animation {
+            margin-left: 65.3%;
+        }
+
+        @media only screen and (max-width:494px) {
+            .tab_nav--links button:nth-child(4):focus~.animation {
+                margin-left: 64% !important;
+            }
+
+            @media only screen and (max-width:422px) {
+                .tab_nav--links button:nth-child(4):focus~.animation {
+                    margin-left: 62% !important;
+                }
+            }
+
+            @media only screen and (max-width:360px) {
+                .tab_nav--links button:nth-child(4):focus~.animation {
+                    margin-left: 60% !important;
+                }
+
+                @media only screen and (max-width:336px) {
+                    .tab_nav--links button:nth-child(4):focus~.animation {
+                        margin-left: 59% !important;
+                    }
+                }
+            }
+        }
+    }
+
     .operations_tab .operations_tab--active.shrink {
         transform: translateX(0) !important;
-    }
-
-    .operations_tab::after {
-        content: "";
-        position: absolute;
-        background-color: white;
-        margin-top: -50px;
-        height: 42px;
-        margin-left: 10px;
-        width: 0;
-        border-radius: 5px;
-        transition: width 0.3s ease, left 0.3s ease;
-
-        transform: rotate(90deg);
-    }
-
-    .operations_tab:nth-child(4)::after {
-        margin-left: 8px;
-    }
-
-    .operations_tab--active_mobile::after {
-        width: 5px;
     }
 }
 
@@ -1888,13 +1994,13 @@ article li .recent-search--products p {
     }
 }
 
-.operations_link.expanded:after {
+.dashboard_tiles.expanded .operations_link:after {
     display: none;
 }
 
 .operations_link:hover:after {
     visibility: visible;
-    left: 150%;
+    left: 180%;
 }
 
 

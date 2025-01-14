@@ -332,35 +332,40 @@
             <section class="dashboard_tiles">
                 <!-- Dashboard tab navigation -->
                 <div class="tab">
-                    <ul class="tab_nav--links operations_tab-container">
-                        <li class="operations_tab operations_tab--1" data-tool_tip="dashboard" data-tab="1">
+                    <div class="tab_nav--links operations_tab-container">
+                        <button tabIndex="0" role="tab" class="operations_tab operations_tab--1"
+                            data-tool_tip="dashboard" data-tab="1">
                             <a href="https://househubng.netlify.app/dashboard" class="operations_link"
                                 data-tool-tip="Dashboard" role="tab" id="tab1"> <i
                                     class="fa-solid fa-house opt_icon"></i></i> </a>
                             <span class="role_hide">Dashboard</span>
-                        </li>
-                        <li class="operations_tab operations_tab--2" data-tool_tip="listings" data-tab="2">
+                        </button>
+                        <button class="operations_tab operations_tab--2" role="tab" tabIndex="1"
+                            data-tool_tip="listings" data-tab="2">
                             <a href="https://househubng.netlify.app/listings" class="operations_link" role="tab"
                                 id="tab2" data-tool-tip="Listings"><i class="fa-solid fa-users-gear opt_icon"
                                     aria-label="Listings"></i>
                             </a>
                             <span class="role_hide">Listings</span>
-                        </li>
-                        <li class="operations_tab operations_tab--3" data-tool_tip="subscription" data-tab="3">
+                        </button>
+
+                        <button class="operations_tab operations_tab--3" role="tab" tabIndex="2"
+                            data-tool_tip="subscription" data-tab="3">
                             <a href="https://househubng.netlify.app/subscription" class="operations_link"
                                 data-tool-tip="Subscription" role="tab" id="tab3"><i
                                     class="fa-solid fa-credit-card opt_icon"></i></a>
                             <span class="role_hide">Subscription</span>
-                        </li>
-                        <li class="operations_tab operations_tab--4" data-tool_tip="profile" data-tab="4">
+                        </button>
+
+                        <button class="operations_tab operations_tab--4" role="tab" tabIndex="4" data-tool_tip="profile"
+                            data-tab="4">
                             <a href="https://househubng.netlify.app/profile" class="operations_link"
                                 data-tool-tip="Profile" role="tab" id="tab4"><i
                                     class="fa-solid fa-user opt_icon "></i></a>
                             <span class="role_hide tab4_icon_span">Profile</span>
-                        </li>
-                        <!-- <h1 class="log_out_user" style="position:absolute; margin-top:0px;">lohg out -->
-                        </h1>
-                        <!-- <li class=""> -->
+                        </button>
+                        <div class="animation start"></div>
+
                         <div class="log_out_user-box" role="tab" id="tab5">
                             <svg height="24" viewBox="0 0 24 24" width="24" focusable="false"
                                 class="log_out_user NMm5M">
@@ -371,29 +376,37 @@
                             </svg>
                             <span class="log_out_user role_hide tab4_icon_span">Log out</span>
                         </div>
-                        <!-- </li> -->
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
+
 
                 <!-- Dashboard page content navigation -->
                 <div class="operations">
-                    <div class="user_summary operations_content operations_content--1 operations_content--active">Lorem
+                    <div class="user_summary operations_content operations_content--1 operations_content--active">
+                        Lorem
                         ipsum dolor sit amet
-                        consectetur adipisicing elit. Iure autem praesentium labore cupiditate accusamus fugit saepe,
+                        consectetur adipisicing elit. Iure autem praesentium labore cupiditate accusamus fugit
+                        saepe,
                         laudantium aut et ut eum id perferendis omnis suscipit sunt tempore velit consectetur dolore
                         fuga
-                        pariatur. Suscipit ea dolorum nemo voluptate veritatis tempore blanditiis provident, eveniet aut
-                        ratione, obcaecati optio tempora. Dignissimos, voluptatem. Omnis iste suscipit natus qui quod
+                        pariatur. Suscipit ea dolorum nemo voluptate veritatis tempore blanditiis provident, eveniet
+                        aut
+                        ratione, obcaecati optio tempora. Dignissimos, voluptatem. Omnis iste suscipit natus qui
+                        quod
                         esse
                         nemo doloremque necessitatibus quaerat, quas nesciunt voluptas consequuntur optio error vel,
                         minus
-                        fugit dolorum tempore doloribus debitis molestias est eligendi nisi. Accusamus fugit, architecto
+                        fugit dolorum tempore doloribus debitis molestias est eligendi nisi. Accusamus fugit,
+                        architecto
                         provident ipsum sunt consequuntur cupiditate odit repudiandae eum aliquam nihil debitis nisi
                         laudantium dicta quam magni omnis obcaecati repellendus totam!</div>
-                    <div id="listings" class="operation_listing operations_content operations_content--2 page">B</div>
+                    <div id="listings" class="operation_listing operations_content operations_content--2 page">B
+                    </div>
                     <div id="subscription" class="operation_subscription operations_content operations_content--3 page">
                         C</div>
-                    <div id="profile" class="operation_profile operations_content operations_content--4 page">D</div>
+                    <div id="profile" class="operation_profile operations_content operations_content--4 page">D
+                    </div>
                 </div>
 
                 <!-- User details -->
@@ -454,12 +467,12 @@
                         </div>
 
                         <button class="prop_btn"><span style="font-size:1.6rem">+</span> <span
-                                style="font-size:1.2rem">Post a property</span></button>
+                                style="font-size:1.2rem">Post a
+                                property</span></button>
                     </div>
 
                     <!-- dashboard revealed menu -->
                     <div class="overlay-mobile" id="overlay-mobile"></div>
-
                     <div class="mobile_side__nav">
                         <a class="logo" href="">
                             <img class="icon" src="/assets/logo.png" alt="logo-icon">
@@ -506,16 +519,7 @@
                     </div>
                 </div>
         </div>
-    </div>
-
-    <!-- <div class="aside">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum consequuntur, sapiente, dolorum
-                    magni consequatur doloribus, voluptatem possimus quidem quo rerum tempore beatae iusto expedita.
-                    Perferendis voluptates, odit reiciendis eveniet libero laboriosam sapiente saepe quos sunt quis.
-                    Animi illum doloribus iste nesciunt necessitatibus assumenda at, distinctio, minus praesentium
-                    cupiditate placeat consequuntur.
-                </div> -->
-    </section>
+        </section>
     </div>
 
     <div class="login-form hidden">
