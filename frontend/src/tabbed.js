@@ -150,7 +150,9 @@ buttons.forEach((button) => {
 });
 
 // Set initial animation position to the first button on page load
-updateAnimation(buttons[0]);
+window.addEventListener('DOMContentLoaded', () => {
+    updateAnimation(buttons[0]);
+})
 
 // Ensure the animation adjusts on window resize
 window.addEventListener('resize', () => {
