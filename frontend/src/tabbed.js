@@ -48,13 +48,8 @@ function manageDashboardActiveTabs() {
         tabsContent.forEach((c) => c.classList.remove("operations_content--active"));
 
         // Activate tab
-        if (window.innerWidth <= 600) {
-            tabs.forEach((t) => t.classList.add("shrink"));
-            destinationRoutes();
-        } else {
-            clicked.classList.add("operations_tab--active");
-            destinationRoutes();
-        }
+        clicked.classList.add("operations_tab--active");
+        destinationRoutes();
 
         // Activate content area
         document
@@ -124,3 +119,40 @@ tabExpandBtn.addEventListener('click', () => {
     tabDescription.forEach((c) => c.classList.toggle("role_reveal"));
 
 })
+
+
+
+
+
+// Mobile navbar focus animation setup @600px <
+const buttons = document.querySelectorAll('.tab_nav--links button');
+const animation = document.querySelector('.tab_nav--links .animation');
+
+// Function to update animation position and width
+function updateAnimation(target) {
+    const targetRect = target.getBoundingClientRect();
+    const parentRect = target.parentElement.getBoundingClientRect();
+
+    // Set the animation's width and position dynamically
+    animation.style.width = `${targetRect.width}px`;
+    animation.style.transform = `translateX(${targetRect.left - parentRect.left}px)`;
+}
+
+// Add click and focus event listeners to buttons
+buttons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        updateAnimation(e.currentTarget);
+    });
+    button.addEventListener('focus', (e) => {
+        updateAnimation(e.currentTarget);
+    });
+});
+
+// Set initial animation position to the first button on page load
+updateAnimation(buttons[0]);
+
+// Ensure the animation adjusts on window resize
+window.addEventListener('resize', () => {
+    const activeButton = document.activeElement.closest('.operations_tab') || buttons[0];
+    updateAnimation(activeButton);
+});
