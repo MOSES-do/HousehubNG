@@ -1827,14 +1827,13 @@ article li .recent-search--products p {
 }
 
 @media (max-width:600px) {
-
     .dashboard_tiles .tab_nav--links button {
         height: 10px !important;
         margin-top: 27px !important;
     }
 
     .tab_nav--links button a {
-        /* pointer-events: none; */
+        pointer-events: none;
     }
 
     .tab_nav--links {
@@ -1869,17 +1868,17 @@ article li .recent-search--products p {
         .tab_nav--links button:nth-child(2):focus~.animation {
             margin-left: 22.2%;
         }
+    }
 
-        @media only screen and (max-width:450px) {
-            .tab_nav--links button:nth-child(2):focus~.animation {
-                margin-left: 21.5%;
-            }
+    @media only screen and (max-width:450px) {
+        .tab_nav--links button:nth-child(2):focus~.animation {
+            margin-left: 21.5%;
+        }
+    }
 
-            @media only screen and (max-width:400px) {
-                .tab_nav--links button:nth-child(2):focus~.animation {
-                    margin-left: 21.2%;
-                }
-            }
+    @media only screen and (max-width:400px) {
+        .tab_nav--links button:nth-child(2):focus~.animation {
+            margin-left: 21.2%;
         }
     }
 
