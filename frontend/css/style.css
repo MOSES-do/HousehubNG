@@ -1475,42 +1475,59 @@ article li .recent-search--products p {
     }
 }
 
-@media (max-width:344px) {
-    .dashboard_tiles .user-info .search-container {
-        width: 250px;
-        margin-left: -25px;
-    }
-}
 
-@media (max-width:337px) {
+@media (max-width:352px) {
     .dashboard_tiles .user-info .search-container {
-        width: 245px;
-        margin-left: -25px;
+        margin-left: -17px !important;
+        width: 240px !important;
     }
-}
 
-@media (max-width:329px) {
-    .dashboard_tiles .user-info .search-container {
-        width: 240px;
-        margin-left: -25px !important;
-    }
-}
+    @media (max-width:344px) {
+        .dashboard_tiles .user-info .search-container {
+            width: 250px;
+            margin-left: -25px;
+        }
 
-@media (max-width:329px) {
-    .dashboard_tiles .user-info .search-container .search-icon {
-        margin-left: -10px !important;
-    }
-}
+        .dashboard_tiles .user-info .search-container .search-icon {
+            margin-left: -12px !important;
+        }
 
-@media (max-width:314px) {
-    .dashboard_tiles .user-info .search-container {
-        width: 230px;
-    }
-}
+        @media (max-width:337px) {
+            .dashboard_tiles .user-info .search-container {
+                width: 245px;
+                margin-left: -25px;
+            }
 
-@media (max-width:294px) {
-    .dashboard_tiles .user-info .search-container {
-        width: 222px;
+            @media (max-width:329px) {
+                .dashboard_tiles .user-info .search-container {
+                    width: 240px;
+                    margin-left: -25px !important;
+                }
+
+                .dashboard_tiles .user-info .search-container .search-icon {
+                    margin-left: -15px !important;
+                }
+
+                @media (max-width:317px) {
+                    .dashboard_tiles .user-info .search-container .search-icon {
+                        margin-left: -30px !important;
+                    }
+                }
+
+                @media (max-width:314px) {
+                    .dashboard_tiles .user-info .search-container {
+                        width: 230px;
+                    }
+
+                    @media (max-width:294px) {
+                        .dashboard_tiles .user-info .search-container {
+                            width: 222px;
+                        }
+                    }
+                }
+
+            }
+        }
     }
 }
 
