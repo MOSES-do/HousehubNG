@@ -136,6 +136,7 @@ function updateAnimation(target) {
     // Set the animation's width and position dynamically
     animation.style.width = `${targetRect.width}px`;
     animation.style.transform = `translateX(${targetRect.left - parentRect.left}px)`;
+    // console.log(targetRect.width, targetRect.left - parentRect.left)
 }
 
 // Add click and focus event listeners to buttons
