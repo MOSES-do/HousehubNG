@@ -1834,7 +1834,7 @@ article li .recent-search--products p {
     }
 
     .tab_nav--links button a {
-        pointer-events: none;
+        /* pointer-events: none; */
     }
 
     .tab_nav--links {
