@@ -1851,7 +1851,7 @@ article li .recent-search--products p {
         top: -23px;
         left: 40px;
         z-index: 0;
-        background: white;
+        /* background: white; */
         width: 4px;
         transform: rotate(90deg);
         transition: all 0.5s ease;
