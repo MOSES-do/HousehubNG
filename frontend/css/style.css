@@ -1508,6 +1508,12 @@ article li .recent-search--products p {
     }
 }
 
+@media (max-width:294px) {
+    .dashboard_tiles .user-info .search-container {
+        width: 222px;
+    }
+}
+
 
 .dashboard_tiles .user-info .search-container {
     flex-basis: 75%
@@ -1830,7 +1836,9 @@ article li .recent-search--products p {
 }
 
 
-.tab_nav--links button {
+.tab_nav--links button,
+.tab_nav--links a:focus,
+.tab_nav--links a:focus-visible {
     outline: none;
     border: none;
     background: none;
