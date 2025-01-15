@@ -1836,15 +1836,23 @@ article li .recent-search--products p {
 }
 
 
-.tab_nav--links button,
-.tab_nav--links a:focus,
-.tab_nav--links a:focus-visible {
+.tab_nav--links button {
     outline: none;
     border: none;
     background: none;
 }
 
 @media (max-width:600px) {
+
+    .tab_nav--links button,
+    .tab_nav--links a,
+    .tab_nav--links a:focus,
+    .tab_nav--links a:focus-visible {
+        outline: none;
+        border: none;
+        background: none;
+    }
+
     .dashboard_tiles .tab_nav--links button {
         height: 10px !important;
         margin-top: 27px !important;
