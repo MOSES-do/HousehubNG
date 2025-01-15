@@ -711,7 +711,7 @@ a:link {
     height: 100%;
     z-index: 10;
     background-color: rgba(43, 43, 43, 0.72);
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .overlay {
@@ -746,7 +746,7 @@ a:link {
     z-index: 5000;
     padding: 1.5rem;
     padding-top: 2rem;
-    pointer-events: all;
+    /* pointer-events: all; */
 }
 
 @media (max-width:419px) {
@@ -1857,7 +1857,7 @@ article li .recent-search--products p {
 
     /* Position animation for each tab */
     .tab_nav--links button:nth-child(1):focus~.animation {
-        margin-left: 20px;
+        margin-left: 5px;
         height: 48px;
     }
 
