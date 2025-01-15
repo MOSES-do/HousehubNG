@@ -19,6 +19,7 @@ export const submitHandler = async (e, curPage, query = "") => {
     state.loading = true;
 
     try {
+
         const response = await fetchApi(query, curPage);
         if (response.ok) {
             // navigate to product page
@@ -26,7 +27,14 @@ export const submitHandler = async (e, curPage, query = "") => {
             resultLength.textContent = state.houselist_search_result_length
             urlUpdate(query, 'product_list')
             renderHouseList(data);
+
+            // Initial load state is not lost but lost on re-render of same page
+            // hence the Pagerelod script
             navigateTo("product_list");
+
+            // On navigation this way, state is lost
+            // window.location.href = "productlist.html"
+
         } else {
             const errorData = await response.json();
             alert('Error: ' + errorData.error)
@@ -49,7 +57,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && state.hasMore && !state.loading) {
                 // console.log('You are near the bottom of the page!');
-                renderScrollLoader('morecontent_loading')
+                renderScrollLoader('morecontent_loading');
                 state.curPage = curPage++;
                 state.loading = true;
                 submitHandler(e, curPage).finally(() => {
@@ -74,6 +82,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     observer.observe(bottomMarker);
 });
 
+// Whenever the homepage search is used clear state
 form_location.addEventListener('submit', (e) => {
     state.searchHouseItems = [];
     state.pageReload = false;
@@ -82,7 +91,7 @@ form_location.addEventListener('submit', (e) => {
 })
 
 
-/* Function to get API data when a new tab of same * page is opened
+/* Function to get API data using search query param when a new tab of same * page is opened
 *  Check if there's a hash in the URL
 */
 window.addEventListener('DOMContentLoaded', async () => {

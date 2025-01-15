@@ -58,7 +58,7 @@ function houseListNavUpdate() {
                             <button class="btn log_in log btn-up">Log in</button>
                             <button class="btn btn-up sign sign_up ">Sign up</button>
                             `
-        // event listeners must be re-attached to dynamically added elements 
+        // event listeners must be re-attached to dynamically created elements 
         document.querySelector('.sign').addEventListener('click', toggleSignUpForm);
         document.querySelector('.log').addEventListener('click', toggleSignUpForm);
     }

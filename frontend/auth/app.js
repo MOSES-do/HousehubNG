@@ -134,7 +134,6 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         });
 });
 
-
 window.addEventListener('load', () => {
     /**
         check if url path includes callback route
@@ -180,8 +179,6 @@ const handleOAuthCallback = async () => {
     }
 }
 
-
-
 document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('log_out_user')) {
         handleLogout();
@@ -213,8 +210,8 @@ document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('dashbtn')) {
         const data = state.userEmail;
         renderDashboard();
-        renderUserDetails(data)
-        renderUserDetailsNav(data)
+        renderUserDetails(data);
+        renderUserDetailsNav(data);
         // renderAnnouncement();
         navigateTo('dashboard');
 

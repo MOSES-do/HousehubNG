@@ -6,7 +6,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     const listPage = window.location.hash;
     if (listPage === '#dashboard') {
         if (!token) {
-            alert('You are not logged in. Redirecting to login page');
+            // alert('You are not logged in. Redirecting to login page');
             window.location.href = 'index.html';
             return;
         }

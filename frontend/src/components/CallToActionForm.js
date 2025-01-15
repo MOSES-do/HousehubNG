@@ -18,7 +18,7 @@ function navBarUpdate(isLoggedIn = state.isLoggedIn) {
             `
         callToActionForm.innerHTML = NoLogDashBoard;
 
-        // event listeners must be re-attached to dynamically added elements     
+        // event listeners must be re-attached to dynamically created elements     
         document.querySelector('.sign_up').addEventListener('click', toggleSignUpForm);
         document.querySelector('.log_in').addEventListener('click', toggleSignUpForm);
     }

@@ -7,6 +7,7 @@ import { renderScrollLoader } from "./Spinner.js";
 
 let curPage = state.curPage;
 
+// PAGE RELOAD WITH SEARCH QUERY FOR PRODUCT LIST PAGE
 export default async function handlePageByHash(currentPage, page) {
     // Open current page in a new tab
     const hashValue = window.location.hash.substring(1);

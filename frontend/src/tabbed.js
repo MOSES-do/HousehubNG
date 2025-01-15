@@ -68,7 +68,7 @@ function pageVariables(tabNum, pageHash, comp) {
     // Activate content area on pageReload
     comp();
     // console.log(tabNum, pageHash, comp)
-    // On page reloasd default to current tab
+    // On page reload default to current tab
     history.replaceState(null, '', pageHash);
 
     const ele = document.querySelector(`.operations_tab--${tabNum}`);

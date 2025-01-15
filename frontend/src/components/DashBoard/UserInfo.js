@@ -26,6 +26,7 @@ export const renderUserDetails = (data) => {
     userInfo.insertAdjacentHTML('afterbegin', ListingItems);
 }
 
+// yet to be synced with the dom
 export const renderUserDetailsNav = (data) => {
     userInfo_mobile.innerHTML = '';
     msg_count.innerHTML = '';
