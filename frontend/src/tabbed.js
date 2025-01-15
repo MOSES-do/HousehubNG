@@ -49,10 +49,7 @@ function manageDashboardActiveTabs() {
 
         // Activate tab
         if (window.innerWidth <= 600) {
-            tabs.forEach((t) => t.classList.remove("operations_tab--active"));
-            tabs.forEach((t) => t.classList.remove("operations_tab--active_mobile"));
             tabs.forEach((t) => t.classList.add("shrink"));
-            clicked.classList.add("operations_tab--active_mobile");
             destinationRoutes();
         } else {
             clicked.classList.add("operations_tab--active");

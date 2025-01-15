@@ -1376,10 +1376,6 @@ article li .recent-search--products p {
         margin-top: 15px !important;
     }
 
-    .operations_tab--active {
-        width: 0 !important;
-    }
-
     .dashboard_tiles .tab_nav--links button:not(:last-child) {
         margin-bottom: 0rem !important;
     }
@@ -1395,7 +1391,6 @@ article li .recent-search--products p {
     grid-column: 2/-1;
     overflow-y: auto;
     margin: 0 2rem;
-
     background-color: #fafafa;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -1426,10 +1421,17 @@ article li .recent-search--products p {
     margin-left: -5px;
 }
 
+@media (max-width:600px) {
+    .dashboard_tiles .user-info .board_accordion {
+        min-width: 0px;
+        flex-basis: 0%;
+        margin-left: -15px;
+    }
+}
+
 .dashboard_tiles .user-info .user_notifications .icon-text {
     display: none;
 }
-
 
 
 @media (max-width:906px) {
@@ -1442,14 +1444,6 @@ article li .recent-search--products p {
     }
 }
 
-@media (max-width:600px) {
-
-    .dashboard_tiles .user-info .board_accordion {
-        min-width: 0px;
-        flex-basis: 0%;
-        margin-left: -15px;
-    }
-}
 
 @media (max-width:385px) {
     .dashboard_tiles .mobile_side__nav .logo {
@@ -1479,8 +1473,6 @@ article li .recent-search--products p {
     .dashboard_tiles .user-info .user_notifications .icon-text {
         display: none;
     }
-
-
 }
 
 @media (max-width:344px) {
@@ -1508,7 +1500,6 @@ article li .recent-search--products p {
         width: 230px;
     }
 }
-
 
 
 .dashboard_tiles .user-info .search-container {
@@ -1542,6 +1533,23 @@ article li .recent-search--products p {
 .dashboard_tiles .tab_nav--links button:nth-child(1),
 .dashboard_tiles .tab_nav--links button:nth-child(2),
 .dashboard_tiles .tab_nav--links button:nth-child(3) {
+    margin-left: 6px;
+}
+
+.tab div button a {
+    color: inherit;
+    margin-left: 3px;
+}
+
+.tab div button a:active {
+    color: inherit;
+}
+
+.tab div button:not(:last-child) {
+    padding-bottom: 30px;
+}
+
+.tab4_icon_span {
     margin-left: 6px;
 }
 
@@ -1594,22 +1602,6 @@ article li .recent-search--products p {
     color: white;
 }
 
-.tab div button a {
-    color: inherit;
-    margin-left: 3px;
-}
-
-.tab div button a:active {
-    color: inherit;
-}
-
-.tab div button:not(:last-child) {
-    padding-bottom: 30px;
-}
-
-.tab4_icon_span {
-    margin-left: 6px;
-}
 
 .dashboard_tiles .user-info #welcome-user {
     font-size: 1.4rem;
@@ -1703,7 +1695,7 @@ article li .recent-search--products p {
 .mssg span::before {
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: var(--btn-line);
     width: 20px;
     height: 20px;
     color: white;
@@ -1726,12 +1718,25 @@ article li .recent-search--products p {
 .notify span::before {
     content: "";
     position: absolute;
-    background-color: red;
+    background-color: var(--btn-line);
     width: 20px;
     height: 20px;
     color: white;
     border-radius: 100px;
     z-index: -1;
+}
+
+@media (max-width:906px) {
+    .notify span::before {
+        width: 25px;
+        height: 25px;
+
+    }
+
+    .mssg span::before {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 .operations_tab--1::before {
@@ -1774,17 +1779,15 @@ article li .recent-search--products p {
     margin-left: -10px;
 }
 
-
-
-.operations_tab--active {
-    animation: slideAndExpand 0.5s ease forwards;
+.tab_nav--links {
     position: relative;
-    transition: color 0.3s transform ease;
 }
 
 @media (min-width:601px) {
-    .tab_nav--links {
+    .operations_tab--active {
+        animation: slideAndExpand 0.5s ease forwards;
         position: relative;
+        transition: color 0.3s transform ease;
     }
 
     .operations_tab::after {
@@ -1855,11 +1858,6 @@ article li .recent-search--products p {
     }
 
     /* Position animation for each tab */
-    .tab_nav--links button:nth-child(1):focus~.animation {
-        margin-left: 5px;
-        height: 48px;
-    }
-
     .tab_nav--links button:nth-child(2):focus~.animation {
         margin-left: 22.5%;
     }
@@ -1868,17 +1866,17 @@ article li .recent-search--products p {
         .tab_nav--links button:nth-child(2):focus~.animation {
             margin-left: 22.2%;
         }
-    }
 
-    @media only screen and (max-width:450px) {
-        .tab_nav--links button:nth-child(2):focus~.animation {
-            margin-left: 21.5%;
-        }
-    }
+        @media only screen and (max-width:450px) {
+            .tab_nav--links button:nth-child(2):focus~.animation {
+                margin-left: 21.5%;
+            }
 
-    @media only screen and (max-width:400px) {
-        .tab_nav--links button:nth-child(2):focus~.animation {
-            margin-left: 21.2%;
+            @media only screen and (max-width:400px) {
+                .tab_nav--links button:nth-child(2):focus~.animation {
+                    margin-left: 21.2%;
+                }
+            }
         }
     }
 
