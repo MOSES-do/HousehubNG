@@ -1111,7 +1111,7 @@ a:link {
     grid-column: 7/-1;
     grid-row: 2;
     overflow-y: auto;
-    height: 89.5dvh;
+    /* height: 89.5dvh; */
     box-shadow: -12px -1px 10px -10px rgba(0, 0, 0, 0.3);
 }
 
