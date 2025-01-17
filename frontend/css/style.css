@@ -1399,6 +1399,7 @@ article li .recent-search--products p {
     .dashboard_tiles .tab_nav--links .log_out_user-box {
         margin-top: 0rem !important;
         position: relative !important;
+        margin-right: 22px !important;
     }
 
     .operations_tab {
