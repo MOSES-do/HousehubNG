@@ -1389,13 +1389,14 @@ article li .recent-search--products p {
         grid-row: 13 !important;
         grid-column: 1/-1 !important;
         z-index: 1;
+        position: fixed !important;
     }
 
     .dashboard_tiles .operations {
         grid-column: 1/-1 !important;
         margin: 1rem 0.5rem !important;
         padding: 6rem 0 6rem 0;
-        height: 100dvh !important;
+        /* height: 100dvh !important; */
     }
 
 
@@ -1916,7 +1917,7 @@ article li .recent-search--products p {
 @media (max-width:600px) {
     .dashboard_tiles .tab_nav--links {
         display: flex;
-        position: fixed;
+        /* position: fixed; */
         width: 100%;
         justify-content: space-between;
         gap: 10px;
