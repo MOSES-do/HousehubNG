@@ -1088,7 +1088,7 @@ a:link {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(12, 1fr);
-    height: 100%;
+    /* height: 100%; */
     width: 100%;
     position: relative;
 }
@@ -1111,7 +1111,6 @@ a:link {
     grid-column: 7/-1;
     grid-row: 2;
     overflow-y: auto;
-    /* height: 89.5dvh; */
     box-shadow: -12px -1px 10px -10px rgba(0, 0, 0, 0.3);
 }
 
