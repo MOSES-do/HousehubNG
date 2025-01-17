@@ -157,6 +157,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Ensure the animation adjusts on window resize
 window.addEventListener('resize', () => {
-    const activeButton = document.activeElement.closest('.operations_tab') || buttons[0];
+    const activeButton = document.activeElement.closest('.operations_tab');
+    // const activeButton = document.activeElement.closest('.operations_tab') || buttons[0];
     updateAnimation(activeButton);
 });
