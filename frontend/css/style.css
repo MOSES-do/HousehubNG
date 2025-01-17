@@ -1081,13 +1081,14 @@ a:link {
 
 .main_product--container {
     position: relative;
+    height: 100dvh;
 }
 
 .product_container {
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: repeat(12, 1fr);
-    height: 100dvh;
+    height: 100%;
     width: 100%;
     position: relative;
 }
@@ -1131,14 +1132,13 @@ a:link {
         padding: 10px;
         grid-row: 3;
         grid-column: 1/-1;
-        height: 50dvh;
         margin-top: -30px;
     }
 }
 
 @media (max-width:450px) {
     .jobList-view {
-        height: 63dvh;
+        padding-top: 10px;
     }
 }
 
@@ -1175,7 +1175,7 @@ a:link {
     .left--view {
         grid-row: 2;
         grid-column: 1/-1;
-        height: 30dvh;
+        height: 40dvh;
     }
 
     .left--view .map-text {
@@ -1197,7 +1197,7 @@ a:link {
     .left--view {
         grid-row: 2;
         grid-column: 1/-1;
-        height: 20dvh;
+        height: 40dvh;
     }
 }
 
@@ -1358,7 +1358,7 @@ article li .recent-search--products p {
     grid-template-columns: 65px 1fr;
     grid-template-rows: repeat(12, 1fr);
     height: 100dvh;
-
+    overflow: auto;
     background-color: rgba(241, 240, 240, 0.158);
     transition: grid-template-columns 0.3s ease-in-out;
 }
@@ -1441,7 +1441,7 @@ article li .recent-search--products p {
 }
 
 .dashboard_tiles .user-info {
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 0 1.5rem;
     grid-row: 1 !important;
     grid-column: 1/-1 !important;
 
