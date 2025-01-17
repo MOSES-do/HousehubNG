@@ -1395,7 +1395,7 @@ article li .recent-search--products p {
         grid-column: 1/-1 !important;
         margin: 1rem 0.5rem !important;
         padding: 6rem 0 6rem 0;
-        height: 90dvh !important;
+        height: 100dvh !important;
     }
 
 
