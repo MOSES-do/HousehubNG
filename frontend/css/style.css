@@ -534,7 +534,7 @@ a:link {
 
 .search input[type="text"] {
     border: 2px solid rgba(0, 0, 0, 0.1);
-    font-size: 15px;
+    font-size: 16px;
     font-family: inherit;
     transition: box-shadow 0.3s ease;
 }
@@ -848,7 +848,7 @@ a:link {
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
+    font-size: 16px;
     padding: 1.5rem;
     outline: none;
     background-color: none;
