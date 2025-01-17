@@ -151,8 +151,12 @@ buttons.forEach((button) => {
 
 // Set initial animation position to the first button on page load
 window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === "#dashboard")
-        updateAnimation(buttons[0]);
+    const tabs = ['#dashboard', '#listings', '#subscription', '#profile'];
+
+    for (i = 0; i < tabs.length; i++) {
+        if (window.location.hash === tabs[i])
+            updateAnimation(buttons[i]);
+    }
 })
 
 // Ensure the animation adjusts on window resize
