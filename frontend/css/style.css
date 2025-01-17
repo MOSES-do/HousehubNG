@@ -1358,7 +1358,6 @@ article li .recent-search--products p {
     .dashboard_tiles {
         height: 100%;
         grid-template-rows: none;
-
         position: relative;
     }
 
@@ -1397,14 +1396,13 @@ article li .recent-search--products p {
         grid-column: 1/-1 !important;
         margin: 1rem 0.5rem !important;
         padding: 6rem 0 6rem 0;
-        /* height: 100dvh !important; */
     }
 
 
     .dashboard_tiles .tab_nav--links .log_out_user-box {
-        margin-top: 0rem !important;
         position: relative !important;
         margin-right: 22px !important;
+        margin-top: -12px;
     }
 
     @media only screen and (max-width:440px) {
@@ -1922,7 +1920,7 @@ article li .recent-search--products p {
         justify-content: space-between;
         gap: 10px;
         top: 100dvh;
-        padding: 0 1rem 0 1rem !important;
+        padding: 1rem 1rem 2rem 1rem !important;
         margin-top: -5.5rem !important;
         height: auto !important;
         border-radius: 0px !important;
@@ -1941,7 +1939,7 @@ article li .recent-search--products p {
     .dashboard_tiles .tab_nav--links button {
         height: 10px;
         padding-top: 5px;
-        margin-top: 25px !important;
+        margin-top: 14px !important;
         display: flex;
         flex-direction: column;
         align-items: center;
