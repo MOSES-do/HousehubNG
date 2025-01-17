@@ -1402,6 +1402,12 @@ article li .recent-search--products p {
         margin-right: 22px !important;
     }
 
+    @media only screen and (max-width:440px) {
+        .dashboard_tiles .tab_nav--links .log_out_user-box {
+            margin-right: 5px !important;
+        }
+    }
+
     .operations_tab {
         margin-top: 15px !important;
     }
