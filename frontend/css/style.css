@@ -1354,6 +1354,16 @@ article li .recent-search--products p {
     transition: grid-template-columns 0.3s ease-in-out;
 }
 
+@media only screen and (max-width:600px) {
+    .dashboard_tiles {
+        height: 100%;
+        grid-template-rows: none;
+
+        position: relative;
+    }
+
+}
+
 .dashboard_tiles.expanded {
     grid-template-columns: 180px 1fr;
 }
@@ -1384,7 +1394,9 @@ article li .recent-search--products p {
     .dashboard_tiles .operations {
         grid-row: 2/12 !important;
         grid-column: 1/-1 !important;
-        margin: 0 0.2rem !important;
+        margin: 1rem 0.2rem 0 !important;
+        height: 90dvh;
+        padding-top: 6rem;
     }
 
 
@@ -1440,6 +1452,15 @@ article li .recent-search--products p {
     display: flex;
     gap: 2rem;
     align-items: center;
+}
+
+@media only screen and (max-width:600px) {
+    .dashboard_tiles .user-info {
+        position: fixed;
+        width: 100%;
+        background-color: var(--bg-color);
+        padding-bottom: 1rem;
+    }
 }
 
 .dashboard_tiles .user-info .board_accordion {
@@ -1598,6 +1619,12 @@ article li .recent-search--products p {
 .tab div button a {
     color: inherit;
     margin-left: 3px;
+}
+
+@media only screen and (max-width:600px) {
+    .tab div button:nth-child(4) a {
+        margin-left: 0px;
+    }
 }
 
 .tab div button a:active {
@@ -1890,10 +1917,11 @@ article li .recent-search--products p {
 @media (max-width:600px) {
     .dashboard_tiles .tab_nav--links {
         display: flex;
-        position: absolute;
+        position: fixed;
         width: 100%;
         justify-content: space-between;
         gap: 10px;
+        top: 100dvh;
         padding: 0 1rem 0 1rem !important;
         margin-top: -5.5rem !important;
         height: auto !important;
