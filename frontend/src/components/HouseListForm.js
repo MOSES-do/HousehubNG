@@ -1,5 +1,5 @@
 import { toggleSignUpForm } from "../../auth/call_to_action.js";
-import { state, close_form } from "../common.js";
+import { state } from "../common.js";
 
 function houseListNavUpdate() {
     const userEmail = state.userEmail;
@@ -20,7 +20,7 @@ function houseListNavUpdate() {
                         <div class="hamburger--line"></div>
                     </div>
 
-                    <ul class="header__nav--links">
+                    <ul class="header__nav--links1">
                         <li><a href="#" class="header__nav--links__link" role="tab" id="tab1">Buy</a>
                         </li>
                         <li><a href="#" class="header__nav--links__link" role="tab" id="tab2">Rent</a>
@@ -42,10 +42,11 @@ function houseListNavUpdate() {
                     <div class="log_user1">
                         <button class="btn log_in btn-up">Log in</button>
                         <button class="btn btn-up sign_up ">Sign up</button>
-                        </div>
-                        </nav>
+                    </div>
+            </nav>
                         `
     const logUser = document.querySelector('.log_user1');
+    const nav_links = document.querySelector('.header__nav--links1');
 
 
     if (state.isLoggedIn && userEmail) {
@@ -64,22 +65,18 @@ function houseListNavUpdate() {
     }
 
 
-    // close cta form on handle click
-    close_form.addEventListener('click', () => {
-        document.querySelector('.mobile-form').classList.remove('reveal');
-        logUser.classList.remove("reveal");
-    })
-
     // close cta form when sign up or login button is clicked
     document.body.addEventListener('click', (event) => {
         if (event.target.classList.contains('sign_up')) {
             document.querySelector('.mobile-form').classList.remove('reveal');
             logUser.classList.remove("reveal");
+            nav_links.classList.remove("reveal")
         }
 
         if (event.target.classList.contains('log_in')) {
             document.querySelector('.mobile-form').classList.remove('reveal');
             logUser.classList.remove("reveal");
+            nav_links.classList.remove("reveal")
         }
     })
 
@@ -88,6 +85,7 @@ function houseListNavUpdate() {
         if (window.location.hash === "#product_list") {
             document.querySelector('.mobile-form').classList.toggle('reveal');
             logUser.classList.toggle("reveal");
+            nav_links.classList.toggle("reveal")
         }
     })
 
@@ -96,8 +94,31 @@ function houseListNavUpdate() {
         if (e.key === 'Escape') {
             document.querySelector('.mobile-form').classList.remove('reveal');
             logUser.classList.remove("reveal");
+            nav_links.classList.remove("reveal")
         }
     })
+
+    logUser.addEventListener('click', function (event) {
+        // Check if the clicked element is a child of the parent
+        if (event.target !== logUser) {
+            // Hide the parent element
+            document.querySelector('.mobile-form').classList.toggle('reveal');
+            logUser.classList.toggle("reveal");
+            nav_links.classList.toggle("reveal");
+            document.body.classList.remove("no-scroll")
+        }
+    });
+
+    nav_links.addEventListener('click', function (event) {
+        // Check if the clicked element is a child of the parent
+        if (event.target !== nav_links) {
+            // Hide the parent element
+            document.querySelector('.mobile-form').classList.toggle('reveal');
+            logUser.classList.toggle("reveal");
+            nav_links.classList.toggle("reveal");
+            document.body.classList.remove("no-scroll")
+        }
+    });
 }
 
 export default houseListNavUpdate;

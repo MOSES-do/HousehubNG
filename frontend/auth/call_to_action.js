@@ -6,49 +6,73 @@ import {
     closeForm,
     menu_user,
     callToActionForm,
-    close_form,
+    nav_links,
+    overlay,
 } from "../src/common.js"
-
 
 export function toggleSignUpForm() {
     log_in_form.classList.toggle("hidden");
-    container.classList.toggle("overlay");
-    document.querySelector('.logo').style.visibility = "hidden";
+    overlay.classList.toggle("visible");
 }
+
+export function closePopup() {
+    log_in_form.classList.add("hidden");
+    overlay.classList.remove("visible");
+}
+closeForm.addEventListener("click", closePopup);
+
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        log_in_form.classList.add("hidden");
+        overlay.classList.remove("visible");
+    }
+})
 
 // cta mobile view 
 menu_user.addEventListener('click', () => {
     document.querySelector('.mobile-form').classList.toggle('reveal');
     callToActionForm.classList.toggle("reveal");
+    nav_links.classList.toggle("reveal");
+    document.body.classList.toggle("no-scroll")
 })
 
-close_form.addEventListener('click', () => {
-    document.querySelector('.mobile-form').classList.remove('reveal');
-    callToActionForm.classList.remove("reveal");
-})
 
-document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-        log_in_form.classList.add("hidden");
-        container.classList.remove("overlay");
-        document.querySelector('.logo').style.visibility = "visible";
+callToActionForm.addEventListener('click', function (event) {
+    // Check if the clicked element is a child of the parent
+    if (event.target !== callToActionForm) {
+        // Hide the parent element
+        document.querySelector('.mobile-form').classList.remove('reveal');
+        callToActionForm.classList.remove("reveal");
+        nav_links.classList.remove("reveal");
+        document.body.classList.remove("no-scroll")
     }
-})
+});
 
-export function closePopup() {
-    log_in_form.classList.add("hidden");
-    container.classList.remove("overlay");
-    document.querySelector('.logo').style.visibility = "visible";
-}
-
-closeForm.addEventListener("click", closePopup);
+nav_links.addEventListener('click', function (event) {
+    // Check if the clicked element is a child of the parent
+    if (event.target !== nav_links) {
+        // Hide the parent element
+        document.querySelector('.mobile-form').classList.remove('reveal');
+        callToActionForm.classList.remove("reveal");
+        nav_links.classList.remove("reveal");
+        document.body.classList.remove("no-scroll")
+    }
+});
 
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         document.querySelector('.mobile-form').classList.remove('reveal');
         callToActionForm.classList.remove("reveal");
+        nav_links.classList.remove("reveal");
+        document.body.classList.remove("no-scroll");
     }
 })
+
+
+
+
+
+
 
 
 // dashbord navbar

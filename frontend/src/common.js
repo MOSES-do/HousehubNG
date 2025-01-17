@@ -3,12 +3,14 @@ export const burgerFirst = document.querySelector(".hamburger--line:first-child"
 export const burgerSecond = document.querySelector(".hamburger--line:nth-child(2)");
 export const burgerThird = document.querySelector(".hamburger--line:last-child");
 
+export const overlay = document.querySelector('.overlay');
 
 export const sign_up = document.querySelector(".sign_up");
 export const log_in = document.querySelector(".log_in");
 export const login_btn = document.querySelector(".login-btn");
 export const log_in_form = document.querySelector(".login-form");
 export const callToActionForm = document.querySelector(".log_user")
+export const nav_links = document.querySelector(".header__nav--links")
 export const callToActionForm1 = document.querySelector(".log_user1");
 export const user_auth = document.querySelector(".user_auth");
 export const container = document.querySelector(".container");
