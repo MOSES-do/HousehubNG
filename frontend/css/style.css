@@ -1973,7 +1973,7 @@ article li .recent-search--products p {
     color: #333;
     background: none;
     height: 35px;
-    font-size: 1.5rem;
+    font-size: 16px;
 }
 
 .search-input::placeholder {
@@ -2136,37 +2136,38 @@ article li .recent-search--products p {
     .cancel {
         left: 50rem;
     }
-}
 
-@media (max-width:796px) {
-    .cancel {
-        left: 40rem;
+    @media (max-width:796px) {
+        .cancel {
+            left: 40rem;
+        }
+
+        @media (max-width:690px) {
+            .cancel {
+                left: 30rem;
+            }
+
+            @media (max-width:592px) {
+                .cancel {
+                    left: 20rem;
+                }
+
+                @media (max-width:486px) {
+                    .cancel {
+                        left: 8rem;
+                    }
+
+                    @media (max-width:368px) {
+                        .cancel {
+                            left: 2rem;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
-@media (max-width:690px) {
-    .cancel {
-        left: 30rem;
-    }
-}
-
-@media (max-width:592px) {
-    .cancel {
-        left: 20rem;
-    }
-}
-
-@media (max-width:486px) {
-    .cancel {
-        left: 8rem;
-    }
-}
-
-@media (max-width:368px) {
-    .cancel {
-        left: 2rem;
-    }
-}
 
 .mobile_side__nav>:nth-child(n+1) {
     cursor: pointer;
