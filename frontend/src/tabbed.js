@@ -151,7 +151,8 @@ buttons.forEach((button) => {
 
 // Set initial animation position to the first button on page load
 window.addEventListener('DOMContentLoaded', () => {
-    updateAnimation(buttons[0]);
+    if (window.location.hash === "#dashboard")
+        updateAnimation(buttons[0]);
 })
 
 // Ensure the animation adjusts on window resize
