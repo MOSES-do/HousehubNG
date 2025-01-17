@@ -152,10 +152,11 @@ buttons.forEach((button) => {
 // Set initial animation position to the first button on page load
 window.addEventListener('DOMContentLoaded', () => {
     const tabs = ['#dashboard', '#listings', '#subscription', '#profile'];
-
-    for (i = 0; i < tabs.length; i++) {
-        if (window.location.hash === tabs[i])
+    let i = 0;
+    for (i; i < tabs.length; i++) {
+        if (window.location.hash === tabs[i]) {
             updateAnimation(buttons[i]);
+        }
     }
 })
 
