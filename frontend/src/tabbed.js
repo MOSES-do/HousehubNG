@@ -5,7 +5,7 @@ import renderProfile from './components/DashBoard/Profile.js'
 import renderDashboard from './components/DashBoard/Dashboard.js'
 import renderListing from './components/DashBoard/Listing.js'
 import { renderUserDetails } from './components/DashBoard/UserInfo.js'
-import { operationsContent, state } from './common.js'
+import { state } from './common.js'
 
 
 const tabsContainer = document.querySelector(".operations_tab-container");
@@ -206,7 +206,7 @@ const tab = document.querySelector('.dashboard_tiles .tab');
 
 
 /**===Refactor===**/
-let lastScrollY = 0;
+let lastScrollY = 100;
 let isScrollingUp = false;
 // Throttle function to limit how often the scroll handler runs
 function throttle(callback, limit) {
@@ -239,18 +239,14 @@ function handleScroll() {
             tab.classList.add('scrolling-down');
 
             isScrollingUp = true;
+            lastScrollY = currentScrollY;
             if (isScrollingUp)
                 resizeRender()
         } else {
             tab.classList.remove('scrolling-down');
             isScrollingUp = false;
-
-            if (currentScrollY > lastScrollY)
-                tab.classList.remove('scrolling-down');
-
         }
         // Update lastScrollY
-        lastScrollY = currentScrollY;
     }
 }
 
