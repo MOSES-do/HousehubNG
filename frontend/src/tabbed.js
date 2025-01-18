@@ -229,6 +229,7 @@ function handleScroll() {
             if (isScrollingDown) {
                 // console.log('scrolldown')
                 tab.classList.remove('scrolling-down');
+                tab.classList.add('scrolling-up');
                 isScrollingDown = false;
             }
         } else {
