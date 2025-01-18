@@ -135,8 +135,8 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 
+let oauthCode;
 window.addEventListener('load', () => {
-    let oauthCode;
 
     // Automatically prompt user authentication
     google.accounts.id.initialize({
@@ -146,11 +146,9 @@ window.addEventListener('load', () => {
             console.log(oauthCode);
         }
     })
-    if (window.location.hash === '#home') {
+    if (window.location.hash === '#home')
         google.accounts.id.prompt();
-        if (oauthCode)
-            handleOAuthCallback();
-    }
+
 
     /**
         check if url path includes callback route
@@ -166,8 +164,6 @@ window.addEventListener('load', () => {
 })
 
 const handleOAuthCallback = async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const oauthCode = urlParams.get('code');
     if (oauthCode) {
         try {
             // Send the code to the backend using a POST request
