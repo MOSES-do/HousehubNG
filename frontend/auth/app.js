@@ -138,19 +138,21 @@ window.onload = function () {
 
 
     // Automatically prompt user authentication
-    // if (window.location.hash === )
-    google.accounts.id.prompt();
 };
 
 window.addEventListener('load', () => {
     let oauthCode;
+
     google.accounts.id.initialize({
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: (response) => {
-            oauthCode = response.credential
+            oauthCode = response.credential;
             console.log('oauthCode');
         }
-    });
+    })
+    if (window.location.hash === '#home')
+        google.accounts.id.prompt();
+
     /**
         check if url path includes callback route
         No longer required since login is on the homepage of the website,
