@@ -219,12 +219,12 @@ function handleScroll() {
         console.log(currentScrollY, lastScrollY)
         if (currentScrollY > lastScrollY) {
             if (!isScrollingDown) {
-                tab.classList.add('scrolling-down');
+                tab.classList.remove('scrolling-down');
                 isScrollingDown = true;
             }
         } else {
             if (isScrollingDown) {
-                tab.classList.remove('scrolling-down');
+                tab.classList.add('scrolling-down');
                 isScrollingDown = false;
             }
         }
