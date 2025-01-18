@@ -160,6 +160,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+// set active tab on navigation to dashboard
+document.body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('dashbtn')) {
+        updateAnimation(buttons[0]);
+    }
+});
+
 // Ensure the animation adjusts on window resize
 window.addEventListener('resize', () => {
     const activeButton = document.activeElement.closest('.operations_tab');
