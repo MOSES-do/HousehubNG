@@ -143,12 +143,13 @@ window.addEventListener('load', () => {
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: (response) => {
             oauthCode = response.credential;
-            console.log(oauthCode);
+            if (oauthCode)
+                handleOAuthCallback();
         }
     })
-    if (window.location.hash === '#home')
+    if (window.location.hash === '#home') {
         google.accounts.id.prompt();
-
+    }
 
     /**
         check if url path includes callback route
