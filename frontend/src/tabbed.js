@@ -223,25 +223,24 @@ function throttle(callback, limit) {
 
 function handleScroll() {
     if (window.innerWidth < 601) {
-        // const currentScrollY = window.scrollY;
+        const currentScrollY = window.scrollY;
 
-        // if (currentScrollY > lastScrollY) {
-        //     if (!isScrollingDown) {
-        //         // console.log('scrolldown')
-        //         tab.classList.remove('scrolling-down');
-        //         isScrollingDown = true;
-        //     }
-        // } else {
-        //     if (isScrollingDown) {
-        //         // console.log('scrollup')
-        //         tab.classList.add('scrolling-down');
-        //         isScrollingDown = false;
-        //     }
-        // }
-        // // Update lastScrollY
-        // lastScrollY = currentScrollY;
-        tab.classList.add('scrolling-down');
-        isScrollingDown = false;
+        if (currentScrollY > lastScrollY) {
+            if (!isScrollingDown) {
+                // console.log('scrolldown')
+                tab.classList.remove('scrolling-down');
+                isScrollingDown = true;
+            }
+        } else {
+            if (isScrollingDown) {
+                // console.log('scrollup')
+                tab.classList.add('scrolling-down');
+                isScrollingDown = false;
+            }
+        }
+        // Update lastScrollY
+        lastScrollY = currentScrollY;
+
     }
 }
 
