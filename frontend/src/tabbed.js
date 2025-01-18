@@ -176,10 +176,8 @@ window.addEventListener('resize', () => {
 
 
 
-// 
-const initialCoords = operationsContent.getBoundingClientRect();
-const tab = document.querySelector('.dashboard_tiles .tab');
 
+const tab = document.querySelector('.dashboard_tiles .tab');
 /** */
 // let lastScrollY = 0;
 // window.addEventListener('scroll', function () {
@@ -218,6 +216,7 @@ function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
 
+        console.log(currentScrollY, lastScrollY)
         if (currentScrollY > lastScrollY) {
             if (!isScrollingDown) {
                 tab.classList.add('scrolling-down');
@@ -236,4 +235,4 @@ function handleScroll() {
 }
 
 // Add throttled scroll event listener
-window.addEventListener('scroll', throttle(handleScroll, 100));
+window.addEventListener('resize', throttle(handleScroll, 100));
