@@ -235,9 +235,6 @@ function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
 
-        if (currentScrollY === lastScrollY)
-            tab.classList.remove('scrolling-down');
-
         if (currentScrollY > lastScrollY) {
             tab.classList.add('scrolling-down');
 
@@ -247,10 +244,10 @@ function handleScroll() {
         } else {
             tab.classList.remove('scrolling-down');
             isScrollingUp = false;
-            console.log('hola')
 
-            if (currentScrollY === 0)
-                lastScrollY = 0;
+            if (currentScrollY > lastScrollY)
+                tab.classList.remove('scrolling-down');
+
         }
         // Update lastScrollY
         lastScrollY = currentScrollY;
