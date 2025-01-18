@@ -5,7 +5,7 @@ import renderProfile from './components/DashBoard/Profile.js'
 import renderDashboard from './components/DashBoard/Dashboard.js'
 import renderListing from './components/DashBoard/Listing.js'
 import { renderUserDetails } from './components/DashBoard/UserInfo.js'
-import { state } from './common.js'
+import { operationsContent, state } from './common.js'
 
 
 const tabsContainer = document.querySelector(".operations_tab-container");
@@ -173,3 +173,73 @@ window.addEventListener('resize', () => {
     // const activeButton = document.activeElement.closest('.operations_tab') || buttons[0];
     updateAnimation(activeButton);
 });
+
+
+
+// 
+const initialCoords = operationsContent.getBoundingClientRect();
+const tab = document.querySelector('.dashboard_tiles .tab');
+
+/** */
+// let lastScrollY = 0;
+// window.addEventListener('scroll', function () {
+
+//     if (window.innerWidth < 601) {
+//         if (this.window.scrollY > lastScrollY) {
+//             tab.style.paddingBottom = '3rem';
+//             tab.style.marginTop = '-2.3rem';
+//         } else {
+//             tab.style.paddingBottom = '0rem';
+//             tab.style.marginTop = '0rem';
+//         }
+//         lastScrollY = this.window.scrollY;
+//     }
+// });
+
+
+// Refactor
+
+
+let lastScrollY = 0;
+let isScrollingDown = false;
+
+// Throttle function to limit how often the scroll handler runs
+function throttle(callback, limit) {
+    let waiting = false;
+    return function () {
+        if (!waiting) {
+            callback.apply(this, arguments);
+            waiting = true;
+            setTimeout(() => (waiting = false), limit);
+        }
+    };
+}
+
+function handleScroll() {
+    if (window.innerWidth < 601) {
+        const currentScrollY = window.scrollY;
+
+        // Determine if scrolling down or up
+        if (currentScrollY > lastScrollY) {
+            // Scrolling down
+            if (!isScrollingDown) {
+                tab.classList.add('scrolling-down');
+                tab.classList.remove('scrolling-up');
+                isScrollingDown = true;
+            }
+        } else {
+            // Scrolling up
+            if (isScrollingDown) {
+                tab.classList.add('scrolling-up');
+                tab.classList.remove('scrolling-down');
+                isScrollingDown = false;
+            }
+        }
+
+        // Update lastScrollY
+        lastScrollY = currentScrollY;
+    }
+}
+
+// Add throttled scroll event listener
+window.addEventListener('scroll', throttle(handleScroll, 100));

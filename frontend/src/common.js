@@ -40,6 +40,7 @@ export const userInfo = document.querySelector(".user_name_salutation");
 export const userInfo_mobile = document.querySelector(".user_name_salutation-mob");
 // export const alert = document.querySelector(".alert");
 export const userSummary = document.querySelector('.user_summary');
+export const operationsContent = document.querySelector('.operations_content');
 export const listing = document.querySelector('.operation_listing');
 export const subscription = document.querySelector('.operation_subscription');
 export const profile = document.querySelector('.operation_profile');

@@ -1385,11 +1385,10 @@ article li .recent-search--products p {
 
 @media (max-width:600px) {
     .dashboard_tiles .tab {
-        grid-row: 13 !important;
-        grid-column: 1/-1 !important;
         z-index: 1;
         position: fixed !important;
         width: 100%;
+        top: 100dvh;
     }
 
     .dashboard_tiles .operations {
@@ -1916,16 +1915,12 @@ article li .recent-search--products p {
 @media (max-width:600px) {
     .dashboard_tiles .tab_nav--links {
         display: flex;
-        width: 100%;
         justify-content: space-between;
         gap: 10px;
-        top: 100dvh;
         padding: 1rem 1rem 2rem 1rem !important;
         margin-top: -5.5rem !important;
-        height: auto !important;
         border-radius: 0px !important;
         margin-left: 0px !important;
-        z-index: 10;
     }
 
     .tab_nav--links a,
@@ -2326,6 +2321,18 @@ article li .recent-search--products p {
 .overlay-mobile.show {
     opacity: 1;
     visibility: visible;
+}
+
+
+/*============= mobile navbar ================*/
+.scrolling-down {
+    padding-bottom: 3rem;
+    margin-top: -2.3rem;
+}
+
+.scrolling-up {
+    padding-bottom: 0rem;
+    margin-top: 0rem;
 }
 
 

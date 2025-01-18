@@ -57,9 +57,3 @@ export async function handleLogout() {
         redirectToHomePage();
     }
 }
-
-// mace36381 @gmail.com
-
-
-
-
