@@ -234,7 +234,6 @@ function resizeRender() {
 function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
-        console.log(currentScrollY, lastScrollY)
         if (currentScrollY > lastScrollY) {
             tab.classList.remove('scrolling-up');
             tab.classList.add('scrolling-down');
@@ -246,8 +245,9 @@ function handleScroll() {
             tab.classList.add('scrolling-up');
             tab.classList.remove('scrolling-down');
             isScrollingUp = false;
+            console.log('hola')
 
-            if (!isScrollingUp) {
+            if (currentScrollY === 0) {
                 tab.classList.add('scrolling-up');
                 tab.classList.remove('scrolling-down');
             }
