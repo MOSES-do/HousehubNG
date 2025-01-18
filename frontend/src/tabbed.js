@@ -197,9 +197,8 @@ const tab = document.querySelector('.dashboard_tiles .tab');
 // });
 
 
-// Refactor
 
-
+/**===Refactor===**/
 let lastScrollY = 0;
 let isScrollingDown = false;
 
@@ -219,18 +218,13 @@ function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
 
-        // Determine if scrolling down or up
         if (currentScrollY > lastScrollY) {
-            // Scrolling down
             if (!isScrollingDown) {
                 tab.classList.add('scrolling-down');
-                tab.classList.remove('scrolling-up');
                 isScrollingDown = true;
             }
         } else {
-            // Scrolling up
             if (isScrollingDown) {
-                tab.classList.add('scrolling-up');
                 tab.classList.remove('scrolling-down');
                 isScrollingDown = false;
             }
