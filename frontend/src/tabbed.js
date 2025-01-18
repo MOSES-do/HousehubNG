@@ -207,7 +207,7 @@ const tab = document.querySelector('.dashboard_tiles .tab');
 
 /**===Refactor===**/
 let lastScrollY = 0;
-let isScrollingUp = true;
+let isScrollingUp = false;
 
 // Throttle function to limit how often the scroll handler runs
 function throttle(callback, limit) {
@@ -224,11 +224,11 @@ function throttle(callback, limit) {
 function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
-        console.log(currentScrollY, lastScrollY)
         if (currentScrollY < lastScrollY) {
             if (isScrollingUp) {
                 // console.log('scrolldown')
                 tab.classList.add('scrolling-up');
+                tab.classList.remove('scrolling-down');
                 isScrollingUp = false;
             }
         }
@@ -241,9 +241,11 @@ function handleScroll() {
 // Add throttled scroll event listener
 window.addEventListener('resize', throttle(() => {
     if (window.innerWidth < 601) {
-        tab.classList.toggle('scrolling-down');
-        isScrollingUp = true;
-        console.log(isScrollingUp)
+        if (!isScrollingUp) {
+            tab.classList.add('scrolling-down');
+            isScrollingUp = true;
+        }
+
     }
 }, 100));
 
