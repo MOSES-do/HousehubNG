@@ -206,7 +206,7 @@ const tab = document.querySelector('.dashboard_tiles .tab');
 
 
 /**===Refactor===**/
-let lastScrollY = 0.5;
+let lastScrollY = 0.2;
 let isScrollingUp = false;
 // Throttle function to limit how often the scroll handler runs
 function throttle(callback, limit) {
@@ -237,10 +237,10 @@ function handleScroll() {
 
         if (currentScrollY > lastScrollY) {
             tab.classList.add('scrolling-down');
+            lastScrollY = currentScrollY;
 
             isScrollingUp = true;
             // Update lastScrollY
-            lastScrollY = currentScrollY;
             if (isScrollingUp)
                 resizeRender()
         } else {

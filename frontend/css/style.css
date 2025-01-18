@@ -2326,9 +2326,9 @@ article li .recent-search--products p {
 
 /*============= mobile navbar ================*/
 .scrolling-down {
+    /* margin-top: -2.3rem;
     padding-bottom: 3.5rem;
-    margin-top: -2.3rem;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out; */
 }
 
 .scrolling-up {

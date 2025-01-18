@@ -135,15 +135,22 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 window.onload = function () {
-    google.accounts.id.initialize({
-        client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
-    });
+
 
     // Automatically prompt user authentication
+    // if (window.location.hash === )
     google.accounts.id.prompt();
 };
 
 window.addEventListener('load', () => {
+    let oauthCode;
+    google.accounts.id.initialize({
+        client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
+        callback: (response) => {
+            oauthCode = response.credential
+            console.log('oauthCode');
+        }
+    });
     /**
         check if url path includes callback route
         No longer required since login is on the homepage of the website,
@@ -152,7 +159,7 @@ window.addEventListener('load', () => {
         }
     */
     const urlParams = new URLSearchParams(window.location.search);
-    const oauthCode = urlParams.get('code');
+    oauthCode = urlParams.get('code');
     if (oauthCode)
         handleOAuthCallback();
 })
