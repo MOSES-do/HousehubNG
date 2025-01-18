@@ -223,10 +223,8 @@ function throttle(callback, limit) {
 function resizeRender() {
     window.addEventListener('resize', throttle(() => {
         if (window.innerWidth < 601) {
-            // if (!isScrollingUp) {
             tab.classList.toggle('scrolling-down');
             console.log(isScrollingUp)
-            // }
         }
     }, 100));
 }
@@ -237,27 +235,16 @@ function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
         if (currentScrollY > lastScrollY) {
-            // if (isScrollingUp) {
-            // console.log('scrolldown')
             tab.classList.remove('scrolling-up');
             tab.classList.add('scrolling-down');
 
             isScrollingUp = true;
             if (isScrollingUp)
                 resizeRender()
-            console.log('hols')
-            // console.log(isScrollingUp)
-            // }
         } else {
-            // if (isScrollingUp) {
             tab.classList.add('scrolling-up');
             tab.classList.remove('scrolling-down');
             isScrollingUp = false;
-            if (isScrollingUp)
-                resizeRender()
-            console.log('hola')
-            // }
-
         }
         // Update lastScrollY
         lastScrollY = currentScrollY;
@@ -266,11 +253,4 @@ function handleScroll() {
 }
 
 // Add throttled scroll event listener
-window.addEventListener('resize', throttle(() => {
-    isScrollingUp = true;
-    if (window.innerWidth < 601) {
-        tab.classList.add('scrolling-down');
-    }
-}, 100));
-
 window.addEventListener('scroll', throttle(handleScroll, 100))
