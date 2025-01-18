@@ -239,8 +239,9 @@ function handleScroll() {
         if (currentScrollY > lastScrollY) {
             // if (isScrollingUp) {
             // console.log('scrolldown')
-            tab.classList.add('scrolling-up');
-            tab.classList.remove('scrolling-down');
+            tab.classList.remove('scrolling-up');
+            tab.classList.add('scrolling-down');
+
             isScrollingUp = true;
             if (isScrollingUp)
                 resizeRender()
@@ -249,8 +250,8 @@ function handleScroll() {
             // }
         } else {
             // if (isScrollingUp) {
-            tab.classList.remove('scrolling-up');
-            tab.classList.add('scrolling-down');
+            tab.classList.add('scrolling-up');
+            tab.classList.remove('scrolling-down');
             isScrollingUp = false;
             if (isScrollingUp)
                 resizeRender()
