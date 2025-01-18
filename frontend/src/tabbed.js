@@ -234,23 +234,23 @@ function resizeRender() {
 function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
+
+        if (currentScrollY === lastScrollY)
+            tab.classList.remove('scrolling-down');
+
         if (currentScrollY > lastScrollY) {
-            tab.classList.remove('scrolling-up');
             tab.classList.add('scrolling-down');
 
             isScrollingUp = true;
             if (isScrollingUp)
                 resizeRender()
         } else {
-            tab.classList.add('scrolling-up');
             tab.classList.remove('scrolling-down');
             isScrollingUp = false;
             console.log('hola')
 
-            if (currentScrollY === 0) {
-                tab.classList.add('scrolling-up');
-                tab.classList.remove('scrolling-down');
-            }
+            if (currentScrollY === 0)
+                lastScrollY = 0;
         }
         // Update lastScrollY
         lastScrollY = currentScrollY;
