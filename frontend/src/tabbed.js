@@ -268,7 +268,7 @@ function handleScroll() {
 window.addEventListener('resize', throttle(() => {
     isScrollingUp = true;
     if (window.innerWidth < 601) {
-        tab.classList.toggle('scrolling-up');
+        tab.classList.add('scrolling-up');
     }
 }, 100));
 
