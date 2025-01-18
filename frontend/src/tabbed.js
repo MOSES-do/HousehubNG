@@ -139,13 +139,21 @@ function updateAnimation(target) {
     // console.log(targetRect.width, targetRect.left - parentRect.left)
 }
 
+function checkWindowSize(value) {
+    if (window.innerWidth < 601)
+        updateAnimation(value);
+    return;
+}
+
 // Add click and focus event listeners to buttons
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        updateAnimation(e.currentTarget);
+        checkWindowSize(e.currentTarget)
+        // remove padding on click of icon that trigger mobile browser resize
+        tab.classList.remove('scrolling-down');
     });
     button.addEventListener('focus', (e) => {
-        updateAnimation(e.currentTarget);
+        checkWindowSize(e.currentTarget)
     });
 });
 
@@ -155,7 +163,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let i = 0;
     for (i; i < tabs.length; i++) {
         if (window.location.hash === tabs[i]) {
-            updateAnimation(buttons[i]);
+            checkWindowSize(buttons[i])
+
         }
     }
 })
@@ -163,7 +172,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // set active tab on navigation to dashboard
 document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('dashbtn')) {
-        updateAnimation(buttons[0]);
+        checkWindowSize(buttons[0])
     }
 });
 
@@ -171,7 +180,7 @@ document.body.addEventListener('click', (event) => {
 window.addEventListener('resize', () => {
     const activeButton = document.activeElement.closest('.operations_tab');
     // const activeButton = document.activeElement.closest('.operations_tab') || buttons[0];
-    updateAnimation(activeButton);
+    checkWindowSize(activeButton)
 });
 
 
@@ -216,19 +225,19 @@ function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
 
-        console.log(currentScrollY, lastScrollY)
         if (currentScrollY > lastScrollY) {
             if (!isScrollingDown) {
+                // console.log('scrolldown')
                 tab.classList.remove('scrolling-down');
                 isScrollingDown = true;
             }
         } else {
             if (isScrollingDown) {
+                // console.log('scrollup')
                 tab.classList.add('scrolling-down');
                 isScrollingDown = false;
             }
         }
-
         // Update lastScrollY
         lastScrollY = currentScrollY;
     }
