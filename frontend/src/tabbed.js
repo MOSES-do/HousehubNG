@@ -228,14 +228,13 @@ function handleScroll() {
         if (currentScrollY > lastScrollY) {
             if (isScrollingDown) {
                 // console.log('scrolldown')
-                tab.classList.remove('scrolling-down');
-                tab.classList.add('scrolling-up');
+                tab.classList.add('scrolling-down');
                 isScrollingDown = false;
             }
         } else {
             if (!isScrollingDown) {
                 // console.log('scrollup')
-                tab.classList.add('scrolling-down');
+                tab.classList.remove('scrolling-down');
                 isScrollingDown = true;
             }
         }
@@ -246,4 +245,9 @@ function handleScroll() {
 }
 
 // Add throttled scroll event listener
-window.addEventListener('resize', throttle(handleScroll, 100));
+window.addEventListener('resize', throttle(() => {
+    tab.classList.add('scrolling-down');
+    isScrollingDown = true;
+}, 100));
+
+window.addEventListener('scroll', throttle(handleScroll, 100))
