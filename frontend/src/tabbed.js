@@ -234,6 +234,7 @@ function resizeRender() {
 function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
+        console.log(currentScrollY, lastScrollY)
         if (currentScrollY > lastScrollY) {
             tab.classList.remove('scrolling-up');
             tab.classList.add('scrolling-down');
@@ -250,6 +251,8 @@ function handleScroll() {
         lastScrollY = currentScrollY;
 
     }
+    tab.classList.add('scrolling-up');
+    tab.classList.remove('scrolling-down');
 }
 
 // Add throttled scroll event listener
