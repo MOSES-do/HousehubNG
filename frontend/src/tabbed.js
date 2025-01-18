@@ -246,13 +246,15 @@ function handleScroll() {
             tab.classList.add('scrolling-up');
             tab.classList.remove('scrolling-down');
             isScrollingUp = false;
+
+            if (!isScrollingUp) {
+                tab.classList.add('scrolling-up');
+                tab.classList.remove('scrolling-down');
+            }
         }
         // Update lastScrollY
         lastScrollY = currentScrollY;
-
     }
-    tab.classList.add('scrolling-up');
-    tab.classList.remove('scrolling-down');
 }
 
 // Add throttled scroll event listener
