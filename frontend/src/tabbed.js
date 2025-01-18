@@ -228,13 +228,13 @@ function handleScroll() {
         if (currentScrollY > lastScrollY) {
             if (!isScrollingDown) {
                 // console.log('scrolldown')
-                tab.classList.remove('scrolling-down');
+                tab.classList.add('scrolling-down');
                 isScrollingDown = true;
             }
         } else {
             if (isScrollingDown) {
                 // console.log('scrollup')
-                tab.classList.add('scrolling-down');
+                tab.classList.remove('scrolling-down');
                 isScrollingDown = false;
             }
         }
