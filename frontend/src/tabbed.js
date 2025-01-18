@@ -246,8 +246,10 @@ function handleScroll() {
 
 // Add throttled scroll event listener
 window.addEventListener('resize', throttle(() => {
-    tab.classList.add('scrolling-down');
-    isScrollingDown = true;
+    if (window.innerWidth < 601) {
+        tab.classList.toggle('scrolling-down');
+        isScrollingDown = true;
+    }
 }, 100));
 
-window.addEventListener('scroll', throttle(handleScroll, 100))
+// window.addEventListener('scroll', throttle(handleScroll, 100))
