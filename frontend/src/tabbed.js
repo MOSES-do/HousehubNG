@@ -208,7 +208,6 @@ const tab = document.querySelector('.dashboard_tiles .tab');
 /**===Refactor===**/
 let lastScrollY = 0;
 let isScrollingUp = false;
-
 // Throttle function to limit how often the scroll handler runs
 function throttle(callback, limit) {
     let waiting = false;
@@ -221,16 +220,39 @@ function throttle(callback, limit) {
     };
 }
 
+function resizeRender() {
+    window.addEventListener('resize', throttle(() => {
+        if (window.innerWidth < 601) {
+            if (!isScrollingUp) {
+                tab.classList.toggle('scrolling-down');
+                isScrollingUp = true;
+                console.log(isScrollingUp)
+            }
+        }
+    }, 100));
+}
+
+
+
 function handleScroll() {
     if (window.innerWidth < 601) {
         const currentScrollY = window.scrollY;
         if (currentScrollY < lastScrollY) {
-            if (isScrollingUp) {
-                // console.log('scrolldown')
-                tab.classList.add('scrolling-up');
-                tab.classList.remove('scrolling-down');
-                isScrollingUp = false;
-            }
+            // if (isScrollingUp) {
+            // // console.log('scrolldown')
+            // tab.classList.add('scrolling-up');
+            // tab.classList.remove('scrolling-down');
+            resizeRender()
+            console.log('hols')
+            // console.log(isScrollingUp)
+            // }
+        } else {
+            // tab.classList.remove('scrolling-up');
+            // tab.classList.add('scrolling-down');
+            // isScrollingUp = false;
+            resizeRender()
+            console.log('hola')
+
         }
         // Update lastScrollY
         lastScrollY = currentScrollY;
@@ -239,14 +261,6 @@ function handleScroll() {
 }
 
 // Add throttled scroll event listener
-window.addEventListener('resize', throttle(() => {
-    if (window.innerWidth < 601) {
-        if (!isScrollingUp) {
-            tab.classList.add('scrolling-down');
-            isScrollingUp = true;
-        }
 
-    }
-}, 100));
 
 window.addEventListener('scroll', throttle(handleScroll, 100))
