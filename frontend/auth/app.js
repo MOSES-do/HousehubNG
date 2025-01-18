@@ -146,8 +146,11 @@ window.addEventListener('load', () => {
             console.log(oauthCode);
         }
     })
-    if (window.location.hash === '#home')
+    if (window.location.hash === '#home') {
         google.accounts.id.prompt();
+        if (oauthCode)
+            handleOAuthCallback();
+    }
 
     /**
         check if url path includes callback route

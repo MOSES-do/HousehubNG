@@ -1389,7 +1389,7 @@ article li .recent-search--products p {
         position: fixed !important;
         width: 100%;
         top: 100dvh;
-        transition: all 0.2s ease-in;
+        transition: all 0.1s ease;
     }
 
     .dashboard_tiles .operations {
@@ -1923,7 +1923,7 @@ article li .recent-search--products p {
         border-radius: 0px !important;
         margin-left: 0px !important;
 
-        transition: all 0.2s ease-in;
+        transition: all 0.1s ease;
     }
 
     .tab_nav--links a,
