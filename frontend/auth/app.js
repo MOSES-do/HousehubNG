@@ -149,7 +149,7 @@ window.addEventListener('load', () => {
     })
     const urlParams = new URLSearchParams(window.location.search);
     oauthCode = urlParams.get('code');
-    if (window.location.hash === '#home' && !isLoggedIn && !oauthCode) {
+    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthCode) {
         google.accounts.id.prompt();
     }
 
