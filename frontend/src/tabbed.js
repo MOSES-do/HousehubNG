@@ -115,7 +115,7 @@ tabExpandBtn.addEventListener('click', () => {
     const dashBoardHome = document.querySelector('.dashboard_tiles');
     dashBoardHome.classList.toggle('expanded')
 
-    const tabDescription = document.querySelectorAll('.tab_nav--links .role_hide');
+    const tabDescription = document.querySelectorAll('.tab span');
     tabDescription.forEach((c) => c.classList.toggle("role_reveal"));
 
 })
@@ -182,73 +182,3 @@ window.addEventListener('resize', () => {
     // const activeButton = document.activeElement.closest('.operations_tab') || buttons[0];
     checkWindowSize(activeButton)
 });
-
-
-
-
-const tab = document.querySelector('.dashboard_tiles .tab');
-/** */
-// let lastScrollY = 0;
-// window.addEventListener('scroll', function () {
-
-//     if (window.innerWidth < 601) {
-//         if (this.window.scrollY > lastScrollY) {
-//             tab.style.paddingBottom = '3rem';
-//             tab.style.marginTop = '-2.3rem';
-//         } else {
-//             tab.style.paddingBottom = '0rem';
-//             tab.style.marginTop = '0rem';
-//         }
-//         lastScrollY = this.window.scrollY;
-//     }
-// });
-
-
-
-/**===Refactor===**/
-let lastScrollY = 0.7;
-let isScrollingUp = false;
-// Throttle function to limit how often the scroll handler runs
-function throttle(callback, limit) {
-    let waiting = false;
-    return function () {
-        if (!waiting) {
-            callback.apply(this, arguments);
-            waiting = true;
-            setTimeout(() => (waiting = false), limit);
-        }
-    };
-}
-
-function resizeRender() {
-    window.addEventListener('resize', throttle(() => {
-        if (window.innerWidth < 601) {
-            tab.classList.toggle('scrolling-down');
-            console.log(isScrollingUp)
-        }
-    }, 100));
-}
-
-
-
-function handleScroll() {
-    if (window.innerWidth < 601) {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > lastScrollY) {
-            tab.classList.add('scrolling-down');
-
-            isScrollingUp = true;
-            // Update lastScrollY
-            lastScrollY = currentScrollY;
-            if (isScrollingUp)
-                resizeRender()
-        } else {
-            tab.classList.remove('scrolling-down');
-            isScrollingUp = false;
-        }
-    }
-}
-
-// Add throttled scroll event listener
-window.addEventListener('scroll', throttle(handleScroll, 100))

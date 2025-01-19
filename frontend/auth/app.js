@@ -147,7 +147,9 @@ window.addEventListener('load', () => {
                 handleOAuthCallback();
         }
     })
-    if (window.location.hash === '#home') {
+    const urlParams = new URLSearchParams(window.location.search);
+    oauthCode = urlParams.get('code');
+    if (window.location.hash === '#home' && !isLoggedIn && !oauthCode) {
         google.accounts.id.prompt();
     }
 
@@ -158,8 +160,6 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
-    const urlParams = new URLSearchParams(window.location.search);
-    oauthCode = urlParams.get('code');
     if (oauthCode)
         handleOAuthCallback();
 })
