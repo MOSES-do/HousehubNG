@@ -137,14 +137,15 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 
 let oauthCode;
 window.addEventListener('load', () => {
-
     // Automatically prompt user authentication
     google.accounts.id.initialize({
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: (response) => {
             oauthCode = response.credential;
-            if (oauthCode)
-                handleOAuthCallback();
+            if (oauthCode) {
+                localStorage.setItem('token', response.credential);
+                fetchProtectedContent(response.credential)
+            }
         }
     })
     const urlParams = new URLSearchParams(window.location.search);
@@ -177,7 +178,7 @@ const handleOAuthCallback = async () => {
             });
 
             const data = await response.json();
-            console.log(data);
+
             if (data.token) {
                 // Save the token to localStorage
                 localStorage.setItem('token', data.token);
