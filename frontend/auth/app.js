@@ -149,9 +149,9 @@ window.addEventListener('load', () => {
         }
     })
 
-    if (window.location.hash === '#home' && !state.userEmail && !oauthFlow) {
-        google.accounts.id.prompt();
-    }
+    // if (window.location.hash === '#home' && !state.userEmail && !oauthFlow) 
+    google.accounts.id.prompt();
+
 
     /**
         check if url path includes callback route
