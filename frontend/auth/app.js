@@ -188,7 +188,7 @@ const processSignInRequest = async (route) => {
         });
 
         const data = await response.json();
-
+        console.log(data);
         if (data.token) {
             // Save the token to localStorage
             localStorage.setItem('token', data.token);
