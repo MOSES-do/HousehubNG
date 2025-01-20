@@ -140,21 +140,17 @@ window.addEventListener('load', () => {
     // Automatically prompt user authentication
     google.accounts.id.initialize({
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
-        callback: (response) => {
+        callback: async (response) => {
             oauthCode = response.credential;
             if (oauthCode) {
-                console.log(oauthCode);
-                // localStorage.setItem('token', response.credential);
-                // fetchProtectedContent(response.credential)
+                const route = 'google/signin';
+                await processSignInRequest(route);
             }
         }
     })
-    const urlParams = new URLSearchParams(window.location.search);
-    oauthCode = urlParams.get('code');
-    console.log(oauthCode);
-    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthCode) {
+
+    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthCode)
         google.accounts.id.prompt();
-    }
 
     /**
         check if url path includes callback route
@@ -163,37 +159,44 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
+    const urlParams = new URLSearchParams(window.location.search);
+    oauthCode = urlParams.get('code');
     if (oauthCode)
         handleOAuthCallback();
 })
 
 const handleOAuthCallback = async () => {
     if (oauthCode) {
-        try {
-            // Send the code to the backend using a POST request
-            const response = await fetch(`${BASE_API_URL}/oauth2/callback`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ code: oauthCode }),
-            });
-
-            const data = await response.json();
-
-            if (data.token) {
-                // Save the token to localStorage
-                localStorage.setItem('token', data.token);
-                fetchProtectedContent(data.token)
-            } else {
-                console.error('Error: No token received');
-            }
-        } catch (error) {
-            console.error('Authentication error:', error);
-        } finally {
-        }
+        const route = 'oauth2/callback';
+        await processSignInRequest(route);
     } else {
         console.error('OAuth code not found');
+    }
+}
+
+const processSignInRequest = async (route) => {
+    try {
+        // Send the code to the backend using a POST request
+        const response = await fetch(`${BASE_API_URL}/${route}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ code: oauthCode }),
+        });
+
+        const data = await response.json();
+
+        if (data.token) {
+            // Save the token to localStorage
+            localStorage.setItem('token', data.token);
+            fetchProtectedContent(data.token)
+        } else {
+            console.error('Error: No token received');
+        }
+    } catch (error) {
+        console.error('Authentication error:', error);
+    } finally {
     }
 }
 
