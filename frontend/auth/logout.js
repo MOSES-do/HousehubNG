@@ -39,12 +39,14 @@ export async function handleLogout() {
             if (!state.isLoggedIn)
                 if (window.location.hash === "#home") {
                     navBarUpdate();
-                    // mobileNavBarUpdate();
                 } else {
                     redirectToHomePage();
                 }
         } else {
             const errorData = await response.json();
+            localStorage.removeItem('token');
+            localStorage.removeItem('userLog');
+            redirectToHomePage();
             console.error('Logout failed: ' + errorData.error);
         }
     } catch (error) {
