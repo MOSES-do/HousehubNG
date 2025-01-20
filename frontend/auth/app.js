@@ -150,7 +150,7 @@ window.addEventListener('load', () => {
         }
     })
 
-    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow)
+    if (window.location.hash === '#home' && !userLog.userEmail && !oauthFlow)
         google.accounts.id.prompt();
 
     /**
