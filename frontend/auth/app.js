@@ -150,7 +150,7 @@ window.addEventListener('load', () => {
         }
     })
 
-    if (window.location.hash === '#home' && !userLog.userEmail && !oauthFlow)
+    if (window.location.hash === '#home' && !userLog?.userEmail && !oauthFlow)
         google.accounts.id.prompt();
 
     /**
@@ -163,7 +163,8 @@ window.addEventListener('load', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
-    handleOAuthCallback(oauthCode);
+    if (oauthCode)
+        handleOAuthCallback(oauthCode);
 })
 
 const handleOAuthCallback = async (oauthCode) => {
