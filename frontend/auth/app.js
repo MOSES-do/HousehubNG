@@ -126,12 +126,14 @@ export async function fetchProtectedContent(token) {
 }
 
 //==================================== GO0gle Auth ========================================//
+let authFlow = false;
 document.querySelector('.g-auth').addEventListener('click', function () {
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
             window.location.href = data.authorization_url;
         });
+    authFlow = true;
 });
 
 
@@ -148,7 +150,7 @@ window.addEventListener('load', () => {
         }
     })
 
-    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthCode)
+    if (window.location.hash === '#home' && !state.isLoggedIn && !authFlow)
         google.accounts.id.prompt();
 
     /**
