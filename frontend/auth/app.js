@@ -128,12 +128,12 @@ export async function fetchProtectedContent(token) {
 //==================================== GO0gle Auth ========================================//
 let authFlow = false;
 document.querySelector('.g-auth').addEventListener('click', function () {
+    authFlow = true;
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
             window.location.href = data.authorization_url;
         });
-    authFlow = true;
 });
 
 
