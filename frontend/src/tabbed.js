@@ -155,7 +155,7 @@ buttons.forEach((button) => {
     });
 });
 
-// Set initial animation position to the first button on page load
+// Set initial animation position to the active button on page load
 window.addEventListener('DOMContentLoaded', () => {
     const tabs = ['#dashboard', '#listings', '#subscription', '#profile'];
     let i = 0;

@@ -30,10 +30,11 @@ document.addEventListener('keydown', function (e) {
 
 // cta mobile view 
 menu_user.addEventListener('click', () => {
+    console.log("clicked")
     document.querySelector('.mobile-form').classList.toggle('reveal');
     callToActionForm.classList.toggle("reveal");
     nav_links.classList.toggle("reveal");
-    document.body.classList.toggle("no-scroll")
+    document.body.classList.toggle("no-scroll");
 })
 
 
@@ -44,7 +45,7 @@ callToActionForm.addEventListener('click', function (event) {
         document.querySelector('.mobile-form').classList.remove('reveal');
         callToActionForm.classList.remove("reveal");
         nav_links.classList.remove("reveal");
-        document.body.classList.remove("no-scroll")
+        document.body.classList.remove("no-scroll");
     }
 });
 
