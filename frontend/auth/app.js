@@ -137,7 +137,6 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 
-let oauthCode;
 window.addEventListener('load', () => {
     // Automatically prompt user authentication
     google.accounts.id.initialize({
@@ -146,7 +145,7 @@ window.addEventListener('load', () => {
             if (response.credential) {
                 console.log(response.credential)
                 const route = 'google-signin';
-                await processSignInRequest(route);
+                await processSignInRequest(route, response.credential);
             }
         }
     })
@@ -163,21 +162,20 @@ window.addEventListener('load', () => {
     */
 
     const urlParams = new URLSearchParams(window.location.search);
-    oauthCode = urlParams.get('code');
-    if (oauthCode)
-        handleOAuthCallback();
+    const oauthCode = urlParams.get('code');
+    handleOAuthCallback(oauthCode);
 })
 
-const handleOAuthCallback = async () => {
+const handleOAuthCallback = async (oauthCode) => {
     if (oauthCode) {
         const route = 'oauth2/callback';
-        await processSignInRequest(route);
+        await processSignInRequest(route, oauthCode);
     } else {
         console.error('OAuth code not found');
     }
 }
 
-const processSignInRequest = async (route) => {
+const processSignInRequest = async (route, cred = "") => {
     try {
         // Send the code to the backend using a POST request
         const response = await fetch(`${BASE_API_URL}/${route}`, {
@@ -185,7 +183,7 @@ const processSignInRequest = async (route) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ code: oauthCode }),
+            body: JSON.stringify({ code: cred }),
         });
         console.log(response);
         const data = await response.json();
