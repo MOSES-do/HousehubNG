@@ -137,7 +137,7 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 
 
 window.addEventListener('load', () => {
-    // Automatically prompt user authentication
+    // Automatically prompt user authentication on page load
     google.accounts.id.initialize({
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: async (response) => {
@@ -179,7 +179,6 @@ const handleOAuthCallback = async (oauthCode) => {
 
 const processSignInRequest = async (route, cred = "") => {
     try {
-        // oauthFlow = true;
         // Send the code to the backend using a POST request
         const response = await fetch(`${BASE_API_URL}/${route}`, {
             method: 'POST',
