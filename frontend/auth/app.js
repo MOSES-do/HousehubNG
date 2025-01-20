@@ -126,9 +126,9 @@ export async function fetchProtectedContent(token) {
 }
 
 //==================================== GO0gle Auth ========================================//
-let authFlow = false;
+let oauthFlow = false;
 document.querySelector('.g-auth').addEventListener('click', function () {
-    authFlow = true;
+    oauthFlow = true;
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
@@ -151,7 +151,7 @@ window.addEventListener('load', () => {
         }
     })
 
-    if (window.location.hash === '#home' && !state.isLoggedIn && !authFlow)
+    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow)
         google.accounts.id.prompt();
 
     /**
