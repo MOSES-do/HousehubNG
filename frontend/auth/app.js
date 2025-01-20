@@ -162,6 +162,7 @@ window.addEventListener('load', () => {
         handleOAuthCallback(oauthCode);
     }
 
+    // Allow prompt on page load only when user is not already logged in 
     if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow)
         google.accounts.id.prompt();
 
@@ -178,7 +179,7 @@ const handleOAuthCallback = async (oauthCode) => {
 
 const processSignInRequest = async (route, cred = "") => {
     try {
-        oauthFlow = true;
+        // oauthFlow = true;
         // Send the code to the backend using a POST request
         const response = await fetch(`${BASE_API_URL}/${route}`, {
             method: 'POST',
