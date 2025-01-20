@@ -128,7 +128,6 @@ export async function fetchProtectedContent(token) {
 //==================================== GO0gle Auth ========================================//
 let oauthFlow = false;
 document.querySelector('.g-auth').addEventListener('click', function () {
-    oauthFlow = true;
     fetch(`${BASE_API_URL}/login/google`)
         .then(response => response.json())
         .then(data => {
@@ -150,8 +149,10 @@ window.addEventListener('load', () => {
         }
     })
 
-    if (window.location.hash === '#home' && !userLog && !oauthFlow)
+    console.log(oauthCode);
+    if (window.location.hash === '#home' && !state.userEmail && !oauthFlow) {
         google.accounts.id.prompt();
+    }
 
     /**
         check if url path includes callback route
@@ -169,6 +170,7 @@ window.addEventListener('load', () => {
 
 const handleOAuthCallback = async (oauthCode) => {
     if (oauthCode) {
+        oauthFlow = true;
         const route = 'oauth2/callback';
         await processSignInRequest(route, oauthCode);
     } else {
