@@ -141,7 +141,7 @@ window.addEventListener('load', () => {
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: async (response) => {
             if (response.credential) {
-                const route = 'google/signin';
+                const route = 'google-signin';
                 await processSignInRequest(route);
             }
         }
