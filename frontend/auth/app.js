@@ -149,8 +149,10 @@ window.addEventListener('load', () => {
         }
     })
 
-    // if (window.location.hash === '#home' && !state.userEmail && !oauthFlow) 
-    google.accounts.id.prompt();
+    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow) {
+        console.log(oauthFlow)
+        google.accounts.id.prompt();
+    }
 
 
     /**
