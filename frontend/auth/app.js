@@ -147,12 +147,6 @@ window.addEventListener('load', () => {
             }
         }
     })
-
-    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow)
-        google.accounts.id.prompt();
-
-
-
     /**
         check if url path includes callback route
         No longer required since login is on the homepage of the website,
@@ -163,8 +157,14 @@ window.addEventListener('load', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const oauthCode = urlParams.get('code');
-    if (oauthCode)
+    if (oauthCode) {
+        oauthFlow = true;
         handleOAuthCallback(oauthCode);
+    }
+
+    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow)
+        google.accounts.id.prompt();
+
 })
 
 const handleOAuthCallback = async (oauthCode) => {
