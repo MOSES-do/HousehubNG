@@ -143,8 +143,9 @@ window.addEventListener('load', () => {
         callback: (response) => {
             oauthCode = response.credential;
             if (oauthCode) {
-                localStorage.setItem('token', response.credential);
-                fetchProtectedContent(response.credential)
+                console.log(oauthCode);
+                // localStorage.setItem('token', response.credential);
+                // fetchProtectedContent(response.credential)
             }
         }
     })
@@ -152,7 +153,7 @@ window.addEventListener('load', () => {
     oauthCode = urlParams.get('code');
     console.log(oauthCode);
     if (window.location.hash === '#home' && !state.isLoggedIn && !oauthCode) {
-        // google.accounts.id.prompt();
+        google.accounts.id.prompt();
     }
 
     /**
