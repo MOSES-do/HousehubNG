@@ -135,6 +135,7 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 
+let oauthCode;
 window.addEventListener('load', () => {
     // Automatically prompt user authentication
     google.accounts.id.initialize({
@@ -159,7 +160,7 @@ window.addEventListener('load', () => {
     */
 
     const urlParams = new URLSearchParams(window.location.search);
-    const oauthCode = urlParams.get('code');
+    oauthCode = urlParams.get('code');
     if (oauthCode)
         handleOAuthCallback();
 })
