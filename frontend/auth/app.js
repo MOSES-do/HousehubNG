@@ -142,17 +142,15 @@ window.addEventListener('load', () => {
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: async (response) => {
             if (response.credential) {
-                console.log(response.credential)
                 const route = 'google-signin';
                 await processSignInRequest(route, response.credential);
             }
         }
     })
 
-    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow) {
-        console.log(oauthFlow)
+    if (window.location.hash === '#home' && !state.isLoggedIn && !oauthFlow)
         google.accounts.id.prompt();
-    }
+
 
 
     /**
@@ -171,7 +169,6 @@ window.addEventListener('load', () => {
 
 const handleOAuthCallback = async (oauthCode) => {
     if (oauthCode) {
-        oauthFlow = true;
         const route = 'oauth2/callback';
         await processSignInRequest(route, oauthCode);
     } else {
@@ -181,6 +178,7 @@ const handleOAuthCallback = async (oauthCode) => {
 
 const processSignInRequest = async (route, cred = "") => {
     try {
+        oauthFlow = true;
         // Send the code to the backend using a POST request
         const response = await fetch(`${BASE_API_URL}/${route}`, {
             method: 'POST',
@@ -189,9 +187,8 @@ const processSignInRequest = async (route, cred = "") => {
             },
             body: JSON.stringify({ code: cred }),
         });
-        console.log(response);
+
         const data = await response.json();
-        console.log(data);
         if (data.token) {
             // Save the token to localStorage
             localStorage.setItem('token', data.token);
