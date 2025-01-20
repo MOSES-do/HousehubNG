@@ -135,14 +135,12 @@ document.querySelector('.g-auth').addEventListener('click', function () {
 });
 
 
-let oauthCode;
 window.addEventListener('load', () => {
     // Automatically prompt user authentication
     google.accounts.id.initialize({
         client_id: "119453756942-20vc1f6u1fdi4bdv0upidob2s14am44q.apps.googleusercontent.com",
         callback: async (response) => {
-            oauthCode = response.credential;
-            if (oauthCode) {
+            if (response.credential) {
                 const route = 'google/signin';
                 await processSignInRequest(route);
             }
@@ -159,8 +157,9 @@ window.addEventListener('load', () => {
         if (window.location.href.includes('/oauth2/callback')) {
         }
     */
+
     const urlParams = new URLSearchParams(window.location.search);
-    oauthCode = urlParams.get('code');
+    const oauthCode = urlParams.get('code');
     if (oauthCode)
         handleOAuthCallback();
 })
