@@ -149,7 +149,6 @@ window.addEventListener('load', () => {
         }
     })
 
-    console.log(oauthCode);
     if (window.location.hash === '#home' && !state.userEmail && !oauthFlow) {
         google.accounts.id.prompt();
     }
