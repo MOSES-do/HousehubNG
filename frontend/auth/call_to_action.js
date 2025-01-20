@@ -30,7 +30,6 @@ document.addEventListener('keydown', function (e) {
 
 // cta mobile view 
 menu_user.addEventListener('click', () => {
-    console.log("clicked")
     document.querySelector('.mobile-form').classList.toggle('reveal');
     callToActionForm.classList.toggle("reveal");
     nav_links.classList.toggle("reveal");
