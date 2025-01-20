@@ -149,8 +149,6 @@ function checkWindowSize(value) {
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         checkWindowSize(e.currentTarget)
-        // remove padding on click of icon that trigger mobile browser resize
-        tab.classList.remove('scrolling-down');
     });
     button.addEventListener('focus', (e) => {
         checkWindowSize(e.currentTarget)
