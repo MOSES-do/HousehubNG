@@ -1,8 +1,11 @@
 import { userInfo, state, msg_count, notify_count, userInfo_mobile } from "../../common.js";
+
+// On page refresh/open a new tab
 window.addEventListener('DOMContentLoaded', async () => {
     const listPage = window.location.hash;
-    // On page refresh/open a new tab
-    if (listPage === "#dashboard") {
+    if (listPage === "#dashboard" || listPage === "#listings" ||
+        listPage === "#profile" || listPage === "#subscription"
+    ) {
         const data = state.userEmail;
         renderUserDetails(data)
         renderUserDetailsNav(data)
@@ -26,7 +29,6 @@ export const renderUserDetails = (data) => {
     userInfo.insertAdjacentHTML('afterbegin', ListingItems);
 }
 
-// yet to be synced with the dom
 export const renderUserDetailsNav = (data) => {
     userInfo_mobile.innerHTML = '';
     msg_count.innerHTML = '';
@@ -38,6 +40,7 @@ export const renderUserDetailsNav = (data) => {
         <p id="welcome-user"> ${data}!</p>
     </span>   
        `
+    // yet to be synced with the dom
     msg_count.innerHTML = '2'
     notify_count.innerHTML = '10'
     userInfo_mobile.insertAdjacentHTML('afterbegin', ListingItems);

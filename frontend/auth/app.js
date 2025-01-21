@@ -135,7 +135,6 @@ document.querySelector('.g-auth').addEventListener('click', function () {
         });
 });
 
-
 window.addEventListener('load', () => {
     // Automatically prompt user authentication on page load
     google.accounts.id.initialize({
@@ -246,6 +245,7 @@ document.body.addEventListener('click', (event) => {
 
 
 if (userLog) {
+    // On page load set state with local storage
     state.userEmail = userLog.userEmail;
     state.isLoggedIn = userLog.isLoggedIn;
     navBarUpdate();

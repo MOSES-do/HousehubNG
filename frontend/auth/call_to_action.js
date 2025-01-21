@@ -2,7 +2,6 @@
 
 import {
     log_in_form,
-    container,
     closeForm,
     menu_user,
     callToActionForm,
@@ -69,19 +68,11 @@ document.addEventListener('keydown', function (e) {
 })
 
 
-
-
-
-
-
-
 // dashbord navbar
 const openMobileSidebar = document.querySelector('.bg-user2');
 const overlay_mobile = document.getElementById('overlay-mobile');
 const mobileNavBar = document.querySelector('.mobile_side__nav');
 const closeMobileSideBar = document.querySelector('.cancel');
-
-
 
 // Open Sidebar
 openMobileSidebar.addEventListener('click', function () {
@@ -103,4 +94,3 @@ overlay_mobile.addEventListener('click', function () {
     overlay_mobile.classList.remove('show');
     closeMobileSideBar.style.display = "none"
 });
-

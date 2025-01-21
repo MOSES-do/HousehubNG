@@ -1,12 +1,8 @@
-import { profile, state } from "../../common.js";
-import { renderUserDetails } from "./UserInfo.js";
+import { profile } from "../../common.js";
 
 
 
 const renderProfile = () => {
-    const data = state.userEmail;
-    renderUserDetails(data);
-
     profile.innerHTML = '';
     const ProfileData = `we got this profile`
     profile.insertAdjacentHTML('afterbegin', ProfileData);

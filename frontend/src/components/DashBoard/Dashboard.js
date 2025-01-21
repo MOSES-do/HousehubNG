@@ -1,25 +1,19 @@
-import { state, userSummary } from "../../common.js";
-import { renderUserDetails } from "./UserInfo.js";
+import { userSummary } from "../../common.js";
 
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', () => {
     const token = localStorage.getItem('token');
-    const listPage = window.location.hash;
-    if (listPage === '#dashboard') {
+    const page = window.location.hash;
+    if (page === '#dashboard') {
         if (!token) {
             // alert('You are not logged in. Redirecting to login page');
             window.location.href = 'index.html';
             return;
         }
-        // On page refresh/open a new tab
-        const data = state.userEmail;
-        renderDashboard()
     }
 });
 
 
 const renderDashboard = () => {
-    const data = state.userEmail;
-    renderUserDetails(data);
     userSummary.innerHTML = '';
 
     const ListingItems = `   

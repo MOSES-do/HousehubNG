@@ -1,12 +1,8 @@
 import navigateTo from "./components/Router.js";
-// import { renderAnnouncement } from './components/DashBoard/Announcement.js'
 import renderSubscription from './components/DashBoard/Subscription.js'
 import renderProfile from './components/DashBoard/Profile.js'
 import renderDashboard from './components/DashBoard/Dashboard.js'
 import renderListing from './components/DashBoard/Listing.js'
-import { renderUserDetails } from './components/DashBoard/UserInfo.js'
-import { state } from './common.js'
-
 
 const tabsContainer = document.querySelector(".operations_tab-container");
 const tabs = document.querySelectorAll(".operations_tab");
@@ -14,11 +10,8 @@ const tabsContent = document.querySelectorAll(".operations_content");
 
 ///////////////////////////////////////
 // Tabbed component
-const data = state.userEmail;
 
-const destinationRoutes = () => {
-    // renderAnnouncement();
-    renderUserDetails(data);
+const RouteComponents = () => {
 
     if (window.location.hash === "#dashboard")
         renderDashboard();
@@ -49,7 +42,7 @@ function manageDashboardActiveTabs() {
 
         // Activate tab
         clicked.classList.add("operations_tab--active");
-        destinationRoutes();
+        RouteComponents();
 
         // Activate content area
         document
@@ -59,9 +52,11 @@ function manageDashboardActiveTabs() {
 }
 manageDashboardActiveTabs();
 
-function pageVariables(tabNum, pageHash, comp) {
-    // Activate content area on pageReload
-    comp();
+// Activate content area on pageReload
+function manageDashboardActiveTabsOnPageReload(tabNum, pageHash, comp) {
+    // load component
+    comp(); //<-- component
+
     // console.log(tabNum, pageHash, comp)
     // On page reload default to current tab
     history.replaceState(null, '', pageHash);
@@ -73,12 +68,9 @@ function pageVariables(tabNum, pageHash, comp) {
     tabs.forEach((t) => t.classList.remove("operations_tab--active"));
     tabsContent.forEach((c) => c.classList.remove("operations_content--active"));
 
-    if (window.innerWidth <= 600) {
-        tabs.forEach((t) => t.classList.remove("operations_tab--active"));
-        tabs.forEach((t) => t.classList.add("shrink"));
-    } else {
-        ele.classList.add("operations_tab--active");
-    }
+    // Activate tab
+    ele.classList.add("operations_tab--active");
+    // RouteComponents();
 
     document
         .querySelector(`.operations_content--${ele.dataset.tab}`)
@@ -86,23 +78,26 @@ function pageVariables(tabNum, pageHash, comp) {
 }
 
 function onPageReload() {
-    // renderAnnouncement();
-    renderUserDetails(data);
+
+    if (window.location.hash === "#dashboard") {
+        navigateTo('dashboard')
+        manageDashboardActiveTabsOnPageReload(1, '#dashboard', renderDashboard)
+    }
 
     if (window.location.hash === "#listings") {
         navigateTo('dashboard')
-        pageVariables(2, '#listings', renderListing)
+        manageDashboardActiveTabsOnPageReload(2, '#listings', renderListing)
     }
 
     if (window.location.hash === "#subscription") {
         navigateTo('dashboard')
-        pageVariables(3, '#subscription', renderSubscription)
+        manageDashboardActiveTabsOnPageReload(3, '#subscription', renderSubscription)
     }
 
 
     if (window.location.hash === "#profile") {
         navigateTo('dashboard')
-        pageVariables(4, '#profile', renderProfile)
+        manageDashboardActiveTabsOnPageReload(4, '#profile', renderProfile)
     }
 
 }
@@ -110,6 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     onPageReload();
 })
 
+
+// Reval dashboard icon info on click
 const tabExpandBtn = document.querySelector('.tab_reveal')
 tabExpandBtn.addEventListener('click', () => {
     const dashBoardHome = document.querySelector('.dashboard_tiles');
@@ -119,9 +116,6 @@ tabExpandBtn.addEventListener('click', () => {
     tabDescription.forEach((c) => c.classList.toggle("role_reveal"));
 
 })
-
-
-
 
 
 // Mobile navbar focus animation setup @600px <
