@@ -3,7 +3,7 @@ import navigateTo from "./Router.js";
 import renderHouseList from "./HouseList.js";
 import handlePageByHash from "./PageReload.js";
 import { urlUpdate } from "./QuerytoUrl.js";
-import { renderScrollLoader } from "./Spinner.js";
+import { apartmentSearchLoader, renderScrollLoader } from "./Spinner.js";
 import renderInitLoad from "./Spinner.js";
 
 let curPage = state.curPage
@@ -28,8 +28,9 @@ export const submitHandler = async (e, curPage, query = "") => {
             urlUpdate(query, 'product_list')
             renderHouseList(data);
 
+
             // Initial load state is not lost but lost on re-render of same page
-            // hence the Pagerelod script
+            // hence the Pagereload script
             navigateTo("product_list");
 
             // On navigation this way, state is lost
@@ -45,6 +46,7 @@ export const submitHandler = async (e, curPage, query = "") => {
     } finally {
         if (state.curPage === 1)
             renderInitLoad('stop')
+        apartmentSearchLoader('stop')
         state.loading = false;
     }
 }
@@ -84,6 +86,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 // Whenever the homepage search is used clear state
 form_location.addEventListener('submit', (e) => {
+    apartmentSearchLoader('apartment_search')
+    // document.querySelector('.search_icon').style.visibility = 'hidden';
+    // document.querySelector('.search_loader').classList.add('spinner-visible');
     state.searchHouseItems = [];
     state.pageReload = false;
     const query = search_inputEl.value

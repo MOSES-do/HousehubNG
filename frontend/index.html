@@ -85,9 +85,10 @@
                             role="search-box" aria-autocomplete="both" aria-expanded="false"
                             aria-controls="search-bar-listbox" placeholder=" Available locations" />
                         <button type="submit" class="search-btn btn-up">
-                            <a class="">
+                            <a class="search_icon">
                                 <i class="fa-solid btn-search fa-magnifying-glass "></i>
                             </a>
+                            <span class="spinner spinner--hidden search_loader"></span>
                         </button>
                     </form>
 
@@ -542,7 +543,9 @@
             <input id="login-email" type="text" placeholder="Enter your email" />
         </div>
         <input type="text" id="login-pwd" class="pwd" placeholder="Enter your password" />
-        <button type="submit" class="btn login-btn mb-4 txt">Continue</button>
+        <button type="submit" class="btn login-btn mb-4 txt">
+            <span class="spinner spinner--hidden submit_loader"></span>
+            <span class="submit_req">Continue</span></button>
         <a href="forgot-password.html"><button class="btn mb-4">Forgot your password?</button></a>
 
         <span class="divider mb-2">or</span>
@@ -568,10 +571,10 @@
             <span class="auth-text" id="button-label">Sign in with
                 Google</span>
         </button>
-        <button class="btn login-auth-btn mb-2">
+        <!-- <button class="btn login-auth-btn mb-2">
             <i class="fb fa-brands fa-facebook"></i>
             <span class="auth-text" id="button-label">Continue with Facebook</span>
-        </button>
+        </button> -->
         <!-- <button class=" btn login-auth-btn mb-2"><span>
                                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                                         <path

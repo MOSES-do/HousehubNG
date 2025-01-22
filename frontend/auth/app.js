@@ -9,6 +9,7 @@ import { handleLogout } from "./logout.js";
 import navigateTo from "../src/components/Router.js";
 import houseListNavUpdate from "../src/components/HouseListForm.js";
 import { renderAnnouncement } from "../src/components/DashBoard/Announcement.js";
+import { signinFormLoader } from "../src/components/Spinner.js";
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -82,13 +83,19 @@ export async function handleLogin() {
 
         } else {
             const errorData = await response.json();
-            alert('Login failed: ' + errorData.error)
+            // alert('Login failed: ' + errorData.error)
+            return errorData;
         }
     } catch (error) {
         console.error('Error:', error)
     }
 }
-
+login_btn.addEventListener('click', async () => {
+    const login_error = await handleLogin();
+    if (!login_error) {
+        signinFormLoader('sign_log_in');
+    }
+})
 export async function fetchProtectedContent(token) {
     try {
         const response = await fetch(`${BASE_API_URL}/current_user`, {
@@ -203,13 +210,13 @@ const processSignInRequest = async (route, cred = "") => {
 
 document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('log_out_user')) {
+        signinFormLoader('stop');
         handleLogout();
     }
 
-
     if (event.target.classList.contains('log_in')) {
-        login_btn.removeEventListener('click', handleRegistration)
-        login_btn.addEventListener('click', handleLogin)
+        login_btn.removeEventListener('click', handleRegistration);
+        login_btn.addEventListener('click', handleLogin);
 
         // close cta when login button is pressed
         if (window.location.hash === "#home") {
@@ -242,6 +249,8 @@ document.body.addEventListener('click', (event) => {
         callToActionForm.classList.remove("reveal");
     }
 });
+
+
 
 
 if (userLog) {
