@@ -46,20 +46,18 @@ menu_user.addEventListener('click', () => {
 
 callToActionForm.addEventListener('click', function (event) {
     // in mobile view
-    // Check if the clicked element is a child of the parent
     if (window.innerWidth < 981)
+        // Check if the clicked element is a child of the parent
         if (event.target !== callToActionForm) {
-            // Hide the parent element
             toggleCtaMobileForm();
         }
 });
 
 nav_links.addEventListener('click', function (event) {
     // in mobile view
-    // Check if the clicked element is a child of the parent
     if (window.innerWidth < 981)
+        // Check if the clicked element is a child of the parent
         if (event.target !== nav_links) {
-            // Hide the parent element
             toggleCtaMobileForm();
         }
 });
