@@ -45,6 +45,7 @@ menu_user.addEventListener('click', () => {
 
 
 callToActionForm.addEventListener('click', function (event) {
+    // in mobile view
     // Check if the clicked element is a child of the parent
     if (window.innerWidth < 981)
         if (event.target !== callToActionForm) {
@@ -54,6 +55,7 @@ callToActionForm.addEventListener('click', function (event) {
 });
 
 nav_links.addEventListener('click', function (event) {
+    // in mobile view
     // Check if the clicked element is a child of the parent
     if (window.innerWidth < 981)
         if (event.target !== nav_links) {

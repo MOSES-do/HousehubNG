@@ -223,24 +223,12 @@ document.body.addEventListener('click', (event) => {
         signinFormLoader('stop');
         login_btn.removeEventListener('click', handleRegistration);
         login_btn.addEventListener('click', handleLogin);
-
-        // close cta form when login button is pressed
-        if (window.location.hash === "#home") {
-            document.querySelector('.mobile-form').classList.remove('reveal');
-            callToActionForm.classList.remove("reveal");
-        }
     }
 
     if (event.target.classList.contains('sign_up')) {
         signinFormLoader('stop');
         login_btn.removeEventListener('click', handleLogin)
         login_btn.addEventListener('click', handleRegistration)
-
-        // close cta form when signup button is pressed
-        if (window.location.hash === "#home") {
-            document.querySelector('.mobile-form').classList.remove('reveal');
-            callToActionForm.classList.remove("reveal");
-        }
     }
 
     if (event.target.classList.contains('dashbtn')) {
