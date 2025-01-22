@@ -587,6 +587,12 @@ a:link {
 
 }
 
+@media only screen and (max-width:720px) {
+    .search-btn .search_icon {
+        margin-top: -1px;
+    }
+}
+
 .search input[type="text"] {
     border: 2px solid rgba(0, 0, 0, 0.1);
     font-size: 16px;
@@ -1487,7 +1493,7 @@ article li .recent-search--products p {
 }
 
 
-@media (max-width:385px) {
+@media (max-width:391px) {
     .dashboard_tiles .mobile_side__nav .logo {
         display: flex !important;
         flex-direction: column !important;
@@ -1561,9 +1567,29 @@ article li .recent-search--products p {
                         width: 230px;
                     }
 
-                    @media (max-width:294px) {
+                    @media (max-width:307px) {
                         .dashboard_tiles .user-info .search-container {
-                            width: 222px;
+                            width: 222px !important;
+                        }
+                    }
+
+                    @media (max-width:286px) {
+                        .dashboard_tiles .user-info .search-container {
+                            width: 215px !important;
+                        }
+
+                        .dashboard_tiles .user-info .search-container .search-icon {
+                            margin-left: -50px !important;
+                        }
+
+                        @media (max-width:275px) {
+                            .dashboard_tiles .user-info .search-container {
+                                width: 205px !important;
+                            }
+
+                            .dashboard_tiles .user-info .search-container .search-icon {
+                                margin-left: -60px !important;
+                            }
                         }
                     }
                 }
