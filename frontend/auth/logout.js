@@ -7,6 +7,7 @@ import navigateTo from "../src/components/Router.js";
 
 const redirectToHomePage = () => {
     navBarUpdate()
+    document.querySelector('.mobile-form').classList.remove('reveal');
     navigateTo('home')
 }
 
@@ -36,6 +37,7 @@ export async function handleLogout() {
             //  set dashboard default page as active
             ele.classList.add("operations_content--active");
 
+
             if (!state.isLoggedIn)
                 if (window.location.hash === "#home") {
                     navBarUpdate();
@@ -50,10 +52,11 @@ export async function handleLogout() {
             console.error('Logout failed: ' + errorData.error);
         }
     } catch (error) {
-        console.error('Error:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('userLog');
+        redirectToHomePage();
         console.error('Logout failed: ' + errorData.error);
     } finally {
-        // remove .html from url object
         localStorage.removeItem('token');
         localStorage.removeItem('userLog');
         redirectToHomePage();
