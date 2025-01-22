@@ -2372,6 +2372,53 @@ article li .recent-search--products p {
     visibility: visible;
 }
 
+/* ====== Error Element ======== */
+.error {
+    background: #fff;
+    padding: 14px 20px;
+    width: 280px;
+    min-height: 46px;
+    border-radius: 3px;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    z-index: 5000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-120px);
+    transition: all 0.3s;
+}
+
+.error--visible {
+    opacity: 1;
+    transform: initial;
+    visibility: initial;
+}
+
+.error__icon {
+    font-size: 16px;
+    color: rgb(123, 64, 64);
+    margin-top: 2px;
+}
+
+.error__right {
+    margin-left: 10px;
+}
+
+.error__title {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 1px;
+    font-weight: 500;
+}
+
+.error__text {
+    font-size: 13px;
+    color: rgb(97, 98, 104);
+}
+
 
 
 /*================ SPINNERS and LOADERS ==============*/

@@ -1,3 +1,7 @@
+export const DEFAULT_DISPLAY_TIME = 3500;
+export const errorEl = document.querySelector('.error');
+export const errorTextEl = document.querySelector('.error__text');
+
 export const burger = document.querySelector(".header_nav--hamburger");
 export const burgerFirst = document.querySelector(".hamburger--line:first-child");
 export const burgerSecond = document.querySelector(".hamburger--line:nth-child(2)");

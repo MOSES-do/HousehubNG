@@ -10,6 +10,7 @@ import navigateTo from "../src/components/Router.js";
 import houseListNavUpdate from "../src/components/HouseListForm.js";
 import { renderAnnouncement } from "../src/components/DashBoard/Announcement.js";
 import { signinFormLoader } from "../src/components/Spinner.js";
+import renderError from "../src/components/Error.js";
 
 burger.addEventListener("click", function (e) {
     burgerFirst.classList.toggle("line-1");
@@ -37,6 +38,8 @@ export async function handleRegistration() {
     //Sign up FUNCTIONALITY
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-pwd').value;
+    signinFormLoader('sign_log_in');
+
     try {
         const response = await fetch(`${BASE_API_URL}/register`, {
             method: 'POST',
@@ -46,13 +49,16 @@ export async function handleRegistration() {
             body: JSON.stringify({ email, password })
         });
         if (response.ok) {
-            alert("Email verification link has been sent to your mail");
+            renderError('Email verification link has been sent to your mail')
+            signinFormLoader('stop');
         } else {
             const errorData = await response.json();
-            alert('Registration failed: ' + errorData.error)
+            renderError('Registration failed: ' + errorData.error)
         }
     } catch (error) {
         console.log("Registration failed")
+    } finally {
+        signinFormLoader('stop');
     }
 }
 
@@ -60,6 +66,7 @@ export async function handleLogin() {
     //LOGIN FUNCTIONALITY
     const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-pwd').value;
+    signinFormLoader('sign_log_in');
     try {
         const response = await fetch(`${BASE_API_URL}/login`, {
             method: 'POST',
@@ -73,16 +80,18 @@ export async function handleLogin() {
             localStorage.setItem('token', data.token);
             const tokenPayload = decodeJWT(data.token);
 
-            // localStorage.setItem('userName', data.token.email)
             if (tokenPayload.sub.verified === true) {
                 const token = localStorage.getItem('token');
                 fetchProtectedContent(token)
             } else {
-                alert("To log in, complete email verification")
+                renderError('To log in, complete email verification');
+                signinFormLoader('stop');
             }
 
         } else {
             const errorData = await response.json();
+            renderError('Login failed: ' + errorData.error)
+            console.log('Login failed: ' + errorData.error)
             // alert('Login failed: ' + errorData.error)
             return errorData;
         }
@@ -90,12 +99,7 @@ export async function handleLogin() {
         console.error('Error:', error)
     }
 }
-login_btn.addEventListener('click', async () => {
-    const login_error = await handleLogin();
-    if (!login_error) {
-        signinFormLoader('sign_log_in');
-    }
-})
+
 export async function fetchProtectedContent(token) {
     try {
         const response = await fetch(`${BASE_API_URL}/current_user`, {
@@ -124,11 +128,13 @@ export async function fetchProtectedContent(token) {
             if (hash === "#product_list")
                 houseListNavUpdate();
         } else {
-            alert('Failed to fetch protected content');
+            // alert('Failed to fetch protected content');
+            console.log('Failed to fetch protected content');
         }
     } catch (e) {
         console.error('Error:', error);
-        alert('Failed to fetch protected content');
+        // renderError('Failed to fetch protected content');
+        // alert('Failed to fetch protected content');
     }
 }
 
@@ -215,6 +221,7 @@ document.body.addEventListener('click', (event) => {
     }
 
     if (event.target.classList.contains('log_in')) {
+        signinFormLoader('stop');
         login_btn.removeEventListener('click', handleRegistration);
         login_btn.addEventListener('click', handleLogin);
 
@@ -226,6 +233,7 @@ document.body.addEventListener('click', (event) => {
     }
 
     if (event.target.classList.contains('sign_up')) {
+        signinFormLoader('stop');
         login_btn.removeEventListener('click', handleLogin)
         login_btn.addEventListener('click', handleRegistration)
 
