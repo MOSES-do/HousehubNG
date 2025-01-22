@@ -91,9 +91,8 @@ export async function handleLogin() {
         } else {
             const errorData = await response.json();
             renderError('Login failed: ' + errorData.error)
-            console.log('Login failed: ' + errorData.error)
-            // alert('Login failed: ' + errorData.error)
-            return errorData;
+            console.error('Login failed: ' + errorData.error)
+            signinFormLoader('stop');
         }
     } catch (error) {
         console.error('Error:', error)
@@ -118,7 +117,7 @@ export async function fetchProtectedContent(token) {
                 'isLoggedIn': state.isLoggedIn = true
             }));
             const hash = window.location.hash;
-            closeForm.addEventListener("click", closePopup());
+            closePopup();
             if (hash === "#home") {
                 navBarUpdate();
                 oauthUrlRedirectCleanUp('home');
@@ -225,7 +224,7 @@ document.body.addEventListener('click', (event) => {
         login_btn.removeEventListener('click', handleRegistration);
         login_btn.addEventListener('click', handleLogin);
 
-        // close cta when login button is pressed
+        // close cta form when login button is pressed
         if (window.location.hash === "#home") {
             document.querySelector('.mobile-form').classList.remove('reveal');
             callToActionForm.classList.remove("reveal");
@@ -237,7 +236,7 @@ document.body.addEventListener('click', (event) => {
         login_btn.removeEventListener('click', handleLogin)
         login_btn.addEventListener('click', handleRegistration)
 
-        // close cta when signup button is pressed
+        // close cta form when signup button is pressed
         if (window.location.hash === "#home") {
             document.querySelector('.mobile-form').classList.remove('reveal');
             callToActionForm.classList.remove("reveal");

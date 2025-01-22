@@ -3,8 +3,6 @@ import { BASE_API_URL, state } from "../src/common.js"
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import navigateTo from "../src/components/Router.js";
 
-
-
 const redirectToHomePage = () => {
     navBarUpdate()
     navigateTo('home')
@@ -15,11 +13,6 @@ const tabsContent = document.querySelectorAll(".operations_content");
 // Deleting JWT upon logout request
 export async function handleLogout() {
     const token = localStorage.getItem('token');
-
-    // remove mobile-form overlay, 
-    // Shouldn't be visible on logout in product_list page at a width > 600
-    // Not sure why, but it is, so i have to remove it on logout
-    document.querySelector('.mobile-form').classList.remove('reveal');
 
     try {
         const response = await fetch(`${BASE_API_URL}/logout`, {

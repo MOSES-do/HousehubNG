@@ -257,7 +257,7 @@ a:link {
     height: 2.8px;
 }
 
-.mobile-form {
+.mobile-overlay {
     display: none;
 }
 
@@ -267,7 +267,7 @@ a:link {
     }
 }
 
-.mobile-form.reveal {
+.mobile-overlay.reveal {
     display: block;
 }
 
@@ -2272,6 +2272,10 @@ article li .recent-search--products p {
     cursor: pointer;
 }
 
+.cancel.reveal {
+    display: block;
+}
+
 @media (max-width:842px) {
     .cancel {
         left: 50rem;
@@ -2378,7 +2382,7 @@ article li .recent-search--products p {
 }
 
 /* overlay fro mobile */
-.overlay-mobile {
+.overlay-dashboard {
     position: fixed;
     top: 0;
     left: 0;
@@ -2393,7 +2397,7 @@ article li .recent-search--products p {
 }
 
 
-.overlay-mobile.show {
+.overlay-dashboard.show {
     opacity: 1;
     visibility: visible;
 }
