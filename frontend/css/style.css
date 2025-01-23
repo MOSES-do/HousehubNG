@@ -2500,6 +2500,11 @@ article li .recent-search--products p {
     border-right: 6px solid #fff;
     border-bottom: 6px solid #fff;
     border-left: 6px solid #bbc0c2;
+    transition: all 3s ease;
+    outline: none;
+    background: none;
+    border: none;
+
 }
 
 .spinner--visible {
