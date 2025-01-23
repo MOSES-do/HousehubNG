@@ -87,7 +87,6 @@ export async function handleLogin() {
                 renderError('To log in, complete email verification');
                 signinFormLoader('stop');
             }
-
         } else {
             const errorData = await response.json();
             renderError('Login failed: ' + errorData.error)
@@ -95,7 +94,8 @@ export async function handleLogin() {
             signinFormLoader('stop');
         }
     } catch (error) {
-        console.error('Error:', error)
+        renderError('Error:' + error)
+        signinFormLoader('stop');
     }
 }
 
@@ -215,7 +215,6 @@ const processSignInRequest = async (route, cred = "") => {
 
 document.body.addEventListener('click', (event) => {
     if (event.target.classList.contains('log_out_user')) {
-        signinFormLoader('stop');
         handleLogout();
     }
 
@@ -238,10 +237,6 @@ document.body.addEventListener('click', (event) => {
         renderUserDetailsNav(data);
         // renderAnnouncement();
         navigateTo('dashboard');
-
-        // close cta when user navigates to dashboard
-        document.querySelector('.mobile-form').classList.remove('reveal');
-        callToActionForm.classList.remove("reveal");
     }
 });
 

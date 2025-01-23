@@ -1,5 +1,5 @@
 import { toggleSignUpForm } from "../../auth/call_to_action.js";
-import { state } from "../common.js";
+import { login_btn, state } from "../common.js";
 
 function houseListNavUpdate() {
     const userEmail = state.userEmail;
@@ -65,34 +65,21 @@ function houseListNavUpdate() {
     }
 
 
-    // close cta form when sign up or login button is clicked
-    document.body.addEventListener('click', (event) => {
-        if (event.target.classList.contains('sign_up')) {
-            document.querySelector('.mobile-form').classList.remove('reveal');
-            logUser.classList.remove("reveal");
-            nav_links.classList.remove("reveal")
-        }
-
-        if (event.target.classList.contains('log_in')) {
-            document.querySelector('.mobile-form').classList.remove('reveal');
-            logUser.classList.remove("reveal");
-            nav_links.classList.remove("reveal")
-        }
-    })
-
-    // toggle cta in mobile view with user icon
+    // toggle cta section in mobile view with user icon
     document.querySelector('.bg-user1').addEventListener('click', () => {
         if (window.location.hash === "#product_list") {
-            document.querySelector('.mobile-form').classList.toggle('reveal');
+            document.querySelector('.mobile-overlay').classList.toggle('reveal');
             logUser.classList.toggle("reveal");
             nav_links.classList.toggle("reveal")
         }
     })
 
-    // close cta when escape key is pressed
+    // close cta section when escape key is pressed
     document.addEventListener('keydown', function (e) {
+        const isOverlayVisible = document.querySelector('.overlay').classList.contains('reveal');
+        // console.log(isOverlayVisible)
         if (e.key === 'Escape') {
-            document.querySelector('.mobile-form').classList.remove('reveal');
+            document.querySelector('.mobile-overlay').classList.remove('reveal');
             logUser.classList.remove("reveal");
             nav_links.classList.remove("reveal")
         }
@@ -100,24 +87,25 @@ function houseListNavUpdate() {
 
     logUser.addEventListener('click', function (event) {
         // Check if the clicked element is a child of the parent
-        if (event.target !== logUser) {
-            // Hide the parent element
-            document.querySelector('.mobile-form').classList.toggle('reveal');
-            logUser.classList.toggle("reveal");
-            nav_links.classList.toggle("reveal");
-            document.body.classList.remove("no-scroll")
-        }
+        if (window.innerWidth < 981)
+            if (event.target !== logUser) {
+                // Hide cta section
+                document.querySelector('.mobile-overlay').classList.remove('reveal');
+                logUser.classList.remove("reveal");
+                nav_links.classList.remove("reveal");
+            }
+
     });
 
     nav_links.addEventListener('click', function (event) {
         // Check if the clicked element is a child of the parent
-        if (event.target !== nav_links) {
-            // Hide the parent element
-            document.querySelector('.mobile-form').classList.toggle('reveal');
-            logUser.classList.toggle("reveal");
-            nav_links.classList.toggle("reveal");
-            document.body.classList.remove("no-scroll")
-        }
+        if (window.innerWidth < 981)
+            if (event.target !== nav_links) {
+                // Hide the parent element
+                document.querySelector('.mobile-overlay').classList.toggle('reveal');
+                logUser.classList.toggle("reveal");
+                nav_links.classList.toggle("reveal");
+            }
     });
 }
 

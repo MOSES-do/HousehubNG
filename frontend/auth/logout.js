@@ -28,8 +28,6 @@ export async function handleLogout() {
             localStorage.removeItem('userLog');
             state.isLoggedIn = false;
 
-
-
             // Remove active classes from dashboard
             tabsContent.forEach((c) => c.classList.remove("operations_content--active"));
             const ele = document.querySelector(`.operations_content--1`);
