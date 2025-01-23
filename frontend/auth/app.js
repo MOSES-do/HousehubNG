@@ -117,7 +117,7 @@ export async function fetchProtectedContent(token) {
                 'isLoggedIn': state.isLoggedIn = true
             }));
             const hash = window.location.hash;
-            closePopup();
+
             if (hash === "#home") {
                 navBarUpdate();
                 oauthUrlRedirectCleanUp('home');

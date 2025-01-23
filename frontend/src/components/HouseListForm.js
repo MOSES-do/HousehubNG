@@ -1,5 +1,5 @@
 import { toggleSignUpForm } from "../../auth/call_to_action.js";
-import { login_btn, state } from "../common.js";
+import { state } from "../common.js";
 
 function houseListNavUpdate() {
     const userEmail = state.userEmail;
