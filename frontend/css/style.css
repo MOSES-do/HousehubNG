@@ -2503,8 +2503,6 @@ article li .recent-search--products p {
     transition: all 3s ease;
     outline: none;
     background: none;
-    border: none;
-
 }
 
 .spinner--visible {
