@@ -3,7 +3,7 @@ import { burger, burgerFirst, burgerSecond, burgerThird, BASE_API_URL, login_btn
 import navBarUpdate from "../src/components/CallToActionForm.js";
 import renderDashboard from "../src/components/DashBoard/Dashboard.js";
 import { renderUserDetails, renderUserDetailsNav } from "../src/components/DashBoard/UserInfo.js";
-import { closePopup } from "./call_to_action.js";
+import { closePopup, toggleSignUpForm } from "./call_to_action.js";
 import { oauthUrlRedirectCleanUp } from "./utils.js";
 import { handleLogout } from "./logout.js";
 import navigateTo from "../src/components/Router.js";
@@ -51,6 +51,7 @@ export async function handleRegistration() {
         if (response.ok) {
             renderError('Email verification link has been sent to your mail')
             signinFormLoader('stop');
+            toggleSignUpForm()
         } else {
             const errorData = await response.json();
             renderError('Registration failed: ' + errorData.error)
@@ -82,7 +83,9 @@ export async function handleLogin() {
 
             if (tokenPayload.sub.verified === true) {
                 const token = localStorage.getItem('token');
+
                 fetchProtectedContent(token)
+                toggleSignUpForm()
             } else {
                 renderError('To log in, complete email verification');
                 signinFormLoader('stop');

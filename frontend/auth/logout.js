@@ -34,7 +34,6 @@ export async function handleLogout() {
             //  set dashboard default page as active
             ele.classList.add("operations_content--active");
 
-
             if (!state.isLoggedIn)
                 if (window.location.hash === "#home") {
                     navBarUpdate();
@@ -42,20 +41,15 @@ export async function handleLogout() {
                     redirectToHomePage();
                 }
         } else {
-            const errorData = await response.json();
-            localStorage.removeItem('token');
-            localStorage.removeItem('userLog');
-            redirectToHomePage();
             console.error('Logout failed: ' + errorData.error);
         }
     } catch (error) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userLog');
-        redirectToHomePage();
+        console.error('Logout failed: ' + errorData.error);
         console.error('Logout failed: ' + errorData.error);
     } finally {
         localStorage.removeItem('token');
         localStorage.removeItem('userLog');
+
         redirectToHomePage();
     }
 }
