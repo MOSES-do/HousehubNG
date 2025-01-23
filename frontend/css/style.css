@@ -2496,11 +2496,11 @@ article li .recent-search--products p {
     top: 4px;
     width: 25px;
     height: 25px;
-    border-top: 6px solid #fff;
-    border-right: 6px solid #fff;
-    border-bottom: 6px solid #fff;
-    border-left: 6px solid #bbc0c2;
-    transition: all 3s ease;
+    border-top: 4px solid #fff;
+    border-right: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+    border-left: 4px solid #bbc0c2;
+    transition: all 4s ease;
     outline: none;
     background: none;
 }
